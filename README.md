@@ -1,39 +1,34 @@
-# bit-burner
+# Bitburner
 
-#### 介绍
-{**以下是 Gitee 平台说明，您可以替换此简介**
-Gitee 是 OSCHINA 推出的基于 Git 的代码托管平台（同时支持 SVN）。专为开发者提供稳定、高效、安全的云端软件开发协作平台
-无论是个人、团队、或是企业，都能够用 Gitee 实现代码托管、项目管理、协作开发。企业项目请看 [https://gitee.com/enterprises](https://gitee.com/enterprises)}
+Bitburner is a programming-based [incremental game](https://en.wikipedia.org/wiki/Incremental_game)
+that revolves around hacking and cyberpunk themes.
+The game can be played at https://danielyxie.github.io/bitburner.
 
-#### 软件架构
-软件架构说明
+# Documentation
 
+The game's official documentation can be found on [Read The
+Docs](http://bitburner.readthedocs.io/). Please note that this is still a
+work-in-progress.
 
-#### 安装教程
+The documentation is created using [Sphinx](http://www.sphinx-doc.org).
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+Anyone is welcome to contribute to the documentation by editing the [source
+files](/doc/source) and then making a pull request with your contributions.
+For further guidance, please refer to the "As A Documentor" section of
+[CONTRIBUTING](CONTRIBUTING.md).
 
-#### 使用说明
+# Contribution
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+There are many ways to contribute to the game. It can be as simple as fixing
+a typo, correcting a bug, or improving the UI. For guidance on doing so,
+please refer to the [CONTRIBUTING](CONTRIBUTING.md) document.
 
-#### 参与贡献
+You will retain all ownership of the Copyright of any contributions you make,
+and will have the same rights to use or license your contributions. By
+submitting a pull request you agree to grant me perpetual, worldwide,
+non-exclusive, transferable, royalty-free, and irrevocable rights to use,
+publish, and distribute your contributions to the project. A formal
+Contributor's License Agreement will be drawn up in the future.
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
-
-
-#### 特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+If you would like to make significant contributions to the project as a
+collaborator, please reach out to @danielyxie to help coordinate the effort.
