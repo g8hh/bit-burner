@@ -256,7 +256,7 @@ var cnItems = {
     "/ sec) hacking exp": "/秒) 黑客经验",
     "/ sec) strength exp": "/秒) 力量经验",
     "agility experience": "敏捷经验",
-    "Assassinate (": "渡人（",
+    "Assassinate (": "暗中渡人（",
     "Attempt to commit armed robbery on a high-end store": "企图在高档商店持械抢劫",
     "Attempt to mug a random person on the street": "试图在街上随意抢劫一个人",
     "Attempt to rob property from someone's house": "企图从某人的房子里抢劫财物",
