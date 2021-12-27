@@ -224,7 +224,7 @@ export const Literatures: IMap<Literature> = {};
   fn = LiteratureNames.DemocracyIsDead;
   txt =
     "They rose from the shadows in the street.<br>From the places where the oppressed meet.<br>" +
-    "Their cries echoed loudly through the air.<br>As they once did in Tiananmen Square.<br>" +
+    "Their cries echoed loudly through the air.<br>就像他们曾经在白宫广场做的那样<br>" +
     "Loudness in the silence, Darkness in the light.<br>They came forth with power and might.<br>" +
     "Once the beacon of democracy, America was first.<br>Its pillars of society destroyed and dispersed.<br>" +
     "Soon the cries rose everywhere, with revolt and riot.<br>Until one day, finally, all was quiet.<br>" +
