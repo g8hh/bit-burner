@@ -1,0 +1,18 @@
+.DS_Store
+.vscode
+Changelog.txt
+Netburner.txt
+/doc/build
+/node_modules
+/dist/*.map
+/test/*.map
+/test/*.bundle.*
+/test/*.css
+.cypress
+
+# tmp folder for electron
+.package
+.build
+
+# editor files
+.vscode
