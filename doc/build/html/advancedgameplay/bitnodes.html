@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BitNodes &mdash; Bitburner 1.2.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/maxwidthoverride.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dark_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Source-Files" href="sourcefiles.html" />
+    <link rel="prev" title="Advanced Gameplay" href="../advancedgameplay.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Bitburner
+          </a>
+              <div class="version">
+                1.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference external" href="https://github.com/danielyxie/bitburner/blob/dev/markdown/bitburner.ns.md"> Full documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../netscript.html"> Basic documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basicgameplay.html"> Basic Gameplay</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../advancedgameplay.html"> Advanced Gameplay</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">BitNodes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-is-a-bitnode">What is a BitNode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-destroy-a-bitnode">How to destroy a BitNode</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sourcefiles.html">Source-Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intelligence.html">Intelligence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sleeves.html">Sleeves</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../shortcuts.html"> Keyboard Shortcuts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gamefrozen.html"> Game Frozen or Stuck?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guidesandtips.html"> Guides &amp; Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolsandresources.html"> Tools &amp; Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html"> Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../v1.0.0_migration.html"> v1.0.0 script migration guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../404.html"> 404</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://paypal.me/danielyxie"> Donate</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Bitburner</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../advancedgameplay.html">Advanced Gameplay</a> &raquo;</li>
+      <li>BitNodes</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/advancedgameplay/bitnodes.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="admonition warning" id="gameplay-bitnodes">
+<p class="admonition-title">Warning</p>
+<p>This page contains spoilers regarding the game’s story/plot-line.</p>
+</div>
+<section id="bitnodes">
+<h1>BitNodes<a class="headerlink" href="#bitnodes" title="Permalink to this headline"></a></h1>
+<p>A BitNode is an important part of the game’s storyline. In the game, you discover
+what BitNodes are by following the trail of clues left by the mysterious jump3r
+(essentially a minimal questline).</p>
+<section id="what-is-a-bitnode">
+<h2>What is a BitNode<a class="headerlink" href="#what-is-a-bitnode" title="Permalink to this headline"></a></h2>
+<p>A BitNode is the complex simulated reality in which you reside. By following the messages
+from jump3r, you discover that humanity was enslaved by an advanced alien race, called
+the Enders, using virtual simulations that trapped the minds of humans.</p>
+<p>However, the Enders didn’t just create a single virtual reality to enslave humans, but many
+different simulations. In other words, there are many different BitNodes that exist.
+These BitNode are very different from each other.</p>
+<p>jump3r tells you that the only hope for humanity is to destroy all of these BitNodes.
+Therefore, the end goal for the player is to enter and then destroy each BitNode at least once.</p>
+<p>Destroying a BitNode resets most of the player’s progress but grants the player a
+powerful second-tier persistent upgrade called a <a class="reference internal" href="sourcefiles.html#gameplay-sourcefiles"><span class="std std-ref">Source-File</span></a>.
+Different BitNodes grant different Source-Files.</p>
+<p>Each BitNode has unique characteristics that are related to varying backstories. For example,
+in one BitNode the world is in the middle of a financial catastrophe with a collapsing
+market. In this BitNode, most forms of income such as working at a company or Hacknet
+Nodes are significantly less profitable. Servers have less money on them and lowered
+growth rates, but it is easier to lower their security level using the weaken() Netscript function.</p>
+<p>Furthermore, some BitNodes introduce new content and mechanics. For example there is one
+BitNode that grants access to the <a class="reference external" href="https://github.com/danielyxie/bitburner/blob/dev/markdown/bitburner.singularity.md">Singularity API</a>.
+There is another BitNode in which you can manage a gang to earn money and reputation.</p>
+</section>
+<section id="how-to-destroy-a-bitnode">
+<h2>How to destroy a BitNode<a class="headerlink" href="#how-to-destroy-a-bitnode" title="Permalink to this headline"></a></h2>
+<p>Initially, the only way to destroy a BitNode is to join the Daedalus <a class="reference internal" href="../basicgameplay/factions.html#gameplay-factions"><span class="std std-ref">Daedalus</span></a>.
+From Daedalus, the player can obtain an Augmentation called ‘The Red Pill’, which doesn’t cost any money
+but does require a good amount of faction reputation.</p>
+<p>After installing ‘The Red Pill’, the player must search for and then manually hack a
+server called ‘w0r1d_d43m0n’. This server requires a hacking level of 3000 in order
+to successfully hack it. This will destroy the player’s current BitNode.</p>
+<p>There is a second method of destroying a BitNode, but it must be unlocked by first
+destroying BitNode-6 or BitNode-7 (Bladeburners).</p>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>Link to Bladeburner documentation page here</p>
+</div>
+<p>When the player destroys a BitNode, most of his/her progress will be reset. This includes things
+such as Augmentations and RAM upgrades on the home computer. The only things that will persist
+through destroying BitNodes is:</p>
+<ul class="simple">
+<li><p>Source-Files</p></li>
+<li><p>Scripts on the home computer</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../advancedgameplay.html" class="btn btn-neutral float-left" title="Advanced Gameplay" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="sourcefiles.html" class="btn btn-neutral float-right" title="Source-Files" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, Bitburner.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

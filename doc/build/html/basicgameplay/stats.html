@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stats &mdash; Bitburner 1.2.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/maxwidthoverride.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dark_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Terminal" href="terminal.html" />
+    <link rel="prev" title="Basic Gameplay" href="../basicgameplay.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Bitburner
+          </a>
+              <div class="version">
+                1.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference external" href="https://github.com/danielyxie/bitburner/blob/dev/markdown/bitburner.ns.md"> Full documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../netscript.html"> Basic documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../basicgameplay.html"> Basic Gameplay</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Stats</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#hacking">Hacking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#strength">Strength</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#defense">Defense</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dexterity">Dexterity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agility">Agility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#charisma">Charisma</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="terminal.html">Terminal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="servers.html">Servers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hacking.html">Hacking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scripts.html">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="world.html">World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="factions.html">Factions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="augmentations.html">Augmentations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="companies.html">Companies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="crimes.html">Crimes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="infiltration.html">Infiltration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stockmarket.html">Stock Market</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codingcontracts.html">Coding Contracts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../advancedgameplay.html"> Advanced Gameplay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../shortcuts.html"> Keyboard Shortcuts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gamefrozen.html"> Game Frozen or Stuck?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guidesandtips.html"> Guides &amp; Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolsandresources.html"> Tools &amp; Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html"> Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../v1.0.0_migration.html"> v1.0.0 script migration guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../404.html"> 404</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://paypal.me/danielyxie"> Donate</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Bitburner</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../basicgameplay.html">Basic Gameplay</a> &raquo;</li>
+      <li>Stats</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/basicgameplay/stats.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="stats">
+<span id="gameplay-stats"></span><h1>Stats<a class="headerlink" href="#stats" title="Permalink to this headline"></a></h1>
+<p>The player has several stats that can be increased in order to progress
+in the game.</p>
+<section id="hacking">
+<h2>Hacking<a class="headerlink" href="#hacking" title="Permalink to this headline"></a></h2>
+<p>Represents the player’s ability to code and hack.</p>
+<p>Affects:</p>
+<ul class="simple">
+<li><p>Time it takes to hack a server</p></li>
+<li><p>Time it takes to execute the grow() and weaken() Netscript function</p></li>
+<li><p>Chance to successfully hack a server</p></li>
+<li><p>Percent money stolen when hacking a server</p></li>
+<li><p>Success rate of certain crimes</p></li>
+<li><p>Success rate of Hacking option during Infiltration</p></li>
+<li><p>Time it takes to create a program</p></li>
+<li><p>Faction reputation gain when carrying out Hacking Contracts or Field Work</p></li>
+<li><p>Company reputation gain for certain jobs</p></li>
+</ul>
+<p>Gain experience by:</p>
+<ul class="simple">
+<li><p>Manually hacking servers through Terminal</p></li>
+<li><p>Executing hack(), grow(), or weaken() through a script</p></li>
+<li><p>Committing certain crimes</p></li>
+<li><p>Infiltration</p></li>
+<li><p>Carrying out Hacking Contracts or doing Field work for Factions</p></li>
+<li><p>Working certain jobs at a company</p></li>
+<li><p>Studying at a university</p></li>
+</ul>
+</section>
+<section id="strength">
+<h2>Strength<a class="headerlink" href="#strength" title="Permalink to this headline"></a></h2>
+<p>Represents the player’s physical offensive power</p>
+<p>Affects:</p>
+<ul class="simple">
+<li><p>Success rate of certain crimes</p></li>
+<li><p>Success rate of Combat options during Infiltration</p></li>
+<li><p>Faction reputation gain for Security and Field Work</p></li>
+<li><p>Company reputation gain for certain jobs</p></li>
+</ul>
+<p>Gain experience by:</p>
+<ul class="simple">
+<li><p>Committing certain crimes</p></li>
+<li><p>Infiltration</p></li>
+<li><p>Working out at a gym</p></li>
+<li><p>Doing Security/Field Work for a faction</p></li>
+<li><p>Working certain jobs at a company</p></li>
+</ul>
+</section>
+<section id="defense">
+<h2>Defense<a class="headerlink" href="#defense" title="Permalink to this headline"></a></h2>
+<p>Represents the player’s ability to withstand damage</p>
+<p>Affects:</p>
+<ul class="simple">
+<li><p>Success rate of certain crimes</p></li>
+<li><p>The player’s HP</p></li>
+<li><p>Success rate of Combat options during Infiltration</p></li>
+<li><p>How much damage the player takes during Infiltration</p></li>
+<li><p>Faction reputation gain for Security and Field Work</p></li>
+<li><p>Company reputation gain for certain jobs</p></li>
+</ul>
+<p>Gain experience by:</p>
+<ul class="simple">
+<li><p>Committing certain crimes</p></li>
+<li><p>Infiltration</p></li>
+<li><p>Working out at a gym</p></li>
+<li><p>Doing Security/Field Work for a faction</p></li>
+<li><p>Working certain jobs at a company</p></li>
+</ul>
+</section>
+<section id="dexterity">
+<h2>Dexterity<a class="headerlink" href="#dexterity" title="Permalink to this headline"></a></h2>
+<p>Represents the player’s skill and adeptness in performing certain tasks</p>
+<p>Affects:</p>
+<ul class="simple">
+<li><p>Success rate of certain crimes</p></li>
+<li><p>Success rate of Combat, Lockpick, and Escape options during Infiltration</p></li>
+<li><p>Faction reputation gain for Security and Field Work</p></li>
+<li><p>Company reputation gain for certain jobs</p></li>
+</ul>
+<p>Gain experience by:</p>
+<ul class="simple">
+<li><p>Committing certain crimes</p></li>
+<li><p>Infiltration</p></li>
+<li><p>Working out at a gym</p></li>
+<li><p>Doing Security/Field Work for a faction</p></li>
+<li><p>Working certain jobs at a company</p></li>
+</ul>
+</section>
+<section id="agility">
+<h2>Agility<a class="headerlink" href="#agility" title="Permalink to this headline"></a></h2>
+<p>Represents the player’s speed and ability to move</p>
+<p>Affects:</p>
+<ul class="simple">
+<li><p>Success rate of certain crimes</p></li>
+<li><p>Success rate of Combat, Sneak, and Escape options during Infiltration</p></li>
+<li><p>Faction reputation gain for Security and Field Work</p></li>
+<li><p>Company reputation gain for certain jobs</p></li>
+</ul>
+<p>Gain experience by:</p>
+<ul class="simple">
+<li><p>Committing certain crimes</p></li>
+<li><p>Infiltration</p></li>
+<li><p>Working out at a gym</p></li>
+<li><p>Doing Security/Field Work for a faction</p></li>
+<li><p>Working certain jobs at a company</p></li>
+</ul>
+</section>
+<section id="charisma">
+<h2>Charisma<a class="headerlink" href="#charisma" title="Permalink to this headline"></a></h2>
+<p>Represents the player’s social abilities</p>
+<p>Affects:</p>
+<ul class="simple">
+<li><p>Success rate of certain crimes</p></li>
+<li><p>Success rate of Bribe option during Infiltration</p></li>
+<li><p>Faction reputation gain for Field Work</p></li>
+<li><p>Company reputation gain for most jobs</p></li>
+</ul>
+<p>Gain experience by:</p>
+<ul class="simple">
+<li><p>Committing certain crimes</p></li>
+<li><p>Infiltration</p></li>
+<li><p>Studying at a university</p></li>
+<li><p>Working a relevant job at a company</p></li>
+<li><p>Doing Field work for a Faction</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../basicgameplay.html" class="btn btn-neutral float-left" title="Basic Gameplay" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="terminal.html" class="btn btn-neutral float-right" title="Terminal" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, Bitburner.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

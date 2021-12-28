@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Basic Gameplay &mdash; Bitburner 1.2.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/maxwidthoverride.css" type="text/css" />
+      <link rel="stylesheet" href="_static/dark_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Stats" href="basicgameplay/stats.html" />
+    <link rel="prev" title="Netscript Miscellaneous" href="netscript/netscriptmisc.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Bitburner
+          </a>
+              <div class="version">
+                1.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference external" href="https://github.com/danielyxie/bitburner/blob/dev/markdown/bitburner.ns.md"> Full documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="netscript.html"> Basic documentation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#"> Basic Gameplay</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/stats.html">Stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/terminal.html">Terminal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/servers.html">Servers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/hacking.html">Hacking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/scripts.html">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/world.html">World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/factions.html">Factions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/augmentations.html">Augmentations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/companies.html">Companies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/crimes.html">Crimes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/infiltration.html">Infiltration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/stockmarket.html">Stock Market</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/codingcontracts.html">Coding Contracts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="advancedgameplay.html"> Advanced Gameplay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="shortcuts.html"> Keyboard Shortcuts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gamefrozen.html"> Game Frozen or Stuck?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guidesandtips.html"> Guides &amp; Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="toolsandresources.html"> Tools &amp; Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html"> Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="v1.0.0_migration.html"> v1.0.0 script migration guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="404.html"> 404</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://paypal.me/danielyxie"> Donate</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Bitburner</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Basic Gameplay</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/basicgameplay.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="basic-gameplay">
+<h1>Basic Gameplay<a class="headerlink" href="#basic-gameplay" title="Permalink to this headline"></a></h1>
+<p>This section documents Bitburner gameplay elements that are immediately
+available and/or accessible to the player.</p>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Elements:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="basicgameplay/stats.html">Stats</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/stats.html#hacking">Hacking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/stats.html#strength">Strength</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/stats.html#defense">Defense</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/stats.html#dexterity">Dexterity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/stats.html#agility">Agility</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/stats.html#charisma">Charisma</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="basicgameplay/terminal.html">Terminal</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/terminal.html#configuration">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/terminal.html#filesystem-directories">Filesystem (Directories)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="basicgameplay/terminal.html#directories">Directories</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basicgameplay/terminal.html#absolute-vs-relative-paths">Absolute vs Relative Paths</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basicgameplay/terminal.html#netscript">Netscript</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basicgameplay/terminal.html#missing-features">Missing Features</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/terminal.html#commands">Commands</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="basicgameplay/terminal.html#alias">alias</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basicgameplay/terminal.html#analyze">analyze</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basicgameplay/terminal.html#backdoor">backdoor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basicgameplay/terminal.html#buy">buy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basicgameplay/terminal.html#cat">cat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basicgameplay/terminal.html#cd">cd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basicgameplay/terminal.html#check">check</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basicgameplay/terminal.html#clear-cls">clear/cls</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basicgameplay/terminal.html#connect">connect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basicgameplay/terminal.html#download">download</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basicgameplay/terminal.html#expr">expr</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basicgameplay/terminal.html#free">free</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basicgameplay/terminal.html#hack">hack</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basicgameplay/terminal.html#help">help</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basicgameplay/terminal.html#home">home</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basicgameplay/terminal.html#hostname">hostname</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basicgameplay/terminal.html#ifconfig">ifconfig</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basicgameplay/terminal.html#kill">kill</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basicgameplay/terminal.html#killall">killall</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basicgameplay/terminal.html#ls">ls</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basicgameplay/terminal.html#lscpu">lscpu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basicgameplay/terminal.html#mem">mem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basicgameplay/terminal.html#mv">mv</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basicgameplay/terminal.html#nano">nano</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basicgameplay/terminal.html#ps">ps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basicgameplay/terminal.html#rm">rm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basicgameplay/terminal.html#run">run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basicgameplay/terminal.html#scan">scan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basicgameplay/terminal.html#scan-analyze">scan-analyze</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basicgameplay/terminal.html#scp">scp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basicgameplay/terminal.html#sudov">sudov</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basicgameplay/terminal.html#tail">tail</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basicgameplay/terminal.html#theme">theme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basicgameplay/terminal.html#top">top</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basicgameplay/terminal.html#unalias">unalias</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basicgameplay/terminal.html#wget">wget</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/terminal.html#argument-parsing">Argument Parsing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/terminal.html#chaining-commands">Chaining Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="basicgameplay/servers.html">Servers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/servers.html#server-ram">Server RAM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/servers.html#identifying-servers">Identifying Servers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/servers.html#player-owned-servers">Player-owned Servers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/servers.html#hackable-servers">Hackable Servers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="basicgameplay/hacking.html">Hacking</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/hacking.html#gaining-root-access">Gaining Root Access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/hacking.html#general-hacking-mechanics">General Hacking Mechanics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/hacking.html#server-security">Server Security</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="basicgameplay/scripts.html">Scripts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/scripts.html#script-arguments">Script Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/scripts.html#identifying-a-script">Identifying a Script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/scripts.html#multithreading-scripts">Multithreading scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/scripts.html#working-with-scripts-in-terminal">Working with Scripts in Terminal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/scripts.html#working-with-scripts-in-netscript">Working with Scripts in Netscript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/scripts.html#notes-about-how-scripts-work-offline">Notes about how Scripts Work Offline</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="basicgameplay/world.html">World</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basicgameplay/factions.html">Factions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/factions.html#list-of-factions-and-their-requirements">List of Factions and their Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="basicgameplay/augmentations.html">Augmentations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/augmentations.html#how-to-acquire-augmentations">How to acquire Augmentations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/augmentations.html#installing-augmentations">Installing Augmentations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/augmentations.html#purchasing-multiple-augmentations">Purchasing Multiple Augmentations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="basicgameplay/companies.html">Companies</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/companies.html#information-about-all-companies">Information about all Companies</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="basicgameplay/crimes.html">Crimes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/crimes.html#basic-mechanics">Basic Mechanics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/crimes.html#crime-details">Crime details</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="basicgameplay/infiltration.html">Infiltration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/infiltration.html#overview">Overview</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="basicgameplay/stockmarket.html">Stock Market</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/stockmarket.html#fundamentals">Fundamentals</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="basicgameplay/stockmarket.html#positions-long-vs-short">Positions: Long vs Short</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basicgameplay/stockmarket.html#forecast-second-order-forecast">Forecast &amp; Second-Order Forecast</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basicgameplay/stockmarket.html#spread-bid-price-ask-price">Spread (Bid Price &amp; Ask Price)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basicgameplay/stockmarket.html#transactions-influencing-stock-forecast">Transactions Influencing Stock Forecast</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basicgameplay/stockmarket.html#order-types">Order Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basicgameplay/stockmarket.html#player-actions-influencing-stocks">Player Actions Influencing Stocks</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/stockmarket.html#automating-the-stock-market">Automating the Stock Market</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/stockmarket.html#under-the-hood">Under the Hood</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/stockmarket.html#offline-progression">Offline Progression</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="basicgameplay/codingcontracts.html">Coding Contracts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/codingcontracts.html#running-in-terminal">Running in Terminal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/codingcontracts.html#interacting-through-scripts">Interacting through Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/codingcontracts.html#submitting-solutions">Submitting Solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/codingcontracts.html#rewards">Rewards</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/codingcontracts.html#notes">Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basicgameplay/codingcontracts.html#list-of-all-problem-types">List of all Problem Types</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="netscript/netscriptmisc.html" class="btn btn-neutral float-left" title="Netscript Miscellaneous" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="basicgameplay/stats.html" class="btn btn-neutral float-right" title="Stats" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, Bitburner.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

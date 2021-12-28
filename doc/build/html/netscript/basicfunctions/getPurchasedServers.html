@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>getPurchasedServers() Netscript Function &mdash; Bitburner 1.2.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/maxwidthoverride.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/dark_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="getPurchasedServerLimit() Netscript Function" href="getPurchasedServerLimit.html" />
+    <link rel="prev" title="deleteServer() Netscript Function" href="deleteServer.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Bitburner
+          </a>
+              <div class="version">
+                1.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference external" href="https://github.com/danielyxie/bitburner/blob/dev/markdown/bitburner.ns.md"> Full documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../netscript.html"> Basic documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference external" href="https://github.com/danielyxie/bitburner/blob/dev/markdown/bitburner.ns.md"> Full documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../netscriptlearntoprogram.html"> Learn to Program</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../netscript1.html"> Netscript 1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../netscriptjs.html"> NetscriptJS (Netscript 2.0)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../netscriptscriptarguments.html"> Script Arguments</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../netscriptfunctions.html"> Basic Functions</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="hack.html">hack()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="grow.html">grow()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="weaken.html">weaken()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sleep.html">sleep()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="print.html">print()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tprint.html">tprint()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="disableLog.html">disableLog()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="enableLog.html">enableLog()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="isLogEnabled.html">isLogEnabled()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scan.html">scan()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nuke.html">nuke()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="brutessh.html">brutessh()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ftpcrack.html">ftpcrack()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="relaysmtp.html">relaysmtp()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="httpworm.html">httpworm()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sqlinject.html">sqlinject()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="run.html">run()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="exec.html">exec()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spawn.html">spawn()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="kill.html">kill()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="killall.html">killall()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scp.html">scp()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ls.html">ls()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ps.html">ps()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hasRootAccess.html">hasRootAccess()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getHackingLevel.html">getHackingLevel()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getHackingMultipliers.html">getHackingMultipliers()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getHacknetMultipliers.html">getHacknetMultipliers()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getServerMoneyAvailable.html">getServerMoneyAvailable()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getServerMaxMoney.html">getServerMaxMoney()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getServerSecurityLevel.html">getServerSecurityLevel()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getServerMinSecurityLevel.html">getServerMinSecurityLevel()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getServerRequiredHackingLevel.html">getServerRequiredHackingLevel()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getServerNumPortsRequired.html">getServerNumPortsRequired()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getServerMaxRam.html">getServerMaxRam()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getServerUsedRam.html">getServerUsedRam()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="serverExists.html">serverExists()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fileExists.html">fileExists()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="isRunning.html">isRunning()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getPurchasedServerCost.html">getPurchasedServerCost()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="purchaseServer.html">purchaseServer()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deleteServer.html">deleteServer()</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">getPurchasedServers()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getPurchasedServerLimit.html">getPurchasedServerLimit()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getPurchasedServerMaxRam.html">getPurchasedServerMaxRam()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scriptRunning.html">scriptRunning()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="scriptKill.html">scriptKill()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="getScriptRam.html">getScriptRam()</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../netscriptadvancedfunctions.html"> Advanced Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../netscripthacknetnodeapi.html"> Hacknet Node API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../netscriptmisc.html"> Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../basicgameplay.html"> Basic Gameplay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advancedgameplay.html"> Advanced Gameplay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../shortcuts.html"> Keyboard Shortcuts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gamefrozen.html"> Game Frozen or Stuck?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guidesandtips.html"> Guides &amp; Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolsandresources.html"> Tools &amp; Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog.html"> Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../v1.0.0_migration.html"> v1.0.0 script migration guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../404.html"> 404</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://paypal.me/danielyxie"> Donate</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Bitburner</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../netscript.html">Netscript</a> &raquo;</li>
+          <li><a href="../netscriptfunctions.html">Netscript Basic Functions</a> &raquo;</li>
+      <li>getPurchasedServers() Netscript Function</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/netscript/basicfunctions/getPurchasedServers.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="getpurchasedservers-netscript-function">
+<h1>getPurchasedServers() Netscript Function<a class="headerlink" href="#getpurchasedservers-netscript-function" title="Permalink to this headline"></a></h1>
+<dl class="js function">
+<dt class="sig sig-object js" id="getPurchasedServers">
+<span class="sig-name descname"><span class="n"><span class="pre">getPurchasedServers</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#getPurchasedServers" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">RAM cost</dt>
+<dd class="field-odd"><p>2.25 GB</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>String array of hostnames of all of the servers you have purchased.</p>
+</dd>
+</dl>
+<p>Example:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">getPurchasedServers</span><span class="p">();</span> <span class="c1">// returns: [&#39;grow-server-0&#39;, &#39;grow-server-1&#39;, &#39;weaken-server-0&#39;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="deleteServer.html" class="btn btn-neutral float-left" title="deleteServer() Netscript Function" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="getPurchasedServerLimit.html" class="btn btn-neutral float-right" title="getPurchasedServerLimit() Netscript Function" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, Bitburner.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

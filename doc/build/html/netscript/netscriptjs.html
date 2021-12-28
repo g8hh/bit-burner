@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NS2 &mdash; Bitburner 1.2.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/maxwidthoverride.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dark_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Netscript Script Arguments" href="netscriptscriptarguments.html" />
+    <link rel="prev" title="Netscript 1.0" href="netscript1.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Bitburner
+          </a>
+              <div class="version">
+                1.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference external" href="https://github.com/danielyxie/bitburner/blob/dev/markdown/bitburner.ns.md"> Full documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../netscript.html"> Basic documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference external" href="https://github.com/danielyxie/bitburner/blob/dev/markdown/bitburner.ns.md"> Full documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="netscriptlearntoprogram.html"> Learn to Program</a></li>
+<li class="toctree-l2"><a class="reference internal" href="netscript1.html"> Netscript 1.0</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#"> NetscriptJS (Netscript 2.0)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#browser-compatibility">Browser compatibility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-use-ns2">How to use ns2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#what-s-with-the-weird-comment">What’s with the weird comment</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="netscriptscriptarguments.html"> Script Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="netscriptfunctions.html"> Basic Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="netscriptadvancedfunctions.html"> Advanced Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="netscripthacknetnodeapi.html"> Hacknet Node API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="netscriptmisc.html"> Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../basicgameplay.html"> Basic Gameplay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advancedgameplay.html"> Advanced Gameplay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../shortcuts.html"> Keyboard Shortcuts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gamefrozen.html"> Game Frozen or Stuck?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guidesandtips.html"> Guides &amp; Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolsandresources.html"> Tools &amp; Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html"> Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../v1.0.0_migration.html"> v1.0.0 script migration guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../404.html"> 404</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://paypal.me/danielyxie"> Donate</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Bitburner</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../netscript.html">Netscript</a> &raquo;</li>
+      <li>NS2</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/netscript/netscriptjs.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ns2">
+<span id="netscriptjs"></span><h1>NS2<a class="headerlink" href="#ns2" title="Permalink to this headline"></a></h1>
+<p>The improved version of Netscript that
+allows users to write full-fledged Javascript code in their scripts, while
+still being able to access the Netscript functions.</p>
+<p>ns2 was developed primarily by <a class="reference external" href="https://github.com/jaguilar">Github user jaguilar</a></p>
+<p>On top of having almost all of the features and capabilities of JavaScript, ns2 is also
+significantly faster than ns1.</p>
+<p>This documentation will not go over any of the additional features of ns2, since
+there is plenty of documentation on Javascript available on the web.</p>
+<section id="browser-compatibility">
+<h2>Browser compatibility<a class="headerlink" href="#browser-compatibility" title="Permalink to this headline"></a></h2>
+<p>As of the time of writing this, a few browsers do not support <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import">dynamic import</a> functionality and therefore cannot run ns2 scripts. These browsers will thus only be capable of using ns1.</p>
+</section>
+<section id="how-to-use-ns2">
+<h2>How to use ns2<a class="headerlink" href="#how-to-use-ns2" title="Permalink to this headline"></a></h2>
+<p>Working with ns2 scripts is the same as ns1 scripts. The only difference
+is that ns2 scripts use the “.ns” or “.js” extension rather than “.script”. E.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ nano foo.ns
+$ run foo.ns -t 100 arg1 arg2 arg3
+exec(&quot;foo.ns&quot;, &quot;purchasedServer1&quot;, &quot;100&quot;, &quot;randomArg&quot;);
+</pre></div>
+</div>
+<p>The caveat when using ns2 to write scripts is that your code must be
+asynchronous. Furthermore, instead of using the global scope and executing your code
+sequentially, ns2 uses a <code class="code docutils literal notranslate"><span class="pre">main()</span></code> function as an entry point.</p>
+<p>Furthermore, the “Netscript environment” must be passed into a ns2 script through
+the main function. This environment includes all of the pre-defined Netscript functions
+(<code class="code docutils literal notranslate"><span class="pre">hack()</span></code>, <code class="code docutils literal notranslate"><span class="pre">exec</span></code>, etc.) as well as the arguments you pass to the script.</p>
+<p>Therefore, the signature of the <code class="code docutils literal notranslate"><span class="pre">main()</span></code> function must be:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="k">async</span> <span class="n">function</span> <span class="n">main</span><span class="p">(</span><span class="n">ns</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">ns</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">&quot;Starting script here&quot;</span><span class="p">);</span>
+    <span class="k">await</span> <span class="n">ns</span><span class="o">.</span><span class="n">hack</span><span class="p">(</span><span class="s2">&quot;foodnstuff&quot;</span><span class="p">);</span> <span class="o">//</span><span class="n">Use</span> <span class="n">Netscript</span> <span class="n">hack</span> <span class="n">function</span>
+    <span class="n">ns</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">ns</span><span class="o">.</span><span class="n">args</span><span class="p">);</span>           <span class="o">//</span><span class="n">The</span> <span class="n">script</span> <span class="n">arguments</span> <span class="n">must</span> <span class="n">be</span> <span class="n">prefaced</span> <span class="k">with</span> <span class="n">ns</span> <span class="k">as</span> <span class="n">well</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Here is a summary of all rules you need to follow when writing Netscript JS code:</p>
+<ul>
+<li><p>Write <code class="code docutils literal notranslate"><span class="pre">await</span></code> before any call to the following Netscript functions:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>hack</p></li>
+<li><p>grow</p></li>
+<li><p>weaken</p></li>
+<li><p>sleep</p></li>
+<li><p>prompt</p></li>
+<li><p>wget</p></li>
+<li><p>scp</p></li>
+<li><p>write</p></li>
+<li><p>writePort</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Any function that contains <code class="code docutils literal notranslate"><span class="pre">await</span></code> must be declared as <code class="code docutils literal notranslate"><span class="pre">async</span></code></p></li>
+<li><p>Always <code class="code docutils literal notranslate"><span class="pre">await</span></code> any function that is marked as <code class="code docutils literal notranslate"><span class="pre">async</span></code></p></li>
+<li><p>Any functions that you want to be visible from other scripts must be marked with <code class="code docutils literal notranslate"><span class="pre">export</span></code>.</p></li>
+<li><p><strong>Do not write any infinite loops without using a</strong> <code class="code docutils literal notranslate"><span class="pre">sleep</span></code> <strong>or one of the timed Netscript functions like</strong> <code class="code docutils literal notranslate"><span class="pre">hack</span></code>. Doing so will freeze your game.</p></li>
+<li><p>Any global variable declared in a ns2 script is shared between all instances of that
+script. For example, assume you write a script <em>foo.ns</em> and declared a global variable like so:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">foo</span><span class="o">.</span><span class="n">ns</span>
+<span class="n">let</span> <span class="n">globalVariable</span><span class="p">;</span>
+
+<span class="n">export</span> <span class="k">async</span> <span class="n">function</span> <span class="n">main</span><span class="p">(</span><span class="n">ns</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">globalVariable</span> <span class="o">=</span> <span class="n">ns</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">length</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">true</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">ns</span><span class="o">.</span><span class="n">tprint</span><span class="p">(</span><span class="n">globalVariable</span><span class="p">);</span>
+        <span class="k">await</span> <span class="n">ns</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">3000</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Then, you ran multiple instances of <em>foo.ns</em>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ run foo.ns 1
+$ run foo.ns 1 2 3
+$ run foo.ns 1 2 3 4 5
+</pre></div>
+</div>
+<p>Then all three instances of foo.ns will share the same instance of <code class="code docutils literal notranslate"><span class="pre">globalVariable</span></code>.
+(In this example, the value of <code class="code docutils literal notranslate"><span class="pre">globalVariable</span></code> will be set to 5 because the
+last instance of <em>foo.ns</em> to run has 5 arguments. This means that all three instances of
+the script will repeatedly print the value 5).</p>
+<p>These global variables can be thought of as <a class="reference external" href="https://www.tutorialspoint.com/cplusplus/cpp_static_members.htm">C++ static class members</a>,
+where a ns2 script is a class and a global variable is a static member within that class.</p>
+</li>
+</ul>
+</section>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline"></a></h2>
+<p>early-hack-template.script</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">target</span> <span class="o">=</span> <span class="nx">args</span><span class="p">[</span><span class="mf">0</span><span class="p">];</span>
+<span class="kd">var</span> <span class="nx">moneyThresh</span> <span class="o">=</span> <span class="nx">getServerMaxMoney</span><span class="p">(</span><span class="nx">target</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.75</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">securityThresh</span> <span class="o">=</span> <span class="nx">getServerMinSecurityLevel</span><span class="p">(</span><span class="nx">target</span><span class="p">)</span> <span class="o">+</span> <span class="mf">5</span><span class="p">;</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">fileExists</span><span class="p">(</span><span class="s2">&quot;BruteSSH.exe&quot;</span><span class="p">,</span> <span class="s2">&quot;home&quot;</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nx">brutessh</span><span class="p">(</span><span class="nx">target</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="nx">nuke</span><span class="p">(</span><span class="nx">target</span><span class="p">);</span>
+<span class="k">while</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">getServerSecurityLevel</span><span class="p">(</span><span class="nx">target</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nx">securityThresh</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">weaken</span><span class="p">(</span><span class="nx">target</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">getServerMoneyAvailable</span><span class="p">(</span><span class="nx">target</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nx">moneyThresh</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">grow</span><span class="p">(</span><span class="nx">target</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">hack</span><span class="p">(</span><span class="nx">target</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>early-hack-template.ns</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">export</span> <span class="k">async</span> <span class="kd">function</span> <span class="nx">main</span><span class="p">(</span><span class="nx">ns</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">target</span> <span class="o">=</span> <span class="nx">ns</span><span class="p">.</span><span class="nx">args</span><span class="p">[</span><span class="mf">0</span><span class="p">];</span>
+    <span class="kd">var</span> <span class="nx">moneyThresh</span> <span class="o">=</span> <span class="nx">ns</span><span class="p">.</span><span class="nx">getServerMaxMoney</span><span class="p">(</span><span class="nx">target</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.75</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">securityThresh</span> <span class="o">=</span> <span class="nx">ns</span><span class="p">.</span><span class="nx">getServerMinSecurityLevel</span><span class="p">(</span><span class="nx">target</span><span class="p">)</span> <span class="o">+</span> <span class="mf">5</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">ns</span><span class="p">.</span><span class="nx">fileExists</span><span class="p">(</span><span class="s2">&quot;BruteSSH.exe&quot;</span><span class="p">,</span> <span class="s2">&quot;home&quot;</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nx">ns</span><span class="p">.</span><span class="nx">brutessh</span><span class="p">(</span><span class="nx">target</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="nx">ns</span><span class="p">.</span><span class="nx">nuke</span><span class="p">(</span><span class="nx">target</span><span class="p">);</span>
+    <span class="k">while</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">ns</span><span class="p">.</span><span class="nx">getServerSecurityLevel</span><span class="p">(</span><span class="nx">target</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nx">securityThresh</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">await</span> <span class="nx">ns</span><span class="p">.</span><span class="nx">weaken</span><span class="p">(</span><span class="nx">target</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">ns</span><span class="p">.</span><span class="nx">getServerMoneyAvailable</span><span class="p">(</span><span class="nx">target</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nx">moneyThresh</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">await</span> <span class="nx">ns</span><span class="p">.</span><span class="nx">grow</span><span class="p">(</span><span class="nx">target</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">await</span> <span class="nx">ns</span><span class="p">.</span><span class="nx">hack</span><span class="p">(</span><span class="nx">target</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="what-s-with-the-weird-comment">
+<h2>What’s with the weird comment<a class="headerlink" href="#what-s-with-the-weird-comment" title="Permalink to this headline"></a></h2>
+<p>You may have noticed that every new ns2 file will contains the following comment.</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm">* @param {NS} ns</span>
+<span class="cm">**/</span>
+</pre></div>
+</div>
+<p>This comment is used to help the text editor autocomplete functions in the Netscript API. You can enabling it by pressing ctrl+space after <cite>ns.</cite></p>
+<img alt="../_images/autocomplete.png" src="../_images/autocomplete.png" />
+<p>The comment can be safely removed but it is recommended to keep it as it will help you.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="netscript1.html" class="btn btn-neutral float-left" title="Netscript 1.0" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="netscriptscriptarguments.html" class="btn btn-neutral float-right" title="Netscript Script Arguments" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, Bitburner.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sleeves &mdash; Bitburner 1.2.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/maxwidthoverride.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dark_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Keyboard Shortcuts" href="../shortcuts.html" />
+    <link rel="prev" title="Intelligence" href="intelligence.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Bitburner
+          </a>
+              <div class="version">
+                1.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference external" href="https://github.com/danielyxie/bitburner/blob/dev/markdown/bitburner.ns.md"> Full documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../netscript.html"> Basic documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basicgameplay.html"> Basic Gameplay</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../advancedgameplay.html"> Advanced Gameplay</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="bitnodes.html">BitNodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sourcefiles.html">Source-Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="intelligence.html">Intelligence</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Sleeves</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#duplicate-sleeves">Duplicate Sleeves</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#obtaining-duplicate-sleeves">Obtaining Duplicate Sleeves</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#synchronization">Synchronization</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sleeve-shock">Sleeve Shock</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#augmentations">Augmentations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#memory">Memory</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#re-sleeving">Re-sleeving</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../shortcuts.html"> Keyboard Shortcuts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gamefrozen.html"> Game Frozen or Stuck?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guidesandtips.html"> Guides &amp; Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolsandresources.html"> Tools &amp; Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html"> Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../v1.0.0_migration.html"> v1.0.0 script migration guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../404.html"> 404</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://paypal.me/danielyxie"> Donate</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Bitburner</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../advancedgameplay.html">Advanced Gameplay</a> &raquo;</li>
+      <li>Sleeves</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/advancedgameplay/sleeves.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="sleeves">
+<span id="gameplay-sleeves"></span><h1>Sleeves<a class="headerlink" href="#sleeves" title="Permalink to this headline"></a></h1>
+<p>When VitaLife unveiled their Persona Core technology that allowed people to digitize
+and transfer their consciousness into other vessels, human bodies became nothing more
+than ‘sleeves’ for the human consciousness. This technology thus became known as
+“Sleeve technology”.</p>
+<p>Sleeve technology unlocks two different gameplay features:</p>
+<ul class="simple">
+<li><p>Duplicate Sleeves</p></li>
+<li><p>Re-sleeving</p></li>
+</ul>
+<p>Sleeve technology is unlocked in <a class="reference internal" href="bitnodes.html#gameplay-bitnodes"><span class="std std-ref">BitNode-10</span></a>.</p>
+<section id="duplicate-sleeves">
+<span id="gameplay-duplicatesleeves"></span><h2>Duplicate Sleeves<a class="headerlink" href="#duplicate-sleeves" title="Permalink to this headline"></a></h2>
+<p>Duplicate Sleeves are MK-V Synthoids (synthetic androids) into which your consciousness
+has been copied. In other words, these Synthoids contain a perfect duplicate of your mind.</p>
+<p>Duplicate Sleeves are essentially clones which you can use to perform work-type actions,
+such as working for a company/faction or committing a crime. When sleeves perform these tasks,
+they will earn money, experience, and reputation.</p>
+<p>Sleeves are their own individuals, which means they each have their own experience and stats.</p>
+<p>When a sleeve earns experience, it earns experience for itself, the player’s
+original consciousness, as well as all of the player’s other sleeves.</p>
+<p>Duplicate Sleeves are <strong>not</strong> reset when installing Augmentations, but they are reset
+when switching BitNodes.</p>
+<section id="obtaining-duplicate-sleeves">
+<h3>Obtaining Duplicate Sleeves<a class="headerlink" href="#obtaining-duplicate-sleeves" title="Permalink to this headline"></a></h3>
+<p>There are two methods of obtaining Duplicate Sleeves:</p>
+<ol class="arabic simple">
+<li><p>Destroy BitNode-10. Each completion give you one additional Duplicate Sleeve</p></li>
+<li><p>Purchase Duplicate Sleeves from <a class="reference internal" href="../basicgameplay/factions.html#gameplay-factions"><span class="std std-ref">the faction The Covenant</span></a>.
+This is only available in BitNodes-10 and above, and is only available after defeating
+BitNode-10 at least once. Sleeves purchased this way are <strong>permanent</strong> (they persist
+through BitNodes). You can purchase up to 5 Duplicate Sleeves from The Covenant.</p></li>
+</ol>
+</section>
+<section id="synchronization">
+<h3>Synchronization<a class="headerlink" href="#synchronization" title="Permalink to this headline"></a></h3>
+<p>Synchronization is a measure of how aligned your consciousness is with that of your
+Duplicate Sleeves. It is a numeral value between 1 and 100, and it affects how much experience
+is earned when the sleeve is performing a task.</p>
+<p>Let N be the sleeve’s synchronization. When the sleeve earns experience by performing
+a task, both the sleeve and the player’s original host consciousness gain N% of the
+amount of experience normally earned by the task. All of the player’s other sleeves
+earn ((N/100)^2 * 100)% of the experience.</p>
+<p>Synchronization can be increased by assigning sleeves to the ‘Synchronize’ task.</p>
+</section>
+<section id="sleeve-shock">
+<h3>Sleeve Shock<a class="headerlink" href="#sleeve-shock" title="Permalink to this headline"></a></h3>
+<p>Sleeve shock is a measure of how much trauma the sleeve has due to being placed in a new
+body. It is a numeral value between 0 and 99, where 99 indicates full shock and 0 indicates
+no shock. Shock affects the amount of experience earned by the sleeve.</p>
+<p>Sleeve shock slowly decreases over time. You can further increase the rate at which
+it decreases by assigning sleeves to the ‘Shock Recovery’ task.</p>
+</section>
+<section id="augmentations">
+<h3>Augmentations<a class="headerlink" href="#augmentations" title="Permalink to this headline"></a></h3>
+<p>You can purchase <a class="reference internal" href="../basicgameplay/augmentations.html#gameplay-augmentations"><span class="std std-ref">Augmentations</span></a> for your Duplicate
+Sleeves. In order to do this, the Sleeve’s Shock must be at 0. Any Augmentation
+that is currently available to you through a faction is also available for your
+Duplicate Sleeves. There are a few Augmentations, such as NeuroFlux Governor and
+Bladeburner-specific ones, that cannot be purchased for a Duplicate Sleeve.</p>
+<p>When you purchase an Augmentation for a Duplicate Sleeve, it is instantly installed.
+When this happens, the Sleeve’s stats are instantly reset back to 0, similar to
+when you normally install Augmentations.</p>
+<p>The cost of purchasing an Augmentation for a Duplicate Sleeve is <strong>not</strong> affected
+by how many Augmentations you have purchased for yourself, and vice versa.</p>
+</section>
+<section id="memory">
+<h3>Memory<a class="headerlink" href="#memory" title="Permalink to this headline"></a></h3>
+<p>Sleeve memory dictates what a sleeve’s synchronization will be when its reset by
+switching BitNodes. For example, if a sleeve has a memory of 10, then when you
+switch BitNodes its synchronization will initially be set to 10, rather than 1.</p>
+<p>Memory can only be increased by purchasing upgrades from The Covenant. Just like
+the ability to purchase additional sleeves, this is only available in BitNodes-10
+and above, and is only available after defeating BitNode-10 at least once.</p>
+<p>Memory is a persistent stat, meaning it never gets reset back to 1.
+The maximum possible value for a sleeve’s memory is 100.</p>
+</section>
+</section>
+<section id="re-sleeving">
+<h2>Re-sleeving<a class="headerlink" href="#re-sleeving" title="Permalink to this headline"></a></h2>
+<p>Re-sleeving is the process of digitizing and transferring your consciousness into a
+new human body, or “sleeve”. When you re-sleeve into a new body, your stat experience
+and Augmentations get replaced with those of the new body.</p>
+<p>In order to re-sleeve, you must purchase new bodies. This can be done at VitaLife in
+New Tokyo. Once you purchase a body to re-sleeve into, the effects will take
+place immediately.</p>
+<p>Note that resleeving <strong>REMOVES</strong> all of your currently-installed Augmentations,
+and replaces them with the ones provided by the purchased sleeve. However,
+Augmentations that are purchased but not installed will <strong>not</strong> be removed. If you have purchased
+an Augmentation and then re-sleeve into a body which already has that Augmentation,
+it will be removed since you cannot have duplicate Augmentations.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="intelligence.html" class="btn btn-neutral float-left" title="Intelligence" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../shortcuts.html" class="btn btn-neutral float-right" title="Keyboard Shortcuts" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, Bitburner.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
