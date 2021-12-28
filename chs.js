@@ -248,7 +248,7 @@ var cnItems = {
     "You have been": "你已经",
     "You have gained": "你获得了",
     "You may cancel at any time": "你可以随时取消",
-    "for": "",
+    "for": "for",
     "/ sec) agility exp": "/秒) 敏捷经验",
     "/ sec) charisma exp": "/秒) 魅力经验",
     "/ sec) defense exp": "/秒) 防御经验",
