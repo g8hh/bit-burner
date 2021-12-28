@@ -2,7 +2,7 @@
 .vscode
 Changelog.txt
 Netburner.txt
-/doc/build
+# /doc/build  we need this doc.
 /node_modules
 /dist/*.map
 /test/*.map

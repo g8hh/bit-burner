@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Factions &mdash; Bitburner 1.2.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/maxwidthoverride.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dark_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Augmentations" href="augmentations.html" />
+    <link rel="prev" title="World" href="world.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Bitburner
+          </a>
+              <div class="version">
+                1.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference external" href="https://github.com/danielyxie/bitburner/blob/dev/markdown/bitburner.ns.md"> Full documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../netscript.html"> Basic documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../basicgameplay.html"> Basic Gameplay</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="stats.html">Stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="terminal.html">Terminal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="servers.html">Servers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hacking.html">Hacking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scripts.html">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="world.html">World</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Factions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#list-of-factions-and-their-requirements">List of Factions and their Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="augmentations.html">Augmentations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="companies.html">Companies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="crimes.html">Crimes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="infiltration.html">Infiltration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stockmarket.html">Stock Market</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codingcontracts.html">Coding Contracts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../advancedgameplay.html"> Advanced Gameplay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../shortcuts.html"> Keyboard Shortcuts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gamefrozen.html"> Game Frozen or Stuck?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guidesandtips.html"> Guides &amp; Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolsandresources.html"> Tools &amp; Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html"> Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../v1.0.0_migration.html"> v1.0.0 script migration guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../404.html"> 404</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://paypal.me/danielyxie"> Donate</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Bitburner</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../basicgameplay.html">Basic Gameplay</a> &raquo;</li>
+      <li>Factions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/basicgameplay/factions.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="factions">
+<span id="gameplay-factions"></span><h1>Factions<a class="headerlink" href="#factions" title="Permalink to this headline"></a></h1>
+<p>Throughout the game you may receive invitations from factions. There are
+many different factions, and each faction has different criteria for
+determining its potential members. Joining a faction and furthering
+its cause is crucial to progressing in the game and unlocking endgame
+content.</p>
+<p>It is possible to join multiple factions if you receive invitations from
+them. However, note that joining a faction may prevent you from joining
+other rival factions. (Don’t worry, this usually isn’t the case. Also,
+it would only be temporary since resetting the game by installing
+<a class="reference internal" href="augmentations.html#gameplay-augmentations"><span class="std std-ref">Augmentations</span></a> will clear all your factions)</p>
+<p>The ‘Factions’ link on the menu brings up a list of all factions that
+you have joined. You can select a Faction on this list to go to that
+Faction page. This page displays general information about the Faction
+and also lets you perform work for the faction. Working for a Faction
+is similar to working for a company except that you don’t get paid a
+salary. You will only earn reputation in your Faction and train your
+stats. Also, cancelling work early when working for a Faction does
+<strong>not</strong> result in reduced reputation earnings.</p>
+<p>Earning reputation for a Faction unlocks powerful Augmentations.
+Purchasing and installing these Augmentations will upgrade your
+abilities. The Augmentations that are available to unlock vary
+from faction to faction.</p>
+<section id="list-of-factions-and-their-requirements">
+<h2>List of Factions and their Requirements<a class="headerlink" href="#list-of-factions-and-their-requirements" title="Permalink to this headline"></a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 19%" />
+<col style="width: 15%" />
+<col style="width: 38%" />
+<col style="width: 28%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td rowspan="4"><dl class="simple">
+<dt>Early Game</dt><dd><p>Factions</p>
+</dd>
+</dl>
+</td>
+<td><p>Faction Name</p></td>
+<td><p>Requirements</p></td>
+<td><p>Joining this Faction prevents
+you from joining:</p></td>
+</tr>
+<tr class="row-even"><td><p>CyberSec</p></td>
+<td><ul class="simple">
+<li><p>Install a backdoor on the CSEC server</p></li>
+</ul>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Tian Di Hui</p></td>
+<td><ul class="simple">
+<li><p>$1m</p></li>
+<li><p>Hacking Level 50</p></li>
+<li><p>Be in Chongqing, New Tokyo, or Ishima</p></li>
+</ul>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Netburners</p></td>
+<td><ul class="simple">
+<li><p>Hacking Level 80</p></li>
+<li><p>Total Hacknet Levels of 100</p></li>
+<li><p>Total Hacknet RAM of 8</p></li>
+<li><p>Total Hacknet Cores of 4</p></li>
+</ul>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td rowspan="6"><p>City Factions</p></td>
+<td><p>Sector-12</p></td>
+<td><ul class="simple">
+<li><p>Be in Sector-12</p></li>
+<li><p>$15m</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Chongqing</p></li>
+<li><p>New Tokyo</p></li>
+<li><p>Ishima</p></li>
+<li><p>Volhaven</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>Chongqing</p></td>
+<td><ul class="simple">
+<li><p>Be in Chongqing</p></li>
+<li><p>$20m</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Sector-12</p></li>
+<li><p>Aevum</p></li>
+<li><p>Volhaven</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>New Tokyo</p></td>
+<td><ul class="simple">
+<li><p>Be in New Tokyo</p></li>
+<li><p>$20m</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Sector-12</p></li>
+<li><p>Aevum</p></li>
+<li><p>Volhaven</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>Ishima</p></td>
+<td><ul class="simple">
+<li><p>Be in Ishima</p></li>
+<li><p>$30m</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Sector-12</p></li>
+<li><p>Aevum</p></li>
+<li><p>Volhaven</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Aevum</p></td>
+<td><ul class="simple">
+<li><p>Be in Aevum</p></li>
+<li><p>$40m</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Chongqing</p></li>
+<li><p>New Tokyo</p></li>
+<li><p>Ishima</p></li>
+<li><p>Volhaven</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>Volhaven</p></td>
+<td><ul class="simple">
+<li><p>Be in Volhaven</p></li>
+<li><p>$50m</p></li>
+</ul>
+</td>
+<td><ul class="simple">
+<li><p>Sector-12</p></li>
+<li><p>Aevum</p></li>
+<li><p>Chongqing</p></li>
+<li><p>New Tokyo</p></li>
+<li><p>Ishima</p></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td rowspan="3"><p>Hacking
+Groups</p></td>
+<td><p>NiteSec</p></td>
+<td><ul class="simple">
+<li><p>Install a backdoor on the avmnite-02h
+server</p></li>
+</ul>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>The Black Hand</p></td>
+<td><ul class="simple">
+<li><p>Install a backdoor on the I.I.I.I
+server</p></li>
+</ul>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>BitRunners</p></td>
+<td><ul class="simple">
+<li><p>Install a backdoor on the run4theh111z
+server</p></li>
+</ul>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td rowspan="10"><p>Megacorporations</p></td>
+<td><p>ECorp</p></td>
+<td><ul class="simple">
+<li><p>Have 200k reputation with
+the Corporation</p></li>
+</ul>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>MegaCorp</p></td>
+<td><ul class="simple">
+<li><p>Have 200k reputation with
+the Corporation</p></li>
+</ul>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>KuaiGong
+International</p></td>
+<td><ul class="simple">
+<li><p>Have 200k reputation with
+the Corporation</p></li>
+</ul>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Four Sigma</p></td>
+<td><ul class="simple">
+<li><p>Have 200k reputation with
+the Corporation</p></li>
+</ul>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>NWO</p></td>
+<td><ul class="simple">
+<li><p>Have 200k reputation with
+the Corporation</p></li>
+</ul>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Blade
+Industries</p></td>
+<td><ul class="simple">
+<li><p>Have 200k reputation with
+the Corporation</p></li>
+</ul>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>OmniTek
+Incorporated</p></td>
+<td><ul class="simple">
+<li><p>Have 200k reputation with
+the Corporation</p></li>
+</ul>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Bachman &amp;
+Associates</p></td>
+<td><ul class="simple">
+<li><p>Have 200k reputation with
+the Corporation</p></li>
+</ul>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Clarke
+Incorporated</p></td>
+<td><ul class="simple">
+<li><p>Have 200k reputation with
+the Corporation</p></li>
+</ul>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Fulcrum Secret
+Technologies</p></td>
+<td><ul class="simple">
+<li><p>Have 250k reputation with
+the Corporation</p></li>
+<li><p>Install a backdoor on the
+fulcrumassets server</p></li>
+</ul>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td rowspan="6"><p>Criminal
+Organizations</p></td>
+<td><p>Slum Snakes</p></td>
+<td><ul class="simple">
+<li><p>All Combat Stats of 30</p></li>
+<li><p>-9 Karma</p></li>
+<li><p>$1m</p></li>
+</ul>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Tetrads</p></td>
+<td><ul class="simple">
+<li><p>Be in Chongqing, New Tokyo, or Ishima</p></li>
+<li><p>All Combat Stats of 75</p></li>
+<li><p>-18 Karma</p></li>
+</ul>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Silhouette</p></td>
+<td><ul class="simple">
+<li><p>CTO, CFO, or CEO of a company</p></li>
+<li><p>$15m</p></li>
+<li><p>-22 Karma</p></li>
+</ul>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Speakers for
+the Dead</p></td>
+<td><ul class="simple">
+<li><p>Hacking Level 100</p></li>
+<li><p>All Combat Stats of 300</p></li>
+<li><p>30 People Killed</p></li>
+<li><p>-45 Karma</p></li>
+<li><p>Not working for CIA or NSA</p></li>
+</ul>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>The Dark Army</p></td>
+<td><ul class="simple">
+<li><p>Hacking Level 300</p></li>
+<li><p>All Combat Stats of 300</p></li>
+<li><p>Be in Chongqing</p></li>
+<li><p>5 People Killed</p></li>
+<li><p>-45 Karma</p></li>
+<li><p>Not working for CIA or NSA</p></li>
+</ul>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>The Syndicate</p></td>
+<td><ul class="simple">
+<li><p>Hacking Level 200</p></li>
+<li><p>All Combat Stats of 200</p></li>
+<li><p>Be in Aevum or Sector-12</p></li>
+<li><p>$10m</p></li>
+<li><p>-90 Karma</p></li>
+<li><p>Not working for CIA or NSA</p></li>
+</ul>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td rowspan="3"><p>Endgame
+Factions</p></td>
+<td><p>The Covenant</p></td>
+<td><ul class="simple">
+<li><p>20 Augmentations</p></li>
+<li><p>$75b</p></li>
+<li><p>Hacking Level of 850</p></li>
+<li><p>All Combat Stats of 850</p></li>
+</ul>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Daedalus</p></td>
+<td><ul class="simple">
+<li><p>30 Augmentations</p></li>
+<li><p>$100b</p></li>
+<li><p>Hacking Level of 2500 OR All Combat
+Stats of 1500</p></li>
+</ul>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>Illuminati</p></td>
+<td><ul class="simple">
+<li><p>30 Augmentations</p></li>
+<li><p>$150b</p></li>
+<li><p>Hacking Level of 1500</p></li>
+<li><p>All Combat Stats of 1200</p></li>
+</ul>
+</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="world.html" class="btn btn-neutral float-left" title="World" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="augmentations.html" class="btn btn-neutral float-right" title="Augmentations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, Bitburner.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

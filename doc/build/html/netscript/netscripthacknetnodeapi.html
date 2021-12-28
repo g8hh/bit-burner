@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Netscript Hacknet Node API &mdash; Bitburner 1.2.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/maxwidthoverride.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dark_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="numNodes() Netscript Function" href="hacknetnodeapi/numNodes.html" />
+    <link rel="prev" title="Injecting HTML in the game" href="advancedfunctions/inject_html.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Bitburner
+          </a>
+              <div class="version">
+                1.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference external" href="https://github.com/danielyxie/bitburner/blob/dev/markdown/bitburner.ns.md"> Full documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../netscript.html"> Basic documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference external" href="https://github.com/danielyxie/bitburner/blob/dev/markdown/bitburner.ns.md"> Full documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="netscriptlearntoprogram.html"> Learn to Program</a></li>
+<li class="toctree-l2"><a class="reference internal" href="netscript1.html"> Netscript 1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="netscriptjs.html"> NetscriptJS (Netscript 2.0)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="netscriptscriptarguments.html"> Script Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="netscriptfunctions.html"> Basic Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="netscriptadvancedfunctions.html"> Advanced Functions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#"> Hacknet Node API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="hacknetnodeapi/numNodes.html">numNodes()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hacknetnodeapi/purchaseNode.html">purchaseNode()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hacknetnodeapi/getPurchaseNodeCost.html">getPurchaseNodeCost()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hacknetnodeapi/getNodeStats.html">getNodeStats()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hacknetnodeapi/upgradeLevel.html">upgradeLevel()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hacknetnodeapi/upgradeRam.html">upgradeRam()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hacknetnodeapi/upgradeCore.html">upgradeCore()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hacknetnodeapi/getLevelUpgradeCost.html">getLevelUpgradeCost()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hacknetnodeapi/getRamUpgradeCost.html">getRamUpgradeCost()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="hacknetnodeapi/getCoreUpgradeCost.html">getCoreUpgradeCost()</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#referencing-a-hacknet-node">Referencing a Hacknet Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ram-cost">RAM Cost</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utilities">Utilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-s">Example(s)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="netscriptmisc.html"> Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../basicgameplay.html"> Basic Gameplay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advancedgameplay.html"> Advanced Gameplay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../shortcuts.html"> Keyboard Shortcuts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gamefrozen.html"> Game Frozen or Stuck?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guidesandtips.html"> Guides &amp; Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolsandresources.html"> Tools &amp; Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html"> Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../v1.0.0_migration.html"> v1.0.0 script migration guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../404.html"> 404</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://paypal.me/danielyxie"> Donate</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Bitburner</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../netscript.html">Netscript</a> &raquo;</li>
+      <li>Netscript Hacknet Node API</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/netscript/netscripthacknetnodeapi.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="netscript-hacknet-node-api">
+<span id="netscript-hacknetnodeapi"></span><h1>Netscript Hacknet Node API<a class="headerlink" href="#netscript-hacknet-node-api" title="Permalink to this headline"></a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Not all functions in the Hacknet Node API are immediately available.
+For this reason, the documentation for this API may contains spoilers
+for the game.</p>
+</div>
+<p>Netscript provides the following API for accessing and upgrading your Hacknet Nodes
+through scripts.</p>
+<p>Note that none of these functions will write to the script’s logs. If you want
+to see what your script is doing you will have to print to the logs yourself.</p>
+<p><strong>Hacknet Node API functions must be accessed through the hacknet namespace</strong></p>
+<p>In Netscript 1.0:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hacknet</span><span class="o">.</span><span class="n">purchaseNode</span><span class="p">();</span>
+<span class="n">hacknet</span><span class="o">.</span><span class="n">getNodeStats</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">level</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>In <a class="reference internal" href="netscriptjs.html#netscriptjs"><span class="std std-ref">NS2</span></a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ns</span><span class="o">.</span><span class="n">hacknet</span><span class="o">.</span><span class="n">purchaseNode</span><span class="p">();</span>
+<span class="n">ns</span><span class="o">.</span><span class="n">hacknet</span><span class="o">.</span><span class="n">getNodeStats</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">level</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Hacknet Nodes API Functions:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="hacknetnodeapi/numNodes.html">numNodes()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hacknetnodeapi/purchaseNode.html">purchaseNode()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hacknetnodeapi/getPurchaseNodeCost.html">getPurchaseNodeCost()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hacknetnodeapi/getNodeStats.html">getNodeStats()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hacknetnodeapi/upgradeLevel.html">upgradeLevel()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hacknetnodeapi/upgradeRam.html">upgradeRam()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hacknetnodeapi/upgradeCore.html">upgradeCore()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hacknetnodeapi/getLevelUpgradeCost.html">getLevelUpgradeCost()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hacknetnodeapi/getRamUpgradeCost.html">getRamUpgradeCost()</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hacknetnodeapi/getCoreUpgradeCost.html">getCoreUpgradeCost()</a></li>
+</ul>
+</div>
+<section id="referencing-a-hacknet-node">
+<span id="netscript-hacknetnodeapi-referencingahacknetnode"></span><h2>Referencing a Hacknet Node<a class="headerlink" href="#referencing-a-hacknet-node" title="Permalink to this headline"></a></h2>
+<p>Most of the functions in the Hacknet Node API perform an operation on a single
+Node. Therefore, a numeric index is used to identify and specify which Hacknet
+Node a function should act on. This index number corresponds to the number
+at the end of the name of the Hacknet Node. For example, the first Hacknet Node you
+purchase will have the name “hacknet-node-0” and is referenced using index 0.
+The fifth Hacknet Node you purchase will have the name “hacknet-node-4” and is
+referenced using index 4.</p>
+</section>
+<section id="ram-cost">
+<h2>RAM Cost<a class="headerlink" href="#ram-cost" title="Permalink to this headline"></a></h2>
+<p>Accessing the <cite>hacknet</cite> namespace incurs a one time cost of 4 GB of RAM.
+In other words, using multiple Hacknet Node API functions in a script will not cost
+more than 4 GB of RAM.</p>
+</section>
+<section id="utilities">
+<h2>Utilities<a class="headerlink" href="#utilities" title="Permalink to this headline"></a></h2>
+<p>The following functions are not officially part of the Hacknet Node API, but they
+can be useful when writing Hacknet Node-related scripts. Since they are not part
+of the API, they do not need to be accessed using the <em>hacknet</em> namespace.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="basicfunctions/getHacknetMultipliers.html#getHacknetMultipliers" title="getHacknetMultipliers"><code class="xref js js-func docutils literal notranslate"><span class="pre">getHacknetMultipliers()</span></code></a></p></li>
+</ul>
+</section>
+<section id="example-s">
+<h2>Example(s)<a class="headerlink" href="#example-s" title="Permalink to this headline"></a></h2>
+<p>The following is an example of one way a script can be used to automate the
+purchasing and upgrading of Hacknet Nodes.</p>
+<p>This script attempts to purchase Hacknet Nodes until the player has a total of 8. Then
+it gradually upgrades those Node’s to a minimum of level 80, 16 GB RAM, and 8 cores</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">myMoney</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">getServerMoneyAvailable</span><span class="p">(</span><span class="s2">&quot;home&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nx">disableLog</span><span class="p">(</span><span class="s2">&quot;getServerMoneyAvailable&quot;</span><span class="p">);</span>
+<span class="nx">disableLog</span><span class="p">(</span><span class="s2">&quot;sleep&quot;</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">cnt</span> <span class="o">=</span> <span class="mf">8</span><span class="p">;</span>
+
+<span class="k">while</span><span class="p">(</span><span class="nx">hacknet</span><span class="p">.</span><span class="nx">numNodes</span><span class="p">()</span> <span class="o">&lt;</span> <span class="nx">cnt</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">res</span> <span class="o">=</span> <span class="nx">hacknet</span><span class="p">.</span><span class="nx">purchaseNode</span><span class="p">();</span>
+    <span class="nx">print</span><span class="p">(</span><span class="s2">&quot;Purchased hacknet Node with index &quot;</span> <span class="o">+</span> <span class="nx">res</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mf">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">cnt</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">while</span> <span class="p">(</span><span class="nx">hacknet</span><span class="p">.</span><span class="nx">getNodeStats</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nx">level</span> <span class="o">&lt;=</span> <span class="mf">80</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">cost</span> <span class="o">=</span> <span class="nx">hacknet</span><span class="p">.</span><span class="nx">getLevelUpgradeCost</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="mf">10</span><span class="p">);</span>
+        <span class="k">while</span> <span class="p">(</span><span class="nx">myMoney</span><span class="p">()</span> <span class="o">&lt;</span> <span class="nx">cost</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">print</span><span class="p">(</span><span class="s2">&quot;Need $&quot;</span> <span class="o">+</span> <span class="nx">cost</span> <span class="o">+</span> <span class="s2">&quot; . Have $&quot;</span> <span class="o">+</span> <span class="nx">myMoney</span><span class="p">());</span>
+            <span class="nx">sleep</span><span class="p">(</span><span class="mf">3000</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="nx">res</span> <span class="o">=</span> <span class="nx">hacknet</span><span class="p">.</span><span class="nx">upgradeLevel</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="mf">10</span><span class="p">);</span>
+    <span class="p">};</span>
+<span class="p">};</span>
+
+<span class="nx">print</span><span class="p">(</span><span class="s2">&quot;All nodes upgraded to level 80&quot;</span><span class="p">);</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mf">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">cnt</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">while</span> <span class="p">(</span><span class="nx">hacknet</span><span class="p">.</span><span class="nx">getNodeStats</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nx">ram</span> <span class="o">&lt;</span> <span class="mf">16</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">cost</span> <span class="o">=</span> <span class="nx">hacknet</span><span class="p">.</span><span class="nx">getRamUpgradeCost</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="mf">2</span><span class="p">);</span>
+        <span class="k">while</span> <span class="p">(</span><span class="nx">myMoney</span><span class="p">()</span> <span class="o">&lt;</span> <span class="nx">cost</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">print</span><span class="p">(</span><span class="s2">&quot;Need $&quot;</span> <span class="o">+</span> <span class="nx">cost</span> <span class="o">+</span> <span class="s2">&quot; . Have $&quot;</span> <span class="o">+</span> <span class="nx">myMoney</span><span class="p">());</span>
+            <span class="nx">sleep</span><span class="p">(</span><span class="mf">3000</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="nx">res</span> <span class="o">=</span> <span class="nx">hacknet</span><span class="p">.</span><span class="nx">upgradeRam</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="mf">2</span><span class="p">);</span>
+    <span class="p">};</span>
+<span class="p">};</span>
+
+<span class="nx">print</span><span class="p">(</span><span class="s2">&quot;All nodes upgraded to 16GB RAM&quot;</span><span class="p">);</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mf">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">cnt</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">while</span> <span class="p">(</span><span class="nx">hacknet</span><span class="p">.</span><span class="nx">getNodeStats</span><span class="p">(</span><span class="nx">i</span><span class="p">).</span><span class="nx">cores</span> <span class="o">&lt;</span> <span class="mf">8</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">cost</span> <span class="o">=</span> <span class="nx">hacknet</span><span class="p">.</span><span class="nx">getCoreUpgradeCost</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="mf">1</span><span class="p">);</span>
+        <span class="k">while</span> <span class="p">(</span><span class="nx">myMoney</span><span class="p">()</span> <span class="o">&lt;</span> <span class="nx">cost</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">print</span><span class="p">(</span><span class="s2">&quot;Need $&quot;</span> <span class="o">+</span> <span class="nx">cost</span> <span class="o">+</span> <span class="s2">&quot; . Have $&quot;</span> <span class="o">+</span> <span class="nx">myMoney</span><span class="p">());</span>
+            <span class="nx">sleep</span><span class="p">(</span><span class="mf">3000</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="nx">res</span> <span class="o">=</span> <span class="nx">hacknet</span><span class="p">.</span><span class="nx">upgradeCore</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="mf">1</span><span class="p">);</span>
+    <span class="p">};</span>
+<span class="p">};</span>
+
+<span class="nx">print</span><span class="p">(</span><span class="s2">&quot;All nodes upgraded to 8 cores&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="advancedfunctions/inject_html.html" class="btn btn-neutral float-left" title="Injecting HTML in the game" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="hacknetnodeapi/numNodes.html" class="btn btn-neutral float-right" title="numNodes() Netscript Function" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, Bitburner.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

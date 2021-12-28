@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hacking &mdash; Bitburner 1.2.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/maxwidthoverride.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dark_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Scripts" href="scripts.html" />
+    <link rel="prev" title="Servers" href="servers.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Bitburner
+          </a>
+              <div class="version">
+                1.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference external" href="https://github.com/danielyxie/bitburner/blob/dev/markdown/bitburner.ns.md"> Full documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../netscript.html"> Basic documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../basicgameplay.html"> Basic Gameplay</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="stats.html">Stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="terminal.html">Terminal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="servers.html">Servers</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Hacking</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#gaining-root-access">Gaining Root Access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#general-hacking-mechanics">General Hacking Mechanics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#server-security">Server Security</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="scripts.html">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="world.html">World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="factions.html">Factions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="augmentations.html">Augmentations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="companies.html">Companies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="crimes.html">Crimes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="infiltration.html">Infiltration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stockmarket.html">Stock Market</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codingcontracts.html">Coding Contracts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../advancedgameplay.html"> Advanced Gameplay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../shortcuts.html"> Keyboard Shortcuts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gamefrozen.html"> Game Frozen or Stuck?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guidesandtips.html"> Guides &amp; Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolsandresources.html"> Tools &amp; Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html"> Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../v1.0.0_migration.html"> v1.0.0 script migration guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../404.html"> 404</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://paypal.me/danielyxie"> Donate</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Bitburner</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../basicgameplay.html">Basic Gameplay</a> &raquo;</li>
+      <li>Hacking</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/basicgameplay/hacking.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="hacking">
+<span id="gameplay-hacking"></span><h1>Hacking<a class="headerlink" href="#hacking" title="Permalink to this headline"></a></h1>
+<p>In the year 2077, currency has become digital and decentralized.
+People and corporations store their money on servers. By hacking
+these servers, you can steal their money and gain experience.</p>
+<section id="gaining-root-access">
+<h2>Gaining Root Access<a class="headerlink" href="#gaining-root-access" title="Permalink to this headline"></a></h2>
+<p>The first step to hacking a server is to gain root access to that server.
+This can be done using the NUKE virus (NUKE.exe). You start the
+game with a copy of the NUKE virus on your home computer. The
+NUKE virus attacks the target server’s open ports using buffer
+overflow exploits. When successful, you are granted root
+administrative access to the machine.</p>
+<p>In order for the NUKE virus to succeed, the target server
+needs to have enough open ports. Some servers have no
+security and will not need any ports opened. Some will have very high
+security and will need many ports opened. In order to open ports on
+another server, you will need to run programs that attack the server
+to open specific ports. These programs can be coded once your hacking
+skill gets high enough, or they can be purchased if you can find a seller.</p>
+<p><strong>There are two ways to execute port-opening programs and the NUKE virus:</strong></p>
+<ol class="arabic">
+<li><p>Connect to the target server through the <a class="reference internal" href="terminal.html#terminal"><span class="std std-ref">Terminal</span></a> and use the
+<a class="reference internal" href="terminal.html#run-terminal-command"><span class="std std-ref">run</span></a> Terminal command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ run [programName]
+</pre></div>
+</div>
+</li>
+<li><p>Use a <a class="reference internal" href="../netscript/netscriptfunctions.html#netscriptfunctions"><span class="std std-ref">Netscript Function</span></a>:</p></li>
+</ol>
+<ul class="simple">
+<li><p><a class="reference internal" href="../netscript/basicfunctions/nuke.html#nuke" title="nuke"><code class="xref js js-func docutils literal notranslate"><span class="pre">nuke()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../netscript/basicfunctions/brutessh.html#brutessh" title="brutessh"><code class="xref js js-func docutils literal notranslate"><span class="pre">brutessh()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../netscript/basicfunctions/ftpcrack.html#ftpcrack" title="ftpcrack"><code class="xref js js-func docutils literal notranslate"><span class="pre">ftpcrack()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../netscript/basicfunctions/relaysmtp.html#relaysmtp" title="relaysmtp"><code class="xref js js-func docutils literal notranslate"><span class="pre">relaysmtp()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../netscript/basicfunctions/httpworm.html#httpworm" title="httpworm"><code class="xref js js-func docutils literal notranslate"><span class="pre">httpworm()</span></code></a></p></li>
+<li><p><a class="reference internal" href="../netscript/basicfunctions/sqlinject.html#sqlinject" title="sqlinject"><code class="xref js js-func docutils literal notranslate"><span class="pre">sqlinject()</span></code></a></p></li>
+</ul>
+<p><strong>There are two ways to determine how many ports need to be opened
+on a server in order to successfully NUKE it:</strong></p>
+<ol class="arabic simple">
+<li><p>Connect to that server through the <a class="reference internal" href="terminal.html#terminal"><span class="std std-ref">Terminal</span></a> and use the
+<a class="reference internal" href="terminal.html#analyze-terminal-command"><span class="std std-ref">analyze</span></a> command</p></li>
+<li><p>Use the <a class="reference internal" href="../netscript/basicfunctions/getServerNumPortsRequired.html#getServerNumPortsRequired" title="getServerNumPortsRequired"><code class="xref js js-func docutils literal notranslate"><span class="pre">getServerNumPortsRequired()</span></code></a> Netscript function</p></li>
+</ol>
+<p>Once you have enough ports opened on a server and have ran the NUKE virus
+to gain root access, you will be able to hack it.</p>
+</section>
+<section id="general-hacking-mechanics">
+<span id="gameplay-hacking-generalhackingmechanics"></span><h2>General Hacking Mechanics<a class="headerlink" href="#general-hacking-mechanics" title="Permalink to this headline"></a></h2>
+<p>When you execute the hack command, either manually through the terminal
+or automatically through a script, you attempt to hack the server.
+This action takes time. The more advanced a server’s security is,
+the more time it will take. Your hacking skill level also affects
+the hacking time, with a higher hacking skill leading to shorter
+hacking times. Also, running the hack command manually through terminal
+is faster than hacking from a script.</p>
+<p>Your attempt to hack a server will not always succeed. The chance you
+have to successfully hack a server is also determined by the server’s
+security and your hacking skill level. Even if your hacking attempt
+is unsuccessful, you will still gain experience points.</p>
+<p>When you successfully hack a server. You steal a certain percentage
+of that server’s total money. This percentage is, once again, determined by the
+server’s security and your hacking skill level. The amount of money
+on a server is not limitless. So, if you constantly hack a server
+and deplete its money, then you will encounter diminishing returns
+in your hacking (since you are only hacking a certain percentage).
+You can increase the amount of money on a server using a script and
+the <a class="reference internal" href="../netscript/basicfunctions/grow.html#grow" title="grow"><code class="xref js js-func docutils literal notranslate"><span class="pre">grow()</span></code></a> function in Netscript.</p>
+</section>
+<section id="server-security">
+<span id="gameplay-hacking-serversecurity"></span><h2>Server Security<a class="headerlink" href="#server-security" title="Permalink to this headline"></a></h2>
+<p>Each server has a security level, typically between 1 and 100.
+A higher number means the server has stronger security. It is
+possible for a server to have a security of level 100 or higher, in
+which case hacking that server will become impossible (0% chance for
+hack to succeed).</p>
+<p>As mentioned above, a server’s security level is an important factor
+to consider when hacking. You can check a server’s security level
+using the <a class="reference internal" href="terminal.html#analyze-terminal-command"><span class="std std-ref">analyze</span></a> Terminal command. You can
+also check a server’s security in
+a script, using the <a class="reference internal" href="../netscript/basicfunctions/getServerSecurityLevel.html#getServerSecurityLevel" title="getServerSecurityLevel"><code class="xref js js-func docutils literal notranslate"><span class="pre">getServerSecurityLevel()</span></code></a> Netscript
+Function. See the Netscript documentation for more details.</p>
+<p>Whenever a server is hacked manually or through a script, its security
+level increases by a small amount. Calling the <a class="reference internal" href="../netscript/basicfunctions/grow.html#grow" title="grow"><code class="xref js js-func docutils literal notranslate"><span class="pre">grow()</span></code></a> function in a
+script will also increase security level of the target server. These
+actions will make it harder for you to hack the server, and decrease
+the amount of money you can steal. You can lower a server’s security
+level in a script using the <a class="reference internal" href="../netscript/basicfunctions/weaken.html#weaken" title="weaken"><code class="xref js js-func docutils literal notranslate"><span class="pre">weaken()</span></code></a> function in Netscript. See
+the Netscript documentation for more details</p>
+<p>A server has a minimum security level that is equal to one third of its
+starting security, rounded to the nearest integer. To be more precise:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">server</span><span class="o">.</span><span class="n">minSecurityLevel</span> <span class="o">=</span> <span class="n">Math</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">Math</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">server</span><span class="o">.</span><span class="n">startingSecurityLevel</span> <span class="o">/</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>This means that a server’s security level will not fall below this
+value if you are trying to weaken() it.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="servers.html" class="btn btn-neutral float-left" title="Servers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="scripts.html" class="btn btn-neutral float-right" title="Scripts" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, Bitburner.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

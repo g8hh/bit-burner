@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Injecting HTML in the game &mdash; Bitburner 1.2.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/maxwidthoverride.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/dark_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Netscript Hacknet Node API" href="../netscripthacknetnodeapi.html" />
+    <link rel="prev" title="autocomplete() Netscript Function" href="autocomplete.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Bitburner
+          </a>
+              <div class="version">
+                1.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference external" href="https://github.com/danielyxie/bitburner/blob/dev/markdown/bitburner.ns.md"> Full documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../netscript.html"> Basic documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference external" href="https://github.com/danielyxie/bitburner/blob/dev/markdown/bitburner.ns.md"> Full documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../netscriptlearntoprogram.html"> Learn to Program</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../netscript1.html"> Netscript 1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../netscriptjs.html"> NetscriptJS (Netscript 2.0)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../netscriptscriptarguments.html"> Script Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../netscriptfunctions.html"> Basic Functions</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../netscriptadvancedfunctions.html"> Advanced Functions</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="autocomplete.html">autocomplete()</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Injecting HTML</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../netscripthacknetnodeapi.html"> Hacknet Node API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../netscriptmisc.html"> Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../basicgameplay.html"> Basic Gameplay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../advancedgameplay.html"> Advanced Gameplay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../shortcuts.html"> Keyboard Shortcuts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gamefrozen.html"> Game Frozen or Stuck?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guidesandtips.html"> Guides &amp; Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../toolsandresources.html"> Tools &amp; Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../changelog.html"> Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../v1.0.0_migration.html"> v1.0.0 script migration guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../404.html"> 404</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://paypal.me/danielyxie"> Donate</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Bitburner</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../netscript.html">Netscript</a> &raquo;</li>
+          <li><a href="../netscriptadvancedfunctions.html">Netscript Advanced Functions</a> &raquo;</li>
+      <li>Injecting HTML in the game</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/netscript/advancedfunctions/inject_html.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="injecting-html-in-the-game">
+<h1>Injecting HTML in the game<a class="headerlink" href="#injecting-html-in-the-game" title="Permalink to this headline"></a></h1>
+<p>Bitburner uses React and Material-UI to render everything. Modifying the UI is possible but
+not officially supported.</p>
+<p>To automatically enter commands in the terminal (only works if looking at the terminal):</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// Acquire a reference to the terminal text field</span>
+<span class="kd">const</span> <span class="nx">terminalInput</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;terminal-input&quot;</span><span class="p">);</span>
+
+<span class="c1">// Set the value to the command you want to run.</span>
+<span class="nx">terminalInput</span><span class="p">.</span><span class="nx">value</span><span class="o">=</span><span class="s2">&quot;home;connect n00dles;home;connect n00dles;home;&quot;</span><span class="p">;</span>
+
+<span class="c1">// Get a reference to the React event handler.</span>
+<span class="kd">const</span> <span class="nx">handler</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">terminalInput</span><span class="p">)[</span><span class="mf">1</span><span class="p">];</span>
+
+<span class="c1">// Perform an onChange event to set some internal values.</span>
+<span class="nx">terminalInput</span><span class="p">[</span><span class="nx">handler</span><span class="p">].</span><span class="nx">onChange</span><span class="p">({</span><span class="nx">target</span><span class="o">:</span><span class="nx">terminalInput</span><span class="p">});</span>
+
+<span class="c1">// Simulate an enter press</span>
+<span class="nx">terminalInput</span><span class="p">[</span><span class="nx">handler</span><span class="p">].</span><span class="nx">onKeyDown</span><span class="p">({</span><span class="nx">keyCode</span><span class="o">:</span><span class="mf">13</span><span class="p">,</span><span class="nx">preventDefault</span><span class="o">:</span><span class="p">()=&gt;</span><span class="kc">null</span><span class="p">});</span>
+</pre></div>
+</div>
+<p>To add lines to the terminal (only works if looking at the terminal):</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// Acquire a reference to the terminal list of lines.</span>
+<span class="kd">const</span> <span class="nx">list</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;generic-react-container&quot;</span><span class="p">).</span><span class="nx">querySelector</span><span class="p">(</span><span class="s2">&quot;ul&quot;</span><span class="p">);</span>
+
+<span class="c1">// Inject some HTML.</span>
+<span class="nx">list</span><span class="p">.</span><span class="nx">insertAdjacentHTML</span><span class="p">(</span><span class="s1">&#39;beforeend&#39;</span><span class="p">,</span><span class="sb">`&lt;li&gt;&lt;p color=lime&gt;whatever custom html&lt;/p&gt;&lt;/li&gt;`</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="autocomplete.html" class="btn btn-neutral float-left" title="autocomplete() Netscript Function" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../netscripthacknetnodeapi.html" class="btn btn-neutral float-right" title="Netscript Hacknet Node API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, Bitburner.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

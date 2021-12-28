@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Netscript Miscellaneous &mdash; Bitburner 1.2.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/maxwidthoverride.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dark_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Basic Gameplay" href="../basicgameplay.html" />
+    <link rel="prev" title="getCoreUpgradeCost() Netscript Function" href="hacknetnodeapi/getCoreUpgradeCost.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Bitburner
+          </a>
+              <div class="version">
+                1.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference external" href="https://github.com/danielyxie/bitburner/blob/dev/markdown/bitburner.ns.md"> Full documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../netscript.html"> Basic documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference external" href="https://github.com/danielyxie/bitburner/blob/dev/markdown/bitburner.ns.md"> Full documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="netscriptlearntoprogram.html"> Learn to Program</a></li>
+<li class="toctree-l2"><a class="reference internal" href="netscript1.html"> Netscript 1.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="netscriptjs.html"> NetscriptJS (Netscript 2.0)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="netscriptscriptarguments.html"> Script Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="netscriptfunctions.html"> Basic Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="netscriptadvancedfunctions.html"> Advanced Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="netscripthacknetnodeapi.html"> Hacknet Node API</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#"> Miscellaneous</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#netscript-ports">Netscript Ports</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#comments">Comments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#importing-functions">Importing Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#standard-built-in-javascript-objects">Standard, Built-In JavaScript Objects</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../basicgameplay.html"> Basic Gameplay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../advancedgameplay.html"> Advanced Gameplay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../shortcuts.html"> Keyboard Shortcuts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gamefrozen.html"> Game Frozen or Stuck?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guidesandtips.html"> Guides &amp; Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolsandresources.html"> Tools &amp; Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html"> Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../v1.0.0_migration.html"> v1.0.0 script migration guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../404.html"> 404</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://paypal.me/danielyxie"> Donate</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Bitburner</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../netscript.html">Netscript</a> &raquo;</li>
+      <li>Netscript Miscellaneous</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/netscript/netscriptmisc.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="netscript-miscellaneous">
+<span id="netscript-misc"></span><h1>Netscript Miscellaneous<a class="headerlink" href="#netscript-miscellaneous" title="Permalink to this headline"></a></h1>
+<section id="netscript-ports">
+<span id="id1"></span><h2>Netscript Ports<a class="headerlink" href="#netscript-ports" title="Permalink to this headline"></a></h2>
+<p>Netscript Ports are endpoints that can be used to communicate between scripts.
+A port is implemented as a sort of serialized queue, where you can only write
+and read one element at a time from the port. When you read data from a port,
+the element that is read is removed from the port.</p>
+<p>The <code class="xref js js-func docutils literal notranslate"><span class="pre">read()</span></code>, <code class="xref js js-func docutils literal notranslate"><span class="pre">write()</span></code>, <code class="xref js js-func docutils literal notranslate"><span class="pre">tryWrite()</span></code>, <a class="reference internal" href="stanekapi/clear.html#clear" title="clear"><code class="xref js js-func docutils literal notranslate"><span class="pre">clear()</span></code></a>, and <code class="xref js js-func docutils literal notranslate"><span class="pre">peek()</span></code>
+Netscript functions can be used to interact with ports.</p>
+<p>Right now, there are only 20 ports for Netscript, denoted by the number 1
+through 20. When using the functions above, the ports are specified
+by passing the number as the first argument.</p>
+<p>IMPORTANT: The data inside ports are not saved! This means if you close and
+re-open the game, or reload the page then you will lose all of the data in
+the ports!</p>
+<p><strong>Example Usage</strong></p>
+<p>Here’s a brief example of how ports work. For the sake of simplicity we’ll only deal with port 1.</p>
+<p>Let’s assume Port 1 starts out empty (no data inside). We’ll represent the port as such:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[]</span>
+</pre></div>
+</div>
+<p>Now assume we ran the following simple script:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">writePort</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span> <span class="o">//</span><span class="n">Writes</span> <span class="n">the</span> <span class="n">value</span> <span class="n">of</span> <span class="n">i</span> <span class="n">to</span> <span class="n">port</span> <span class="mi">1</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>After this script executes, our script will contain every number from 0 through 9, as so:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span> <span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Then, assume we run the following script:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">readPort</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span> <span class="o">//</span><span class="n">Reads</span> <span class="n">a</span> <span class="n">value</span> <span class="kn">from</span> <span class="nn">port</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">then</span> <span class="n">prints</span> <span class="n">it</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This script above will read the first three values from port 1 and then print them to the script’s log. The log will end up looking like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span>
+<span class="mi">1</span>
+<span class="mi">2</span>
+</pre></div>
+</div>
+<p>And the data in port 1 will look like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>In <a class="reference internal" href="netscriptjs.html#netscriptjs"><span class="std std-ref">NS2</span></a>, do not trying writing base
+<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promises</a>
+to a port.</p>
+</div>
+<p><strong>Port Handles</strong></p>
+<p>WARNING: Port Handles only work in <a class="reference internal" href="netscriptjs.html#netscriptjs"><span class="std std-ref">NS2</span></a>. They do not work in <a class="reference internal" href="netscript1.html#netscript1"><span class="std std-ref">Netscript 1.0</span></a></p>
+<p>The <code class="xref js js-func docutils literal notranslate"><span class="pre">getPortHandle()</span></code> Netscript function can be used to get a handle to a Netscript Port.
+This handle allows you to access several new port-related functions and the
+port’s underlying data structure, which is just a JavaScript array. The functions are:</p>
+<dl class="js method">
+<dt class="sig sig-object js" id="NetscriptPort.writePort">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">NetscriptPort</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">writePort</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NetscriptPort.writePort" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Data to write to the port</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>If the port is full, the item that is removed from the port is returned.
+Otherwise, null is returned.</p>
+</dd>
+</dl>
+<p>Writes <cite>data</cite> to the port. Works the same as the Netscript function <cite>write</cite>.</p>
+</dd></dl>
+
+<dl class="js method">
+<dt class="sig sig-object js" id="NetscriptPort.tryWritePort">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">NetscriptPort</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">tryWritePort</span></span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#NetscriptPort.tryWritePort" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Arguments</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – Data to try to write to the port</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if the data is successfully written to the port, and false otherwise.</p>
+</dd>
+</dl>
+<p>Attempts to write <cite>data</cite> to the Netscript port. If the port is full, the data will
+not be written. Otherwise, the data will be written normally.</p>
+</dd></dl>
+
+<dl class="js method">
+<dt class="sig sig-object js" id="NetscriptPort.full">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">NetscriptPort</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">full</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#NetscriptPort.full" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True if the Netscript Port is full, and false otherwise</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="js method">
+<dt class="sig sig-object js" id="NetscriptPort.empty">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">NetscriptPort</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">empty</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#NetscriptPort.empty" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>True if the Netscript Port is empty, and false otherwise</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="js method">
+<dt class="sig sig-object js" id="NetscriptPort.clear">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">NetscriptPort</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">clear</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#NetscriptPort.clear" title="Permalink to this definition"></a></dt>
+<dd><p>Clears all data from the port. Works the same as the Netscript function <cite>clear</cite></p>
+</dd></dl>
+
+<dl class="js attribute">
+<dt class="sig sig-object js" id="NetscriptPort.data">
+<span class="sig-prename descclassname"><span class="n"><span class="pre">NetscriptPort</span></span><span class="p"><span class="pre">.</span></span></span><span class="sig-name descname"><span class="n"><span class="pre">data</span></span></span><a class="headerlink" href="#NetscriptPort.data" title="Permalink to this definition"></a></dt>
+<dd><p>The Netscript port underlying data structure, which is just a Javascript array. All
+valid Javascript Array methods can be called on this.</p>
+</dd></dl>
+
+<p>Port Handle Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>port = getPortHandle(5);
+back = port.data.pop(); //Get and remove last element in port
+
+//Remove an element from the port
+i = port.data.findIndex(&quot;foo&quot;);
+if (i != -1) {
+    port.data.slice(i, 1);
+}
+
+//Wait for port data before reading
+while(port.empty()) {
+    sleep(10000);
+}
+res = port.read();
+
+//Wait for there to be room in a port before writing
+while (!port.tryWrite(5)) {
+    sleep(5000);
+}
+
+//Successfully wrote to port!
+</pre></div>
+</div>
+</section>
+<section id="comments">
+<h2>Comments<a class="headerlink" href="#comments" title="Permalink to this headline"></a></h2>
+<p>Netscript supports comments using the same syntax as <a class="reference external" href="https://www.w3schools.com/js/js_comments.asp">Javascript comments</a>.
+Comments are not evaluated as code, and can be used to document and/or explain code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">This</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">comment</span> <span class="ow">and</span> <span class="n">will</span> <span class="ow">not</span> <span class="n">get</span> <span class="n">executed</span> <span class="n">even</span> <span class="n">though</span> <span class="n">its</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">code</span>
+<span class="o">/*</span> <span class="n">Multi</span>
+ <span class="o">*</span> <span class="n">line</span>
+ <span class="o">*</span> <span class="n">comment</span> <span class="o">*/</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This code will actually get executed&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="importing-functions">
+<span id="netscriptimporting"></span><h2>Importing Functions<a class="headerlink" href="#importing-functions" title="Permalink to this headline"></a></h2>
+<p>In Netscript you can import functions that are declared in other scripts.
+The script will incur the RAM usage of all imported functions.
+There are two ways of doing this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="o">*</span> <span class="k">as</span> <span class="n">namespace</span> <span class="kn">from</span> <span class="s2">&quot;script filename&quot;</span><span class="p">;</span> <span class="o">//</span><span class="n">Import</span> <span class="nb">all</span> <span class="n">functions</span> <span class="kn">from</span> <span class="nn">script</span>
+<span class="kn">import</span> <span class="p">{</span><span class="n">fn1</span><span class="p">,</span> <span class="n">fn2</span><span class="p">,</span> <span class="o">...</span><span class="p">}</span> <span class="kn">from</span> <span class="s2">&quot;script filename&quot;</span><span class="p">;</span> <span class="o">//</span><span class="n">Import</span> <span class="n">specific</span> <span class="n">functions</span> <span class="kn">from</span> <span class="nn">script</span>
+</pre></div>
+</div>
+<p>Suppose you have a library script called <em>testlibrary.script</em>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">function</span> <span class="n">foo1</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">//</span><span class="n">function</span> <span class="n">definition</span><span class="o">...</span>
+<span class="p">}</span>
+
+<span class="n">function</span> <span class="n">foo2</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">//</span><span class="n">function</span> <span class="n">definition</span><span class="o">...</span>
+<span class="p">}</span>
+
+<span class="n">function</span> <span class="n">foo3</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">//</span><span class="n">function</span> <span class="n">definition</span><span class="o">...</span>
+<span class="p">}</span>
+
+<span class="n">function</span> <span class="n">foo4</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">//</span><span class="n">function</span> <span class="n">definition</span><span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Then, if you wanted to use these functions in another script, you can import them like so:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="o">*</span> <span class="k">as</span> <span class="n">testlib</span> <span class="kn">from</span> <span class="s2">&quot;testlibrary.script&quot;</span><span class="p">;</span>
+
+<span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">];</span>
+
+<span class="o">//</span><span class="n">The</span> <span class="n">imported</span> <span class="n">functions</span> <span class="n">must</span> <span class="n">be</span> <span class="n">specified</span> <span class="n">using</span> <span class="n">the</span> <span class="n">namespace</span>
+<span class="n">someVal1</span> <span class="o">=</span> <span class="n">testlib</span><span class="o">.</span><span class="n">foo3</span><span class="p">(</span><span class="n">values</span><span class="p">);</span>
+<span class="n">someVal2</span> <span class="o">=</span> <span class="n">testlib</span><span class="o">.</span><span class="n">foo1</span><span class="p">(</span><span class="n">values</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">someVal1</span> <span class="o">&gt;</span> <span class="n">someVal2</span><span class="p">)</span> <span class="p">{</span>
+    <span class="o">//...</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="o">//...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If you only wanted to import certain functions, you can do so without needing
+to specify a namespace for the import:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>import {foo1, foo3} from &quot;testlibrary.script&quot;; //Saves RAM since not all functions are imported!
+
+values = [1,2,3];
+
+//No namespace needed
+someVal1 = foo3(values);
+someVal2 = foo1(values);
+if (someVal1 &gt; someVal2) {
+    //...
+} else {
+    //...
+}
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>For those who are experienced with JavaScript, note that the <cite>export</cite>
+keyword should <strong>NOT</strong> be used in <a class="reference internal" href="netscript1.html#netscript1"><span class="std std-ref">Netscript 1.0</span></a>, as this will break the script.
+It can, however, be used in <a class="reference internal" href="netscriptjs.html#netscriptjs"><span class="std std-ref">NS2</span></a> (but it’s not required).</p>
+</div>
+</section>
+<section id="standard-built-in-javascript-objects">
+<h2>Standard, Built-In JavaScript Objects<a class="headerlink" href="#standard-built-in-javascript-objects" title="Permalink to this headline"></a></h2>
+<p>Standard built-in JavaScript objects such as
+<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math">Math</a>,
+<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date">Date</a>,
+<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>,
+and others are supported as expected based on which version
+of Netscript you use (i.e. <a class="reference internal" href="netscript1.html#netscript1"><span class="std std-ref">Netscript 1.0</span></a> will support built-in objects that are
+defined in ES5, and <a class="reference internal" href="netscriptjs.html#netscriptjs"><span class="std std-ref">NS2</span></a> will support whatever your browser supports).</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="hacknetnodeapi/getCoreUpgradeCost.html" class="btn btn-neutral float-left" title="getCoreUpgradeCost() Netscript Function" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../basicgameplay.html" class="btn btn-neutral float-right" title="Basic Gameplay" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, Bitburner.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
