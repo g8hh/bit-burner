@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Servers &mdash; Bitburner 1.2.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/maxwidthoverride.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dark_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Hacking" href="hacking.html" />
+    <link rel="prev" title="Terminal" href="terminal.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Bitburner
+          </a>
+              <div class="version">
+                1.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference external" href="https://github.com/danielyxie/bitburner/blob/dev/markdown/bitburner.ns.md"> Full documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../netscript.html"> Basic documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../basicgameplay.html"> Basic Gameplay</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="stats.html">Stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="terminal.html">Terminal</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Servers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#server-ram">Server RAM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#identifying-servers">Identifying Servers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#player-owned-servers">Player-owned Servers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hackable-servers">Hackable Servers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="hacking.html">Hacking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scripts.html">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="world.html">World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="factions.html">Factions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="augmentations.html">Augmentations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="companies.html">Companies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="crimes.html">Crimes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="infiltration.html">Infiltration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stockmarket.html">Stock Market</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codingcontracts.html">Coding Contracts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../advancedgameplay.html"> Advanced Gameplay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../shortcuts.html"> Keyboard Shortcuts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gamefrozen.html"> Game Frozen or Stuck?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guidesandtips.html"> Guides &amp; Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolsandresources.html"> Tools &amp; Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html"> Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../v1.0.0_migration.html"> v1.0.0 script migration guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../404.html"> 404</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://paypal.me/danielyxie"> Donate</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Bitburner</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../basicgameplay.html">Basic Gameplay</a> &raquo;</li>
+      <li>Servers</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/basicgameplay/servers.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="servers">
+<span id="gameplay-servers"></span><h1>Servers<a class="headerlink" href="#servers" title="Permalink to this headline"></a></h1>
+<p>In this game, a server refers to a computer that can be connected to,
+accessed, and manipulated through the Terminal. All servers in the
+game are connected to each other to form a large, global network.
+To learn about how to navigate this network and connect to other
+servers, see the <a class="reference internal" href="terminal.html#terminal"><span class="std std-ref">Terminal</span></a> page.</p>
+<section id="server-ram">
+<h2>Server RAM<a class="headerlink" href="#server-ram" title="Permalink to this headline"></a></h2>
+<p>Perhaps the most important property of a server to make note of is its RAM,
+which refers to how much memory is available on that machine. RAM is
+important because it is required to run Scripts. More RAM allows
+the user to run more powerful and complicated scripts.</p>
+<p>The <cite>free</cite>, <cite>scan-analyze</cite>, and <cite>analyze</cite> Terminal commands
+can be used to check how much RAM a server has.</p>
+</section>
+<section id="identifying-servers">
+<h2>Identifying Servers<a class="headerlink" href="#identifying-servers" title="Permalink to this headline"></a></h2>
+<p>A server is identified by two properties: its IP address and its hostname.
+An IP address is a 32-bit number represented in dot-decimal notation.
+For example, “56.1.5.0” and “86.5.1.0” might be two IP addresses
+you see in the game. A hostname is a label assigned to a server.
+A hostname will usually give you a general idea of what the server
+is. For example, the company Nova Medical might have a server with
+the hostname “nova-med”.</p>
+<p>Hostnames and IP addresses are unique. This means that if one
+server has the IP address “1.1.1.1” and the hostname
+“some-server”, then no other server in the game can have that
+IP address or that hostname.</p>
+<p>There are many <a class="reference internal" href="../netscript/netscriptfunctions.html#netscriptfunctions"><span class="std std-ref">Netscript Functions</span></a>
+and <a class="reference internal" href="terminal.html#terminal"><span class="std std-ref">Terminal</span></a> commands in the game
+that will require you to target a specific server. This is done using
+either the IP address or the hostname of the server.</p>
+</section>
+<section id="player-owned-servers">
+<h2>Player-owned Servers<a class="headerlink" href="#player-owned-servers" title="Permalink to this headline"></a></h2>
+<p>The player starts with a single server: his/her home computer.
+This server will have the hostname “home.” The player’s home
+computer is special for a variety of reasons:</p>
+<p>1. The home computer’s RAM can be upgraded. This can be done by visiting
+certain locations in the World.</p>
+<p>2. The home computer persists through Augmentation Installations. This means
+that you will not lose any RAM upgrades or Scripts on your
+home computer when you install <a class="reference internal" href="augmentations.html#gameplay-augmentations"><span class="std std-ref">Augmentations</span></a> (you will
+however, lose programs and messages on your home computer).</p>
+<p>The player can also purchase additional servers. This can be
+done by visiting certain locations in the World, or it can be
+done automatically through a script using the <a class="reference internal" href="../netscript/basicfunctions/purchaseServer.html#purchaseServer" title="purchaseServer"><code class="xref js js-func docutils literal notranslate"><span class="pre">purchaseServer()</span></code></a>
+Netscript Function. The advantage of purchased servers is that,
+in terms of RAM, they are cheaper than upgrading your home
+computer. The disadvantage is that your purchased servers
+are lost when you install Augmentations.</p>
+</section>
+<section id="hackable-servers">
+<h2>Hackable Servers<a class="headerlink" href="#hackable-servers" title="Permalink to this headline"></a></h2>
+<p>Most servers that are not owned by the player can be hacked for money
+and exp. See the <a class="reference internal" href="hacking.html#gameplay-hacking"><span class="std std-ref">Hacking</span></a> page for more details.</p>
+<p>Different servers have different levels of security, but also offer
+different rewards when being hacked.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="terminal.html" class="btn btn-neutral float-left" title="Terminal" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="hacking.html" class="btn btn-neutral float-right" title="Hacking" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, Bitburner.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

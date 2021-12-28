@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Source-Files &mdash; Bitburner 1.2.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/maxwidthoverride.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dark_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Intelligence" href="intelligence.html" />
+    <link rel="prev" title="BitNodes" href="bitnodes.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Bitburner
+          </a>
+              <div class="version">
+                1.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference external" href="https://github.com/danielyxie/bitburner/blob/dev/markdown/bitburner.ns.md"> Full documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../netscript.html"> Basic documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basicgameplay.html"> Basic Gameplay</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../advancedgameplay.html"> Advanced Gameplay</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="bitnodes.html">BitNodes</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Source-Files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#list-of-all-source-files">List of all Source-Files</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="intelligence.html">Intelligence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sleeves.html">Sleeves</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../shortcuts.html"> Keyboard Shortcuts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gamefrozen.html"> Game Frozen or Stuck?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guidesandtips.html"> Guides &amp; Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolsandresources.html"> Tools &amp; Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html"> Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../v1.0.0_migration.html"> v1.0.0 script migration guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../404.html"> 404</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://paypal.me/danielyxie"> Donate</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Bitburner</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../advancedgameplay.html">Advanced Gameplay</a> &raquo;</li>
+      <li>Source-Files</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/advancedgameplay/sourcefiles.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="admonition warning" id="gameplay-sourcefiles">
+<p class="admonition-title">Warning</p>
+<p>This page contains spoilers for the game</p>
+</div>
+<section id="source-files">
+<h1>Source-Files<a class="headerlink" href="#source-files" title="Permalink to this headline"></a></h1>
+<p>Source-Files are a type of persistent upgrade that is more powerful than Augmentations.
+Source-Files are received by destroying a BitNode. There are many different BitNodes
+in the game and each BitNode will grant a different Source-File when it is destroyed.</p>
+<p>A Source-File can be upgraded by destroying its corresponding BitNode a second or
+third time (AKA playing through that BitNode again). It can be upgraded to a maximum
+of level 3.</p>
+<section id="list-of-all-source-files">
+<h2>List of all Source-Files<a class="headerlink" href="#list-of-all-source-files" title="Permalink to this headline"></a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 82%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line">BitNode-1: Source Genesis</div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">* Let the player start with 32 GB of RAM on the home computer.</div>
+<div class="line">* Increases all of the player’s multipliers by 16%/24%/28%.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">BitNode-2: Rise of the Underworld</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">* Let the player create Gangs in other BitNodes (although some</div>
+<div class="line">BitNodes will disable this mechanic).</div>
+<div class="line">* Increases the player’s crime success rate, crime money, and</div>
+<div class="line">charisma multipliers by 24%/36%/42%.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line">BitNode-3: Corporatocracy</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">* Let the player create Corporations in other BitNodes (although some</div>
+<div class="line">BitNodes will disable this mechanic).</div>
+<div class="line">* Increases the player’s charisma and company salary multipliers by 8%/12%/14%.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">BitNode-4: The Singularity</div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">* Let the player access and use Netscript Singularity Functions in other BitNodes.</div>
+<div class="line">* Each level of this Source-File opens up more of the Singularity Functions to use.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line">BitNode-5: Artificial Intelligence</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">* Unlocks <a class="reference internal" href="intelligence.html#gameplay-intelligence"><span class="std std-ref">Intelligence</span></a>.</div>
+<div class="line">* Unlocks <code class="xref js js-func docutils literal notranslate"><span class="pre">getBitNodeMultipliers()</span></code> and start with Formulas.exe.</div>
+<div class="line">* Increases all of the player’s hacking-related multipliers by 8%/12%/14%.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">BitNode-6: Bladeburners</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">* Unlocks the Bladeburner feature in other BitNodes.</div>
+<div class="line">* Increases all of the player’s level and experience gain rate multipliers for</div>
+<div class="line">combat stats by 8%/12%/14%.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line">BitNode-7: Bladeburners 2079</div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">* Allows the player to access the <a class="reference external" href="https://github.com/danielyxie/bitburner/blob/dev/markdown/bitburner.bladeburner.md">Bladeburner API</a> in other BitNodes.</div>
+<div class="line">* Increases all of the player’s Bladeburner multipliers by 8%/12%/14%.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">BitNode-8: Ghost of Wall Street</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">* Increases the player’s hacking growth multiplier by 12%/18%/21%.</div>
+<div class="line">* Level 1 grants permanent access to <a class="reference internal" href="../basicgameplay/stockmarket.html#gameplay-stock-market"><span class="std std-ref">WSE</span></a> and the <a class="reference external" href="https://github.com/danielyxie/bitburner/blob/dev/markdown/bitburner.tix.md">TIX API</a></div>
+<div class="line">* Level 2 grants permanent access to shorting stocks.</div>
+<div class="line">* Level 3 grants permanent access to use limit/stop orders.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line">BitNode-9: Hacktocracy</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">* Level 1 permanently unlocks the Hacknet Server in other BitNodes.</div>
+<div class="line">* Level 2 lets the player start with 128 GB of RAM on the home computer.</div>
+<div class="line">* Level 3 grants a highly-upgraded Hacknet Server when entering a new BitNode (it</div>
+<div class="line">will be lost after installing augments).</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">BitNode-10: Digital Carbon</div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">* Each level of this grants a Duplicate Sleeve.</div>
+<div class="line">* Allows the player to access the <a class="reference external" href="https://github.com/danielyxie/bitburner/blob/dev/markdown/bitburner.sleeve.md">Sleeve API</a> in other BitNodes.</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="line-block">
+<div class="line">BitNode-11: The Big Crash</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">* Company favor increases both the player’s salary and reputation gain at that</div>
+<div class="line">company by 1% per favor (rather than just the reputation gain).</div>
+<div class="line">* Increases the player’s company salary and reputation gain multipliers by</div>
+<div class="line">32%/48%/56%.</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="line-block">
+<div class="line">BitNode-12: The Recursion</div>
+<div class="line"><br /></div>
+<div class="line"><br /></div>
+</div>
+</td>
+<td><div class="line-block">
+<div class="line">* There is no maximum level for this Source-File.</div>
+<div class="line">* Let the player start with Neuroflux Governor equal to the level of this</div>
+<div class="line">Source-File.</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="bitnodes.html" class="btn btn-neutral float-left" title="BitNodes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="intelligence.html" class="btn btn-neutral float-right" title="Intelligence" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, Bitburner.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

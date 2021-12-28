@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terminal &mdash; Bitburner 1.2.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/maxwidthoverride.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dark_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Servers" href="servers.html" />
+    <link rel="prev" title="Stats" href="stats.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Bitburner
+          </a>
+              <div class="version">
+                1.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference external" href="https://github.com/danielyxie/bitburner/blob/dev/markdown/bitburner.ns.md"> Full documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../netscript.html"> Basic documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../basicgameplay.html"> Basic Gameplay</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="stats.html">Stats</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Terminal</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#filesystem-directories">Filesystem (Directories)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#directories">Directories</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#absolute-vs-relative-paths">Absolute vs Relative Paths</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#netscript">Netscript</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#missing-features">Missing Features</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#commands">Commands</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#alias">alias</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#analyze">analyze</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#backdoor">backdoor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#buy">buy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cat">cat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cd">cd</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#check">check</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#clear-cls">clear/cls</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#connect">connect</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#download">download</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#expr">expr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#free">free</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hack">hack</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#help">help</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#home">home</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hostname">hostname</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ifconfig">ifconfig</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#kill">kill</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#killall">killall</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ls">ls</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lscpu">lscpu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mem">mem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mv">mv</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nano">nano</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ps">ps</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rm">rm</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#run">run</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#scan">scan</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#scan-analyze">scan-analyze</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#scp">scp</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sudov">sudov</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tail">tail</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#theme">theme</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#top">top</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#unalias">unalias</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wget">wget</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#argument-parsing">Argument Parsing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#chaining-commands">Chaining Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="servers.html">Servers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hacking.html">Hacking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scripts.html">Scripts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="world.html">World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="factions.html">Factions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="augmentations.html">Augmentations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="companies.html">Companies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="crimes.html">Crimes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="infiltration.html">Infiltration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stockmarket.html">Stock Market</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codingcontracts.html">Coding Contracts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../advancedgameplay.html"> Advanced Gameplay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../shortcuts.html"> Keyboard Shortcuts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gamefrozen.html"> Game Frozen or Stuck?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guidesandtips.html"> Guides &amp; Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolsandresources.html"> Tools &amp; Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html"> Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../v1.0.0_migration.html"> v1.0.0 script migration guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../404.html"> 404</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://paypal.me/danielyxie"> Donate</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Bitburner</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../basicgameplay.html">Basic Gameplay</a> &raquo;</li>
+      <li>Terminal</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/basicgameplay/terminal.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="terminal">
+<span id="id1"></span><h1>Terminal<a class="headerlink" href="#terminal" title="Permalink to this headline"></a></h1>
+<p>The Terminal is a console emulator program that lets you interface with all of the
+Servers in the game. The Terminal can be accessed by clicking the ‘Terminal’ tab
+on the navigation menu on the left-hand side of the game (you may need to expand
+the ‘Hacking’ header in order to see the ‘Terminal’ tab). Alternatively, the <a class="reference internal" href="../shortcuts.html#shortcuts"><span class="std std-ref">keyboard
+shortcut</span></a> Alt + t can be used to open the Terminal.</p>
+<section id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline"></a></h2>
+<p>The terminal has a configuration file called .fconf. To edit this file, go to
+the terminal and enter:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nano</span> <span class="o">.</span><span class="n">fconf</span>
+</pre></div>
+</div>
+</section>
+<section id="filesystem-directories">
+<span id="terminal-filesystem"></span><h2>Filesystem (Directories)<a class="headerlink" href="#filesystem-directories" title="Permalink to this headline"></a></h2>
+<p>The Terminal contains a <strong>very</strong> basic filesystem that allows you to store and
+organize your files into different directories. Note that this is <strong>not</strong> a true
+filesystem implementation. Instead, it is done almost entirely using string manipulation.
+For this reason, many of the nice &amp; useful features you’d find in a real
+filesystem do not exist.</p>
+<p>Here are the Terminal commands you’ll commonly use when dealing with the filesystem.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#ls-terminal-command"><span class="std std-ref">ls</span></a></p></li>
+<li><p><a class="reference internal" href="#cd-terminal-command"><span class="std std-ref">cd</span></a></p></li>
+<li><p><a class="reference internal" href="#mv-terminal-command"><span class="std std-ref">mv</span></a></p></li>
+</ul>
+<section id="directories">
+<h3>Directories<a class="headerlink" href="#directories" title="Permalink to this headline"></a></h3>
+<p>In order to create a directory, simply name a file using a full absolute Linux-style path:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="n">myScript</span><span class="o">.</span><span class="n">js</span>
+</pre></div>
+</div>
+<p>This will automatically create a “directory” called <code class="code docutils literal notranslate"><span class="pre">scripts</span></code>. This will also work
+for subdirectories:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="n">hacking</span><span class="o">/</span><span class="n">helpers</span><span class="o">/</span><span class="n">myHelperScripts</span><span class="o">.</span><span class="n">script</span>
+</pre></div>
+</div>
+<p>Files in the root directory do not need to begin with a forward slash:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">thisIsAFileInTheRootDirectory</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>Note that there is no way to manually create or remove directories. The creation and
+deletion of directories is automatically handled as you name/rename/delete
+files.</p>
+</section>
+<section id="absolute-vs-relative-paths">
+<h3>Absolute vs Relative Paths<a class="headerlink" href="#absolute-vs-relative-paths" title="Permalink to this headline"></a></h3>
+<p>Many Terminal commands accept absolute both absolute and relative paths for specifying a
+file.</p>
+<p>An absolute path specifies the location of the file from the root directory (/).
+Any path that begins with the forward slash is an absolute path:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ nano /scripts/myScript.js
+$ cat /serverList.txt
+</pre></div>
+</div>
+<p>A relative path specifies the location of the file relative to the current working directory.
+Any path that does <strong>not</strong> begin with a forward slash is a relative path. Note that the
+Linux-style dot symbols will work for relative paths:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>. (a single dot) - represents the current directory
+.. (two dots) - represents the parent directory
+
+$ cd ..
+$ nano ../scripts/myScript.js
+$ nano ../../helper.js
+</pre></div>
+</div>
+</section>
+<section id="netscript">
+<h3>Netscript<a class="headerlink" href="#netscript" title="Permalink to this headline"></a></h3>
+<p>Note that in order to reference a file, <a class="reference internal" href="../netscript.html#netscript"><span class="std std-ref">Netscript</span></a> functions require the
+<strong>full</strong> absolute file path. For example</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">run</span><span class="p">(</span><span class="s2">&quot;/scripts/hacking/helpers.myHelperScripts.script&quot;</span><span class="p">);</span>
+<span class="nx">rm</span><span class="p">(</span><span class="s2">&quot;/logs/myHackingLogs.txt&quot;</span><span class="p">);</span>
+<span class="nx">rm</span><span class="p">(</span><span class="s2">&quot;thisIsAFileInTheRootDirectory.txt&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A full file path <strong>must</strong> begin with a forward slash (/) if that file
+is not in the root directory.</p>
+</div>
+</section>
+<section id="missing-features">
+<h3>Missing Features<a class="headerlink" href="#missing-features" title="Permalink to this headline"></a></h3>
+<p>These features that are typically in Linux filesystems have not yet been added to the game:</p>
+<ul class="simple">
+<li><p>Tab autocompletion does not work with relative paths</p></li>
+<li><p><code class="code docutils literal notranslate"><span class="pre">mv</span></code> only accepts full filepaths for the destination argument. It does not accept directories</p></li>
+</ul>
+</section>
+</section>
+<section id="commands">
+<h2>Commands<a class="headerlink" href="#commands" title="Permalink to this headline"></a></h2>
+<section id="alias">
+<h3>alias<a class="headerlink" href="#alias" title="Permalink to this headline"></a></h3>
+<blockquote>
+<div><p>$ alias [-g] [name=”value”]</p>
+</div></blockquote>
+<p>Create or display aliases. An alias enables a replacement of a word with another
+string. It can be used to abbreviate a commonly used command, or commonly used
+parts of a command. The NAME of an alias defines the word that will be
+replaced, while the VALUE defines what it will be replaced by. For example,
+you could create the alias ‘nuke’ for the Terminal command ‘run NUKE.exe’
+using the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ alias nuke=&quot;run NUKE.exe&quot;
+</pre></div>
+</div>
+<p>Then, to run the NUKE.exe program you would just have to enter ‘nuke’ in
+Terminal rather than the full command. It is important to note that ‘default’
+aliases will only be substituted for the first word of a Terminal command. For
+example, if the following alias was set:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ alias worm=&quot;HTTPWorm.exe&quot;
+</pre></div>
+</div>
+<p>and then you tried to run the following terminal command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ run worm
+</pre></div>
+</div>
+<p>This would fail because the worm alias is not the first word of a Terminal
+command. To allow an alias to be substituted anywhere in a Terminal command,
+rather than just the first word, you must set it to be a global alias using the -g flag:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ alias -g worm=&quot;HTTPWorm.exe&quot;
+</pre></div>
+</div>
+<p>Now, the ‘worm’ alias will be substituted anytime it shows up as an individual word in
+a Terminal command.</p>
+<p>Entering just the command ‘alias’ without any arguments prints the list of all
+defined aliases in the reusable form ‘alias NAME=VALUE’ on the Terminal.</p>
+<p>The <a class="reference internal" href="#unalias-terminal-command"><span class="std std-ref">unalias</span></a> Terminal command can be used to remove aliases.</p>
+</section>
+<section id="analyze">
+<span id="analyze-terminal-command"></span><h3>analyze<a class="headerlink" href="#analyze" title="Permalink to this headline"></a></h3>
+<p>Prints details and statistics about the current server. The information that is
+printed includes basic server details such as the hostname, whether the player
+has root access, what ports are opened/closed, and also hacking-related information
+such as an estimated chance to successfully hack, an estimate of how much money is
+available on the server, etc.</p>
+</section>
+<section id="backdoor">
+<h3>backdoor<a class="headerlink" href="#backdoor" title="Permalink to this headline"></a></h3>
+<p>Installs a backdoor on the current server. Root access is required to do this.</p>
+<p>Servers will give different bonuses when you install a backdoor.
+This can pass faction tests or give bonsues such as discounts from companies.</p>
+</section>
+<section id="buy">
+<h3>buy<a class="headerlink" href="#buy" title="Permalink to this headline"></a></h3>
+<blockquote>
+<div><p>$ buy [-l/program]</p>
+</div></blockquote>
+<p>Purchase a program through the Dark Web. Requires a TOR Router to use.</p>
+<p>If this command is ran with the ‘-l’ flag, it will display a list of all programs
+that can be purchased through the Dark Web, as well as their costs.</p>
+<p>Otherwise, the name of the program must be passed in as a parameter. This name
+is NOT case-sensitive:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ buy brutessh.exe
+</pre></div>
+</div>
+<p>Note that you do not need to be connected to the actual dark web server in order
+to run this command. You can use this command at any time on the Terminal.</p>
+</section>
+<section id="cat">
+<h3>cat<a class="headerlink" href="#cat" title="Permalink to this headline"></a></h3>
+<blockquote>
+<div><p>$ cat [filename]</p>
+</div></blockquote>
+<p>Display a message (.msg), literature (.lit), or text (.txt) file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cat j1.msg
+$ cat foo.lit
+$ cat servers.txt
+</pre></div>
+</div>
+</section>
+<section id="cd">
+<span id="cd-terminal-command"></span><h3>cd<a class="headerlink" href="#cd" title="Permalink to this headline"></a></h3>
+<blockquote>
+<div><p>$ cd [dir]</p>
+</div></blockquote>
+<p>Change to the specified directory.</p>
+<p>See <a class="reference internal" href="#terminal-filesystem"><span class="std std-ref">Filesystem (Directories)</span></a> for details on directories.</p>
+<p>Note that this command works even for directories that don’t exist. If you change
+to a directory that doesn’t exist, it will not be created. A directory is only created
+once there is a file in it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd scripts/hacking
+$ cd /logs
+$ cd ..
+</pre></div>
+</div>
+</section>
+<section id="check">
+<h3>check<a class="headerlink" href="#check" title="Permalink to this headline"></a></h3>
+<blockquote>
+<div><p>$ check [script name] [args…]</p>
+</div></blockquote>
+<p>Print the logs of the script specified by the script name and arguments to the Terminal.
+Each argument must be separated by a space.
+<strong>Remember that a running script is uniquely identified both by its name and the arguments that are used to start it</strong>. So,
+if a script was ran with the following arguments:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ run foo.script 1 2 foodnstuff
+</pre></div>
+</div>
+<p>Then to run the ‘check’ command on this script you would have to pass the same arguments in:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ check foo.script 1 2 foodnstuff
+</pre></div>
+</div>
+</section>
+<section id="clear-cls">
+<h3>clear/cls<a class="headerlink" href="#clear-cls" title="Permalink to this headline"></a></h3>
+<p>Clear the Terminal screen, deleting all of the text. Note that this does not
+delete the user’s command history, so using the up and down arrow keys is
+still valid. Also note that this is permanent and there is no way to undo this.
+Both ‘clear’ and ‘cls’ do the same thing:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ clear
+$ cls
+</pre></div>
+</div>
+</section>
+<section id="connect">
+<span id="connect-terminal-command"></span><h3>connect<a class="headerlink" href="#connect" title="Permalink to this headline"></a></h3>
+<blockquote>
+<div><p>$ connect [hostname/ip]</p>
+</div></blockquote>
+<p>Connect to a remote server. The hostname or IP address of the remote server must
+be given as the argument to this command. Note that only servers that are immediately
+adjacent to the current server in the network can be connected to. To see which
+servers can be connected to, use the ‘scan’ command.</p>
+</section>
+<section id="download">
+<h3>download<a class="headerlink" href="#download" title="Permalink to this headline"></a></h3>
+<p>Downloads a script or text file to your computer (your real-life computer):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ download masterScript.script
+$ download importantInfo.txt
+</pre></div>
+</div>
+<p>You can also download all of your scripts/text files as a zip file using the following
+Terminal commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ download *
+$ download *.script
+$ download *.txt
+</pre></div>
+</div>
+</section>
+<section id="expr">
+<h3>expr<a class="headerlink" href="#expr" title="Permalink to this headline"></a></h3>
+<blockquote>
+<div><p>$ expr [math expression]</p>
+</div></blockquote>
+<p>Evaluate a mathematical expression. The expression is evaluated in JavaScript,
+and therefore all JavaScript operators should be supported.</p>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ expr 5.6 * 10 - 123
+$ expr 3 ** 3
+</pre></div>
+</div>
+</section>
+<section id="free">
+<h3>free<a class="headerlink" href="#free" title="Permalink to this headline"></a></h3>
+<p>Display’s the memory usage on the current machine. Print the amount of RAM that
+is available on the current server as well as how much of it is being used.</p>
+</section>
+<section id="hack">
+<h3>hack<a class="headerlink" href="#hack" title="Permalink to this headline"></a></h3>
+<p>Attempt to hack the current server. Requires root access in order to be run.</p>
+<p>Related: Hacking Mechanics (TODO Add link here when page gets made)</p>
+</section>
+<section id="help">
+<h3>help<a class="headerlink" href="#help" title="Permalink to this headline"></a></h3>
+<blockquote>
+<div><p>$ help [command]</p>
+</div></blockquote>
+<p>Display Terminal help information. Without arguments, ‘help’ prints a list of all
+valid Terminal commands and a brief description of their functionality. You can
+also pass the name of a Terminal command as an argument to ‘help’ to print more
+detailed information about the Terminal command. Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ help alias
+$ help scan-analyze
+</pre></div>
+</div>
+</section>
+<section id="home">
+<span id="home-terminal-command"></span><h3>home<a class="headerlink" href="#home" title="Permalink to this headline"></a></h3>
+<p>Connect to your home computer. This will work no matter what server you are currently connected to.</p>
+</section>
+<section id="hostname">
+<h3>hostname<a class="headerlink" href="#hostname" title="Permalink to this headline"></a></h3>
+<p>Prints the hostname of the server you are currently connected to.</p>
+</section>
+<section id="ifconfig">
+<h3>ifconfig<a class="headerlink" href="#ifconfig" title="Permalink to this headline"></a></h3>
+<p>Prints the IP address of the server you are currently connected to.</p>
+</section>
+<section id="kill">
+<h3>kill<a class="headerlink" href="#kill" title="Permalink to this headline"></a></h3>
+<blockquote>
+<div><p>$ kill [script name] [args…]
+$ kill [pid]</p>
+</div></blockquote>
+<p>Kill the script specified by the script filename and arguments OR by its PID.</p>
+<p>If you are killing the script using its filename and arguments, then each argument
+must be separated by a space. Remember that a running script is uniquely identified
+by both its name and the arguments that are used to start it. So, if a script
+was ran with the following arguments:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ run foo.script 50e3 sigma-cosmetics
+</pre></div>
+</div>
+<p>Then to kill this script the same arguments would have to be used:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ kill foo.script 50e3 sigma-cosmetics
+</pre></div>
+</div>
+<p>If you are killing the script using its PID, then the PID argument must be numeric.</p>
+</section>
+<section id="killall">
+<h3>killall<a class="headerlink" href="#killall" title="Permalink to this headline"></a></h3>
+<p>Kills all scripts on the current server.</p>
+</section>
+<section id="ls">
+<span id="ls-terminal-command"></span><h3>ls<a class="headerlink" href="#ls" title="Permalink to this headline"></a></h3>
+<blockquote>
+<div><p>$ ls [dir] [| grep pattern]</p>
+</div></blockquote>
+<p>Prints files and directories on the current server to the Terminal screen.</p>
+<p>If this command is run with no arguments, then it prints all files and directories on the current
+server to the Terminal screen. Directories will be printed first in alphabetical order,
+followed by the files (also in alphabetical order).</p>
+<p>The <code class="code docutils literal notranslate"><span class="pre">dir</span></code> optional parameter allows you to specify the directory for which to display
+files.</p>
+<p>The <code class="code docutils literal notranslate"><span class="pre">|</span> <span class="pre">grep</span> <span class="pre">pattern</span></code> optional parameter allows you to only display files and directories
+with a certain pattern in their names.</p>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>// List files/directories with the &#39;.script&#39; extension in the current directory
+$ ls | grep .script
+
+// List files/directories with the &#39;.js&#39; extension in the root directory
+$ ls / | grep .js
+
+// List files/directories with the word &#39;purchase&#39; in the name, in the :code:`scripts` directory
+$ ls scripts | grep purchase
+</pre></div>
+</div>
+</section>
+<section id="lscpu">
+<h3>lscpu<a class="headerlink" href="#lscpu" title="Permalink to this headline"></a></h3>
+<p>Prints the number of CPU cores the current server has.</p>
+</section>
+<section id="mem">
+<span id="mem-terminal-command"></span><h3>mem<a class="headerlink" href="#mem" title="Permalink to this headline"></a></h3>
+<blockquote>
+<div><p>$ mem [script name] [-t] [num threads]</p>
+</div></blockquote>
+<p>Displays the amount of RAM needed to run the specified script with a single
+thread. The command can also be used to print the amount of RAM needed to run
+a script with multiple threads using the ‘-t’ flag. If the ‘-t’ flag is
+specified, then an argument for the number of threads must be passed in
+afterwards. Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mem foo.script
+$ mem foo.script -t 50
+</pre></div>
+</div>
+<p>The first example above will print the amount of RAM needed to run ‘foo.script’
+with a single thread. The second example above will print the amount of RAM needed
+to run ‘foo.script’ with 50 threads.</p>
+</section>
+<section id="mv">
+<span id="mv-terminal-command"></span><h3>mv<a class="headerlink" href="#mv" title="Permalink to this headline"></a></h3>
+<blockquote>
+<div><p>$ mv [source] [destination]</p>
+</div></blockquote>
+<p>Move the source file to the specified destination in the filesystem.
+See <a class="reference internal" href="#terminal-filesystem"><span class="std std-ref">Filesystem (Directories)</span></a> for more details about the Terminal’s filesystem.
+This command only works for scripts and text files (.txt). It cannot, however,  be used
+to convert from script to text file, or vice versa.</p>
+<p>This function can also be used to rename files.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Unlike the Linux <code class="code docutils literal notranslate"><span class="pre">mv</span></code> command, the <em>destination</em> argument must be the
+full filepath. It cannot be a directory.</p>
+</div>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mv hacking.script scripts/hacking.script
+$ mv myScript.js myOldScript.js
+</pre></div>
+</div>
+</section>
+<section id="nano">
+<h3>nano<a class="headerlink" href="#nano" title="Permalink to this headline"></a></h3>
+<blockquote>
+<div><p>$ nano [filename]</p>
+</div></blockquote>
+<p>Opens up the specified file in the Text Editor. Only scripts (.script, .ns, .js) and
+text files (.txt) can be edited. If the file does not already exist, then a new
+empty file will be created.</p>
+</section>
+<section id="ps">
+<h3>ps<a class="headerlink" href="#ps" title="Permalink to this headline"></a></h3>
+<p>Prints all scripts that are currently running on the current server.</p>
+</section>
+<section id="rm">
+<h3>rm<a class="headerlink" href="#rm" title="Permalink to this headline"></a></h3>
+<blockquote>
+<div><p>$ rm [filename]</p>
+</div></blockquote>
+<p>Removes the specified file from the current server. This works for every file type
+except literature files (.lit).</p>
+<p><strong>WARNING: This is permanent and cannot be undone</strong></p>
+</section>
+<section id="run">
+<span id="run-terminal-command"></span><h3>run<a class="headerlink" href="#run" title="Permalink to this headline"></a></h3>
+<blockquote>
+<div><p>$ run [file name] [-t] [num threads] [args…]</p>
+</div></blockquote>
+<p>Execute a program, script, or <a class="reference internal" href="codingcontracts.html#codingcontracts"><span class="std std-ref">Coding Contracts</span></a>.</p>
+<p>The ‘[-t]’, ‘[num threads]’, and ‘[args…]’ arguments are only valid when
+running a script. The ‘-t’ flag is used to indicate that the script should
+be run with the specified number of threads. If the flag is omitted, then
+the script will be run with a single thread by default. If the ‘-t’ flag is
+used, then it MUST come immediately after the script name, and the
+[num threads] argument MUST come immediately afterwards.</p>
+<p>[args…] represents a variable number of arguments that will be passed into
+the script. See the documentation about script arguments. Each specified
+argument must be separated by a space.</p>
+<p><strong>Examples</strong></p>
+<p>Run a program:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ run BruteSSH.exe
+</pre></div>
+</div>
+<p>Run <em>foo.script</em> with 50 threads and the arguments [1e3, 0.5, foodnstuff]:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ run foo.script -t 50 1e3 0.5 foodnstuff
+</pre></div>
+</div>
+<p>Run a Coding Contract:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ run foo-contract.cct
+</pre></div>
+</div>
+</section>
+<section id="scan">
+<h3>scan<a class="headerlink" href="#scan" title="Permalink to this headline"></a></h3>
+<p>Prints all immediately-available network connections. This will print a list
+of all servers that you can currently connect to using the ‘connect’ Terminal command.</p>
+</section>
+<section id="scan-analyze">
+<span id="scan-analyze-terminal-command"></span><h3>scan-analyze<a class="headerlink" href="#scan-analyze" title="Permalink to this headline"></a></h3>
+<blockquote>
+<div><p>$ scan-analyze [depth]</p>
+</div></blockquote>
+<p>Prints detailed information about all servers up to <em>[depth]</em> nodes away on the
+network. Calling ‘scan-analyze 1’ will display information for the same servers
+that are shown by the ‘scan’ Terminal command. This command also shows the
+relative paths to reach each server.</p>
+<p>By default, the maximum depth that can be specified for ‘scan-analyze’ is 3.
+However, once you have the <em>DeepscanV1.exe</em> and <em>DeepscanV2.exe</em> programs, you can
+execute ‘scan-analyze’ with a depth up to 5 and 10, respectively.</p>
+<p>The information ‘scan-analyze’ displays about each server includes whether or
+not you have root access to it, its required hacking level, the number of open
+ports required to run NUKE.exe on it, and how much RAM it has.</p>
+</section>
+<section id="scp">
+<span id="scp-terminal-command"></span><h3>scp<a class="headerlink" href="#scp" title="Permalink to this headline"></a></h3>
+<blockquote>
+<div><p>$ scp [script name] [target server]</p>
+</div></blockquote>
+<p>Copies the specified script from the current server to the target server.
+The second argument passed in must be the hostname or IP of the target server.</p>
+</section>
+<section id="sudov">
+<h3>sudov<a class="headerlink" href="#sudov" title="Permalink to this headline"></a></h3>
+<p>Prints whether or not you have root access to the current server.</p>
+</section>
+<section id="tail">
+<span id="tail-terminal-command"></span><h3>tail<a class="headerlink" href="#tail" title="Permalink to this headline"></a></h3>
+<blockquote>
+<div><p>$ tail [script name] [args…]</p>
+</div></blockquote>
+<p>Displays dynamic logs for the script specified by the script name and arguments.
+Each argument must be separated by a space. Remember that a running script is
+uniquely identified by both its name and the arguments that were used to run
+it. So, if a script was ran with the following arguments:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ run foo.script 10 50000
+</pre></div>
+</div>
+<p>Then in order to check its logs with ‘tail’ the same arguments must be used:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ tail foo.script 10 50000
+</pre></div>
+</div>
+</section>
+<section id="theme">
+<h3>theme<a class="headerlink" href="#theme" title="Permalink to this headline"></a></h3>
+<blockquote>
+<div><p>$ theme [preset] | [#background #text #highlight]</p>
+</div></blockquote>
+<p>Change the color of the game’s user interface</p>
+<p>This command can be called with a preset theme. Currently, the supported presets are:</p>
+<ul class="simple">
+<li><p>default</p></li>
+<li><p>muted</p></li>
+<li><p>solarized</p></li>
+</ul>
+<p>However, you can also specify your own color scheme using hex values.
+To do so, you must specify three hex color values for the background
+color, the text color, and the highlight color. These hex values must
+be preceded by a pound sign (#) and must be either 3 or 6 digits. Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ theme #ffffff #385 #235012
+</pre></div>
+</div>
+<p>A color picker such as Google’s can be used to get your desired hex color values</p>
+</section>
+<section id="top">
+<h3>top<a class="headerlink" href="#top" title="Permalink to this headline"></a></h3>
+<p>Prints a list of all scripts running on the current server as well as their
+thread count and how much RAM they are using in total.</p>
+</section>
+<section id="unalias">
+<span id="unalias-terminal-command"></span><h3>unalias<a class="headerlink" href="#unalias" title="Permalink to this headline"></a></h3>
+<blockquote>
+<div><p>$ unalias “[alias name]”</p>
+</div></blockquote>
+<p>Deletes the specified alias. Note that the double quotation marks are required.</p>
+<p>As an example, if an alias was declared using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ alias r=&quot;run&quot;
+</pre></div>
+</div>
+<p>Then it could be removed using:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ unalias &quot;r&quot;
+</pre></div>
+</div>
+<p>It is not necessary to differentiate between global and non-global aliases when using ‘unalias’</p>
+</section>
+<section id="wget">
+<h3>wget<a class="headerlink" href="#wget" title="Permalink to this headline"></a></h3>
+<blockquote>
+<div><p>$ wget [url] [target file]</p>
+</div></blockquote>
+<p>Retrieves data from a url and downloads it to a file on the current server.
+The data can only be downloaded to a script (.script, .ns, .js) or a text file
+(.txt). If the target file already exists, it will be overwritten by this command.</p>
+<p>Note that will not be possible to download data from many websites because they
+do not allow cross-origin resource sharing (CORS). This includes websites such
+as gist and pastebin. One notable site it will work on is rawgithub. Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ wget https://raw.githubusercontent.com/danielyxie/bitburner/master/README.md game_readme.txt
+</pre></div>
+</div>
+</section>
+</section>
+<section id="argument-parsing">
+<h2>Argument Parsing<a class="headerlink" href="#argument-parsing" title="Permalink to this headline"></a></h2>
+<p>When evaluating a terminal command, arguments are initially parsed based on whitespace (usually spaces).
+Each whitespace character signifies the end of an argument, and potentially the start
+of new one. For most terminal commands, this is all you need to know.</p>
+<p>When running scripts, however, it is important to know in more detail how arguments are parsed.
+There are two main points:</p>
+<ol class="arabic simple">
+<li><p>Quotation marks can be used to wrap a single argument and force it to be parsed as
+a string. Any whitespace inside the quotation marks will not cause a new argument
+to be parsed.</p></li>
+<li><p>Anything that can represent a number is automatically cast to a number, unless its
+surrounded by quotation marks.</p></li>
+</ol>
+<p>Here’s an example to show how these rules work. Consider the following script <cite>argType.script</cite>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tprint</span><span class="p">(</span><span class="s2">&quot;Number of args: &quot;</span> <span class="o">+</span> <span class="n">args</span><span class="o">.</span><span class="n">length</span><span class="p">);</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">args</span><span class="o">.</span><span class="n">length</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">tprint</span><span class="p">(</span><span class="n">typeof</span> <span class="n">args</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Then if we run the following terminal command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ run argType.script 123 1e3 &quot;5&quot; &quot;this is a single argument&quot;
+</pre></div>
+</div>
+<p>We’ll see the following in the Terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Running</span> <span class="n">script</span> <span class="k">with</span> <span class="mi">1</span> <span class="n">thread</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="ow">and</span> <span class="n">args</span><span class="p">:</span> <span class="p">[</span><span class="mi">123</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="s2">&quot;5&quot;</span><span class="p">,</span> <span class="s2">&quot;this is a single argument&quot;</span><span class="p">]</span><span class="o">.</span>
+<span class="n">May</span> <span class="n">take</span> <span class="n">a</span> <span class="n">few</span> <span class="n">seconds</span> <span class="n">to</span> <span class="n">start</span> <span class="n">up</span> <span class="n">the</span> <span class="n">process</span><span class="o">...</span>
+<span class="n">argType</span><span class="o">.</span><span class="n">script</span><span class="p">:</span> <span class="n">Number</span> <span class="n">of</span> <span class="n">args</span><span class="p">:</span> <span class="mi">4</span>
+<span class="n">argType</span><span class="o">.</span><span class="n">script</span><span class="p">:</span> <span class="n">number</span>
+<span class="n">argType</span><span class="o">.</span><span class="n">script</span><span class="p">:</span> <span class="n">number</span>
+<span class="n">argType</span><span class="o">.</span><span class="n">script</span><span class="p">:</span> <span class="n">string</span>
+<span class="n">argType</span><span class="o">.</span><span class="n">script</span><span class="p">:</span> <span class="n">string</span>
+</pre></div>
+</div>
+</section>
+<section id="chaining-commands">
+<h2>Chaining Commands<a class="headerlink" href="#chaining-commands" title="Permalink to this headline"></a></h2>
+<p>You can run multiple Terminal commands at once by separating each command
+with a semicolon (;).</p>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ run foo.script; tail foo.script
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="stats.html" class="btn btn-neutral float-left" title="Stats" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="servers.html" class="btn btn-neutral float-right" title="Servers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, Bitburner.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scripts &mdash; Bitburner 1.2.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/maxwidthoverride.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/dark_theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="World" href="world.html" />
+    <link rel="prev" title="Hacking" href="hacking.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Bitburner
+          </a>
+              <div class="version">
+                1.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference external" href="https://github.com/danielyxie/bitburner/blob/dev/markdown/bitburner.ns.md"> Full documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../netscript.html"> Basic documentation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../basicgameplay.html"> Basic Gameplay</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="stats.html">Stats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="terminal.html">Terminal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="servers.html">Servers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hacking.html">Hacking</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Scripts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#script-arguments">Script Arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#identifying-a-script">Identifying a Script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#multithreading-scripts">Multithreading scripts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#working-with-scripts-in-terminal">Working with Scripts in Terminal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#working-with-scripts-in-netscript">Working with Scripts in Netscript</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#notes-about-how-scripts-work-offline">Notes about how Scripts Work Offline</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="world.html">World</a></li>
+<li class="toctree-l2"><a class="reference internal" href="factions.html">Factions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="augmentations.html">Augmentations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="companies.html">Companies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="crimes.html">Crimes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="infiltration.html">Infiltration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="stockmarket.html">Stock Market</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codingcontracts.html">Coding Contracts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../advancedgameplay.html"> Advanced Gameplay</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../shortcuts.html"> Keyboard Shortcuts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gamefrozen.html"> Game Frozen or Stuck?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guidesandtips.html"> Guides &amp; Tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../toolsandresources.html"> Tools &amp; Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html"> Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../v1.0.0_migration.html"> v1.0.0 script migration guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../404.html"> 404</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://paypal.me/danielyxie"> Donate</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Bitburner</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../basicgameplay.html">Basic Gameplay</a> &raquo;</li>
+      <li>Scripts</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/basicgameplay/scripts.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="scripts">
+<span id="gameplay-scripts"></span><h1>Scripts<a class="headerlink" href="#scripts" title="Permalink to this headline"></a></h1>
+<p>Scripts are programs that can be used to automate the hacking process
+and almost every other part of the game. Scripts must be written
+in the <a class="reference internal" href="../netscript.html#netscript"><span class="std std-ref">Netscript</span></a> language.</p>
+<p>It is highly recommended that you have a basic background in programming
+to start writing scripts. You by no means need to be an expert. All you
+need is some familiarity with basic programming constructs like
+for/while loops, conditionals (if/else), functions, variables, etc.
+If you’d like to learn a little bit about programming, see
+<a class="reference internal" href="../netscript/netscriptlearntoprogram.html#netscriptlearntoprogram"><span class="std std-ref">Learn to Program in Netscript</span></a>.</p>
+<section id="script-arguments">
+<h2>Script Arguments<a class="headerlink" href="#script-arguments" title="Permalink to this headline"></a></h2>
+<p>When running a script, you can choose to pass arguments to that script.
+The script’s logic can access and act on these arguments. This allows
+for flexibility in your scripts. For more details, see
+<a class="reference internal" href="../netscript/netscriptscriptarguments.html#netscript-script-arguments"><span class="std std-ref">Netscript Script Arguments</span></a>.</p>
+<p>For information on how to run scripts with arguments, see
+<a class="reference internal" href="#gameplay-working-with-scripts-in-terminal"><span class="std std-ref">Working with Scripts in Terminal</span></a> and
+<a class="reference internal" href="#gameplay-working-with-scripts-in-netscript"><span class="std std-ref">Working with Scripts in Netscript</span></a> below.</p>
+</section>
+<section id="identifying-a-script">
+<h2>Identifying a Script<a class="headerlink" href="#identifying-a-script" title="Permalink to this headline"></a></h2>
+<p>Many commands and functions act on an executing script
+(i.e. a script that is running). Therefore, there must
+be a way to specify which script you want those commands &amp; functions
+to act on.</p>
+<p><strong>A script that is being executed is uniquely identified by both its
+name and the arguments that it was run with.</strong></p>
+<p>The arguments must be an <strong>exact</strong> match. This means that both
+the order and type of the arguments matter.</p>
+</section>
+<section id="multithreading-scripts">
+<span id="gameplay-scripts-multithreadingscripts"></span><h2>Multithreading scripts<a class="headerlink" href="#multithreading-scripts" title="Permalink to this headline"></a></h2>
+<p>A script can be run with multiple threads. This is also called multithreading.
+The effect of multithreading is that every call to the
+<a class="reference internal" href="../netscript/basicfunctions/hack.html#hack" title="hack"><code class="xref js js-func docutils literal notranslate"><span class="pre">hack()</span></code></a>, <a class="reference internal" href="../netscript/basicfunctions/grow.html#grow" title="grow"><code class="xref js js-func docutils literal notranslate"><span class="pre">grow()</span></code></a>, and <a class="reference internal" href="../netscript/basicfunctions/weaken.html#weaken" title="weaken"><code class="xref js js-func docutils literal notranslate"><span class="pre">weaken()</span></code></a> Netscript functions
+will have their results multiplied by the number of threads.
+For example, if a normal single-threaded script
+is able to hack $10,000, then running the same script with 5 threads would
+yield $50,000.</p>
+<p>(This is the <strong>only</strong> affect of running a script with multiple threads.
+Scripts will not actually become multithreaded in the real-world
+sense.)</p>
+<p>When multithreading a script, the total RAM cost can be calculated by
+simply multiplying the base RAM cost of the script with the number of
+threads, where the base cost refers to the amount of RAM required to
+run the script single-threaded. In the terminal, you can run the
+<a class="reference internal" href="terminal.html#mem-terminal-command"><span class="std std-ref">mem</span></a> Terminal command to see how much RAM a script
+requires with <cite>n</cite> threads:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ mem [scriptname] -t n
+</pre></div>
+</div>
+</section>
+<section id="working-with-scripts-in-terminal">
+<span id="gameplay-working-with-scripts-in-terminal"></span><h2>Working with Scripts in Terminal<a class="headerlink" href="#working-with-scripts-in-terminal" title="Permalink to this headline"></a></h2>
+<p>Running a script requires RAM. The more complex a script is, the more
+RAM it requires to run. Scripts can be run on any server you have root
+access to.</p>
+<p>Here are some <a class="reference internal" href="terminal.html#terminal"><span class="std std-ref">Terminal</span></a> commands that are useful when working
+with scripts:</p>
+<p><strong>check [script] [args…]</strong></p>
+<p>Prints the logs of the script specified by the name and arguments to
+Terminal. Arguments should be separated by a space. Remember that scripts
+are uniquely identified by their arguments as well as their name. For
+example, if you ran a script <cite>foo.script</cite> with the argument <cite>foodnstuff</cite>
+then in order to ‘check’ it you must also add the <cite>foodnstuff</cite> argument
+to the check command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ check foo.script foodnstuff
+</pre></div>
+</div>
+<p><strong>free</strong></p>
+<p>Shows the current server’s RAM usage and availability</p>
+<p><strong>kill [script] [args…]</strong></p>
+<p>Stops a script that is running with the specified script name and
+arguments. Arguments should be separated by a space. Remember that
+scripts are uniquely identified by their arguments as well as
+their name. For example, if you ran a script <cite>foo.script</cite> with
+the argument 1 and 2, then just typing “<cite>kill foo.script</cite>” will
+not work. You have to use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ kill foo.script 1 2
+</pre></div>
+</div>
+<p><strong>mem [script] [-t] [n]</strong></p>
+<p>Check how much RAM a script requires to run with n threads</p>
+<p><strong>nano [script]</strong></p>
+<p>Create/Edit a script. The name of the script must end with a valid
+extension: .script, .js, or .ns</p>
+<p><strong>ps</strong></p>
+<p>Displays all scripts that are actively running on the current server</p>
+<p><strong>rm [script]</strong></p>
+<p>Delete a script from the server. This is permanent</p>
+<p><strong>run [script] [-t] [n] [args…]</strong></p>
+<p>Run a script with n threads and the specified arguments. Each argument should
+be separated by a space. Both the arguments and thread specification are
+optional. If neither are specified, then the script will be run single-threaded
+with no arguments.</p>
+<p>Examples:</p>
+<p>Run ‘foo.script’ single-threaded with no arguments:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ run foo.script
+</pre></div>
+</div>
+<p>Run ‘foo.script’ with 10 threads and no arguments:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ run foo.script -t 10
+</pre></div>
+</div>
+<p>Run ‘foo.script’ single-threaded with three arguments: [foodnstuff, sigma-cosmetics, 10]:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ run foo.script foodnstuff sigma-cosmetics 10
+</pre></div>
+</div>
+<p>Run ‘foo.script’ with 50 threads and a single argument: [foodnstuff]:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ run foo.script -t 50 foodnstuff
+</pre></div>
+</div>
+<p><strong>tail [script] [args…]</strong></p>
+<p>Displays the logs of the script specified by the name and arguments. Note that scripts are uniquely identified by their arguments as well as their name. For example, if you ran a script ‘foo.script’ with the argument ‘foodnstuff’ then in order to ‘tail’ it you must also add the ‘foodnstuff’ argument to the tail command as so:  tail foo.script foodnstuff</p>
+<p><strong>top</strong></p>
+<p>Displays all active scripts and their RAM usage</p>
+</section>
+<section id="working-with-scripts-in-netscript">
+<span id="gameplay-working-with-scripts-in-netscript"></span><h2>Working with Scripts in Netscript<a class="headerlink" href="#working-with-scripts-in-netscript" title="Permalink to this headline"></a></h2>
+<p>TODO/Coming Soon…</p>
+</section>
+<section id="notes-about-how-scripts-work-offline">
+<h2>Notes about how Scripts Work Offline<a class="headerlink" href="#notes-about-how-scripts-work-offline" title="Permalink to this headline"></a></h2>
+<p>The scripts that you write and execute are interpreted in Javascript.
+For this reason, it is not possible for these scripts to run while
+offline (when the game is closed). It is important to note that for
+this reason, conditionals such as if/else statements and certain
+commands such as purchaseHacknetNode() or nuke() will not work while
+the game is offline.</p>
+<p>However, Scripts WILL continue to generate money and hacking exp
+for you while the game is offline. This offline production is based
+off of the scripts’ production while the game is online.</p>
+<p>grow() and weaken() are two Netscript commands that will also be
+applied when the game is offline, although at a slower rate compared
+to if the game was open. This is done by having each script keep
+track of the rate at which the grow() and weaken() commands are called
+when the game is online. These calculated rates are used to determine
+how many times these function calls would be made while the game is
+offline.</p>
+<p>Also, note that because of the way the Netscript interpreter is
+implemented, whenever you reload or re-open the game all of the
+scripts that you are running will start running from the BEGINNING
+of the code. The game does not keep track of where exactly the
+execution of a script is when it saves/loads.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="hacking.html" class="btn btn-neutral float-left" title="Hacking" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="world.html" class="btn btn-neutral float-right" title="World" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2018, Bitburner.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
