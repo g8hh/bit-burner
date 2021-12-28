@@ -869,7 +869,7 @@ var cnItems = {
     "No help topics match 'sodov'": "没有与“sodov”匹配的帮助主题",
     "Note that after the 'kill' command is issued for a script, it may take a while for the script to actually stop running.": "请注意，在为脚本发出“kill”命令后，脚本可能需要一段时间才能真正停止运行。",
     "Note that letters (non-digits) are not allowed and will be removed from the input.": "请注意，不允许使用字母（非数字）并将其从输入中删除。",
-    "": "",
+    "available on the server, etc.": "在服务器上可用，等等。",
     "": "",
     "": "",
     "": "",
