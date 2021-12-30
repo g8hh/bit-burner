@@ -1,0 +1,68 @@
+disableLog('ALL')
+//自动在服务器上挂载黑客脚本
+while (true) {
+	servers = scan("home")
+
+	for (var i = 0; i < servers.length; i++) {
+		print('--处理' + servers[i] + '中:')
+		//判断是否有权限和是否能破解
+		if (hasRootAccess(servers[i]) == false) {
+			print('----' + servers[i] + '尝试破解中')
+			if (getServerRequiredHackingLevel(servers[i]) > getHackingLevel()) {
+				print('----' + servers[i] + '黑客等级不足，暂时无法破解')
+				continue
+			}
+			ports = [
+				['BruteSSH.exe', brutessh],
+				['FTPCrack.exe', ftpcrack],
+				['relaySMTP.exe', relaysmtp],
+				['HTTPWorm.exe', httpworm],
+				['SQLInject.exe', sqlinject],
+			]
+			need_port = getServerNumPortsRequired(servers[i])
+			port = 0
+			for (var j in ports) {
+				if (fileExists(ports[j][0])) {
+					ports[j][1](servers[i])
+					port++
+				}
+				if (port >= need_port) {
+					nuke(servers[i])
+				}
+			}
+			//如果仍然没破解成功，就暂时放弃该服务器
+			if (hasRootAccess(servers[i]) == false) {
+				print('----' + servers[i] + '端口不足，暂时无法破解')
+				continue
+			}
+			print('----' + servers[i] + '破解成功')
+		}
+		add_servers = scan(servers[i]).slice(1)
+		if (add_servers.length > 0) {
+			print('--追加' + add_servers.length + '个服务器到备选列表')
+			print('--' + add_servers)
+			servers = servers.concat(add_servers)
+		}
+
+		//判断目标服务器有没有脚本，如果没有就复制一个过去
+		if (fileExists('1.script', servers[i]) == false) {
+			print('----复制文件到' + servers[i])
+			scp('1.script', 'home', servers[i])
+		}
+
+		//如果服务器还有足够的剩余内存，就拿来跑脚本
+		left = getServerMaxRam(servers[i]) - getServerUsedRam(servers[i])
+		use = getScriptRam('1.script', servers[i])
+		print('----' + servers[i] + '剩余内存' + left + '，需要内存' + use)
+		if (left / use >= 1 && getServerMaxRam(servers[i])>4) {
+			print('----' + servers[i] + '执行脚本')
+			exec('1.script', servers[i], parseInt(left / use))
+		} else if (left >= 2) {
+			print('----' + servers[i] + '执行简易脚本')
+			scp('1_easy.script', 'home', servers[i])
+			exec('1_easy.script', servers[i],parseInt(left / 2))
+		}
+	}
+	print('--休眠60秒')
+	sleep(1000 * 60)
+}
