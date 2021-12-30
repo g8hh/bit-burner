@@ -1,0 +1,10 @@
+run_scripts=['2.script','3.script','4.script']
+for(var i in args){
+	kill(args[i]+'.script',getHostname())
+}
+for(var i in run_scripts){
+	if(scriptRunning(run_scripts[i],getHostname())==false){
+		print('启动'+run_scripts[i]+'脚本')
+		run(run_scripts[i])
+	}
+}

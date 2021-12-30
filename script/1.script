@@ -1,0 +1,42 @@
+//自动黑客脚本
+function auto(server) {
+  canweak(server)
+  cangrow(server)
+  canweak(server)
+
+  print('----执行偷取程序')
+  hack(server);//偷钱
+  return true
+}
+function cangrow(server) {
+  //如果钱太少就增加一次钱，最多连续执行10次
+  for (var j = 0; j < 10 && getServerMoneyAvailable(server) < getServerMaxMoney(server) * 0.8; j++) {
+    print('----执行增长程序')
+    grow(server);
+  }
+}
+function canweak(server) {
+  //降低安全等级，最多连续执行10次
+  for (var j = 0; j < 10 && getServerSecurityLevel(server) > getServerMinSecurityLevel(server) * 2; j++) {
+    print('----执行破坏程序')
+    weaken(server);
+  }
+}
+function can(server) {
+  //金额为0时是自己的服务器，跳过
+  if (getServerMaxMoney(server) == 0) return false
+  //判断是否有权限
+  if (hasRootAccess(server) == false) return false
+  return true
+}
+while (true) {
+  servers = scan("home")
+  for (var i = 0; i < servers.length; i++) {
+    print('--处理' + servers[i] + '中:')
+    if (can(servers[i])) {
+      servers = servers.concat(scan(servers[i]).slice(1))
+      auto(servers[i])
+    }
+
+  }
+}

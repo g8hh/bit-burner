@@ -1,0 +1,58 @@
+disableLog('ALL')
+//自动购买升级服务器脚本
+while(true){
+	own=getPurchasedServers()
+	max=getPurchasedServerLimit()
+	if(max-own>0){
+		//购买服务器到上限
+		print('--补满服务器')
+		for(var i=0;i<max-own;i++){
+			buy_server('home_server',2)
+		}
+	}else{
+		//升级最低级的服务器
+		print('--查找最小的服务器')
+		minRam=0
+		minservers=[]
+		for(var i in own){
+			ram=getServerMaxRam(own[i])
+			print('----['+own[i]+']['+ram+']')
+			if(minRam==0 || ram<minRam){
+				minRam=ram
+				minservers=[]
+				minservers.push(own[i])
+			}else if(ram==minRam){
+				minservers.push(own[i])
+			}
+		}
+		print('--升级所有内存为'+minRam+'G的服务器')
+		for(var i in minservers){
+			upgrade_server(minservers[i])
+		}
+		print('--升级完成')
+	}
+}
+function upgrade_server(name){
+	ram=getServerMaxRam(name)
+	cost=getPurchasedServerCost(ram*2)
+	while(true){
+		has=getServerMoneyAvailable('home')
+		print('----升级['+name+']至['+ram*2+'G]需要$'+cost+',目前有$'+has)
+		if(has>cost){
+			print('----升级服务器['+name+']至['+ram*2+'G]')
+			killall(name)
+			deleteServer(name)
+			name=purchaseServer(name,ram*2)
+			break
+		}
+		sleep(1000*10)
+	}
+}
+function buy_server(name,ram){
+	cost=getPurchasedServerCost(ram)
+	has=getServerMoneyAvailable('home')
+	if(has>cost){
+		print('----购买服务器['+name+']')
+		purchaseServer(name,ram)
+	}
+}
