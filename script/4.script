@@ -3,10 +3,10 @@ disableLog('ALL')
 while(true){
 	own=getPurchasedServers()
 	max=getPurchasedServerLimit()
-	if(max-own>0){
+	if(max-own.length>0){
 		//购买服务器到上限
 		print('--补满服务器')
-		for(var i=0;i<max-own;i++){
+		for(var i=0;i<max-own.length;i++){
 			buy_server('home_server',2)
 		}
 	}else{
@@ -51,6 +51,7 @@ function upgrade_server(name){
 function buy_server(name,ram){
 	cost=getPurchasedServerCost(ram)
 	has=getServerMoneyAvailable('home')
+	print('----购买需要$'+cost+',目前有$'+has)
 	if(has>cost){
 		print('----购买服务器['+name+']')
 		purchaseServer(name,ram)
