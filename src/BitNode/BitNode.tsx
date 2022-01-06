@@ -165,7 +165,7 @@ BitNodes["BitNode4"] = new BitNode(
       <br />
       Destroying this BitNode will give you Source-File 4, or if you already have this Source-File it will upgrade its
       level up to a maximum of 3. This Source-File lets you access and use the Singularity Functions in other BitNodes.
-      Each level of this Source-File will open up more Singularity Functions that you can use.
+      Each level of this Source-File reduces the RAM cost of singularity functions.
     </>
   ),
 );
@@ -745,7 +745,7 @@ export function initBitNodeMultipliers(p: IPlayer): void {
       BitNodeMultipliers.StaneksGiftPowerMultiplier = 0.5;
       BitNodeMultipliers.StaneksGiftExtraSize = 2;
       BitNodeMultipliers.GangSoftcap = 0.8;
-      BitNodeMultipliers.CorporationSoftCap = 0.9;
+      BitNodeMultipliers.CorporationSoftCap = 0.7;
       BitNodeMultipliers.WorldDaemonDifficulty = 2;
       break;
     case 10: // Digital Carbon

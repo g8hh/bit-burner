@@ -13,6 +13,8 @@ import { RamCalculationErrorCode } from "./RamCalculationErrorCodes";
 import { RamCosts, RamCostConstants } from "../Netscript/RamCostGenerator";
 import { Script } from "../Script/Script";
 import { WorkerScript } from "../Netscript/WorkerScript";
+import { areImportsEquals } from "../Terminal/DirectoryHelpers";
+import { IPlayer } from "../PersonObjects/IPlayer";
 
 // These special strings are used to reference the presence of a given logical
 // construct within a user script.
@@ -32,6 +34,7 @@ const memCheckGlobalKey = ".__GLOBAL__";
  *                                      keep track of what functions have/havent been accounted for
  */
 async function parseOnlyRamCalculate(
+  player: IPlayer,
   otherScripts: Script[],
   code: string,
   workerScript: WorkerScript,
@@ -106,7 +109,7 @@ async function parseOnlyRamCalculate(
         let script = null;
         const fn = nextModule.startsWith("./") ? nextModule.slice(2) : nextModule;
         for (const s of otherScripts) {
-          if (s.filename === fn) {
+          if (areImportsEquals(s.filename, fn)) {
             script = s;
             break;
           }
@@ -168,6 +171,8 @@ async function parseOnlyRamCalculate(
         function applyFuncRam(cost: any): number {
           if (typeof cost === "number") {
             return cost;
+          } else if (typeof cost === "function") {
+            return cost(player);
           } else {
             return 0;
           }
@@ -374,6 +379,7 @@ function parseOnlyCalculateDeps(code: string, currentModule: string): any {
  *                                  Used to account for imported scripts
  */
 export async function calculateRamUsage(
+  player: IPlayer,
   codeCopy: string,
   otherScripts: Script[],
 ): Promise<RamCalculationErrorCode | number> {
@@ -387,7 +393,7 @@ export async function calculateRamUsage(
   } as WorkerScript;
 
   try {
-    return await parseOnlyRamCalculate(otherScripts, codeCopy, workerScript);
+    return await parseOnlyRamCalculate(player, otherScripts, codeCopy, workerScript);
   } catch (e) {
     console.error(`Failed to parse script for RAM calculations:`);
     console.error(e);

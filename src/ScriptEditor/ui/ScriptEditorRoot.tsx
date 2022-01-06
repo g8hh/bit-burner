@@ -93,25 +93,20 @@ class OpenScript {
   }
 }
 
+let openScripts: OpenScript[] = [];
+let currentScript: OpenScript | null = null;
+
 // Called every time script editor is opened
 export function Root(props: IProps): React.ReactElement {
+  const setRerender = useState(false)[1];
+  function rerender(): void {
+    setRerender((o) => !o);
+  }
   const editorRef = useRef<IStandaloneCodeEditor | null>(null);
   const monacoRef = useRef<Monaco | null>(null);
   const vimStatusRef = useRef<HTMLElement>(null);
   const [vimEditor, setVimEditor] = useState<any>(null);
   const [editor, setEditor] = useState<IStandaloneCodeEditor | null>(null);
-
-  const [openScripts, setOpenScripts] = useState<OpenScript[]>(
-    window.localStorage.getItem("scriptEditorOpenScripts") !== null
-      ? JSON.parse(window.localStorage.getItem("scriptEditorOpenScripts")!)
-      : [],
-  );
-
-  const [currentScript, setCurrentScript] = useState<OpenScript | null>(
-    window.localStorage.getItem("scriptEditorCurrentScript") !== null
-      ? JSON.parse(window.localStorage.getItem("scriptEditorCurrentScript")!)
-      : null,
-  );
 
   const [ram, setRAM] = useState("RAM: ???");
   const [updatingRam, setUpdatingRam] = useState(false);
@@ -122,6 +117,7 @@ export function Root(props: IProps): React.ReactElement {
     theme: Settings.MonacoTheme,
     insertSpaces: Settings.MonacoInsertSpaces,
     fontSize: Settings.MonacoFontSize,
+    wordWrap: Settings.MonacoWordWrap,
     vim: props.vim || Settings.MonacoVim,
   });
 
@@ -145,49 +141,29 @@ export function Root(props: IProps): React.ReactElement {
   }, []);
 
   useEffect(() => {
-    // Save currentScript
-    window.localStorage.setItem(
-      "scriptEditorCurrentScript",
-      JSON.stringify(currentScript, (key, value) => {
-        if (key == "model") return undefined;
-        return value;
-      }),
-    );
-
-    // Save openScripts
-    window.localStorage.setItem(
-      "scriptEditorOpenScripts",
-      JSON.stringify(openScripts, (key, value) => {
-        if (key == "model") return undefined;
-        return value;
-      }),
-    );
-  }, [currentScript, openScripts]);
-
-  useEffect(() => {
     if (currentScript !== null) {
       updateRAM(currentScript.code);
     }
   }, []);
 
   useEffect(() => {
-    function maybeSave(event: KeyboardEvent): void {
+    function keydown(event: KeyboardEvent): void {
       if (Settings.DisableHotkeys) return;
       //Ctrl + b
-      if (event.keyCode == 66 && (event.ctrlKey || event.metaKey)) {
+      if (event.code == "KeyB" && (event.ctrlKey || event.metaKey)) {
         event.preventDefault();
-        save();
+        props.router.toTerminal();
       }
 
       // CTRL/CMD + S
-      if (event.code == `KeyS` && (event.ctrlKey || event.metaKey)) {
+      if (event.code == "KeyS" && (event.ctrlKey || event.metaKey)) {
         event.preventDefault();
         event.stopPropagation();
         save();
       }
     }
-    document.addEventListener("keydown", maybeSave);
-    return () => document.removeEventListener("keydown", maybeSave);
+    document.addEventListener("keydown", keydown);
+    return () => document.removeEventListener("keydown", keydown);
   });
 
   useEffect(() => {
@@ -203,7 +179,12 @@ export function Root(props: IProps): React.ReactElement {
             save();
           });
           MonacoVim.VimMode.Vim.defineEx("quit", "q", function () {
+            props.router.toTerminal();
+          });
+          // "wqriteandquit" is not a typo, prefix must be found in full string
+          MonacoVim.VimMode.Vim.defineEx("wqriteandquit", "wq", function () {
             save();
+            props.router.toTerminal();
           });
           editor.focus();
         });
@@ -245,7 +226,7 @@ export function Root(props: IProps): React.ReactElement {
     }
     setUpdatingRam(true);
     const codeCopy = newCode + "";
-    const ramUsage = await calculateRamUsage(codeCopy, props.player.getCurrentServer().scripts);
+    const ramUsage = await calculateRamUsage(props.player, codeCopy, props.player.getCurrentServer().scripts);
     if (ramUsage > 0) {
       debouncedSetRAM("RAM: " + numeralWrapper.formatRAM(ramUsage));
       return;
@@ -362,7 +343,7 @@ export function Root(props: IProps): React.ReactElement {
             regenerateModel(openScript);
           }
 
-          setCurrentScript(openScript);
+          currentScript = openScript;
           editorRef.current.setModel(openScript.model);
           editorRef.current.setPosition(openScript.lastPosition);
           editorRef.current.revealLineInCenter(openScript.lastPosition.lineNumber);
@@ -376,14 +357,12 @@ export function Root(props: IProps): React.ReactElement {
             new monacoRef.current.Position(0, 0),
             monacoRef.current.editor.createModel(code, filename.endsWith(".txt") ? "plaintext" : "javascript"),
           );
-          setOpenScripts((oldArray) => [...oldArray, newScript]);
-          setCurrentScript({ ...newScript });
+          openScripts.push(newScript);
+          currentScript = { ...newScript };
           editorRef.current.setModel(newScript.model);
           updateRAM(newScript.code);
         }
       }
-    } else {
-      console.log("here we need to load something if we can");
     }
 
     editorRef.current.focus();
@@ -422,24 +401,26 @@ export function Root(props: IProps): React.ReactElement {
   function updateCode(newCode?: string): void {
     if (newCode === undefined) return;
     updateRAM(newCode);
-    if (editorRef.current !== null) {
-      const newPos = editorRef.current.getPosition();
-      if (newPos === null) return;
-      setCurrentScript((oldScript) => ({ ...oldScript!, code: newCode, lastPosition: newPos! }));
-      if (currentScript !== null) {
-        const curIndex = openScripts.findIndex(
-          (script) => script.fileName === currentScript.fileName && script.hostname === currentScript.hostname,
-        );
-        const newArr = [...openScripts];
-        const tempScript = currentScript;
-        tempScript.code = newCode;
-        newArr[curIndex] = tempScript;
-        setOpenScripts([...newArr]);
-      }
-      try {
-        infLoop(newCode);
-      } catch (err) {}
+    if (editorRef.current === null) return;
+    const newPos = editorRef.current.getPosition();
+    if (newPos === null) return;
+    if (currentScript !== null) {
+      currentScript = { ...currentScript, code: newCode, lastPosition: newPos };
+      const curIndex = openScripts.findIndex(
+        (script) =>
+          currentScript !== null &&
+          script.fileName === currentScript.fileName &&
+          script.hostname === currentScript.hostname,
+      );
+      const newArr = [...openScripts];
+      const tempScript = currentScript;
+      tempScript.code = newCode;
+      newArr[curIndex] = tempScript;
+      openScripts = [...newArr];
     }
+    try {
+      infLoop(newCode);
+    } catch (err) {}
   }
 
   function saveScript(scriptToSave: OpenScript): void {
@@ -450,6 +431,7 @@ export function Root(props: IProps): React.ReactElement {
       for (let i = 0; i < server.scripts.length; i++) {
         if (scriptToSave.fileName == server.scripts[i].filename) {
           server.scripts[i].saveScript(
+            props.player,
             scriptToSave.fileName,
             scriptToSave.code,
             props.player.currentServer,
@@ -463,7 +445,13 @@ export function Root(props: IProps): React.ReactElement {
 
       //If the current script does NOT exist, create a new one
       const script = new Script();
-      script.saveScript(scriptToSave.fileName, scriptToSave.code, props.player.currentServer, server.scripts);
+      script.saveScript(
+        props.player,
+        scriptToSave.fileName,
+        scriptToSave.code,
+        props.player.currentServer,
+        server.scripts,
+      );
       server.scripts.push(script);
     } else if (scriptToSave.fileName.endsWith(".txt")) {
       for (let i = 0; i < server.textFiles.length; ++i) {
@@ -487,7 +475,7 @@ export function Root(props: IProps): React.ReactElement {
 
   function save(): void {
     if (currentScript === null) {
-      console.log("currentScript is null when it shouldn't be. Unabel to save script");
+      console.error("currentScript is null when it shouldn't be. Unable to save script");
       return;
     }
     // this is duplicate code with saving later.
@@ -507,7 +495,6 @@ export function Root(props: IProps): React.ReactElement {
 
       iTutorialNextStep();
 
-      props.router.toTerminal();
       return;
     }
 
@@ -530,27 +517,32 @@ export function Root(props: IProps): React.ReactElement {
       for (let i = 0; i < server.scripts.length; i++) {
         if (currentScript.fileName == server.scripts[i].filename) {
           server.scripts[i].saveScript(
+            props.player,
             currentScript.fileName,
             currentScript.code,
             props.player.currentServer,
             server.scripts,
           );
           if (Settings.SaveGameOnFileSave) saveObject.saveGame();
-          props.router.toTerminal();
           return;
         }
       }
 
       //If the current script does NOT exist, create a new one
       const script = new Script();
-      script.saveScript(currentScript.fileName, currentScript.code, props.player.currentServer, server.scripts);
+      script.saveScript(
+        props.player,
+        currentScript.fileName,
+        currentScript.code,
+        props.player.currentServer,
+        server.scripts,
+      );
       server.scripts.push(script);
     } else if (currentScript.fileName.endsWith(".txt")) {
       for (let i = 0; i < server.textFiles.length; ++i) {
         if (server.textFiles[i].fn === currentScript.fileName) {
           server.textFiles[i].write(currentScript.code);
           if (Settings.SaveGameOnFileSave) saveObject.saveGame();
-          props.router.toTerminal();
           return;
         }
       }
@@ -562,7 +554,6 @@ export function Root(props: IProps): React.ReactElement {
     }
 
     if (Settings.SaveGameOnFileSave) saveObject.saveGame();
-    props.router.toTerminal();
   }
 
   function reorder(list: Array<OpenScript>, startIndex: number, endIndex: number): OpenScript[] {
@@ -582,19 +573,22 @@ export function Root(props: IProps): React.ReactElement {
 
     const items = reorder(openScripts, result.source.index, result.destination.index);
 
-    setOpenScripts(items);
+    openScripts = items;
   }
 
   function onTabClick(index: number): void {
     if (currentScript !== null) {
       // Save currentScript to openScripts
       const curIndex = openScripts.findIndex(
-        (script) => script.fileName === currentScript.fileName && script.hostname === currentScript.hostname,
+        (script) =>
+          currentScript !== null &&
+          script.fileName === currentScript.fileName &&
+          script.hostname === currentScript.hostname,
       );
       openScripts[curIndex] = currentScript;
     }
 
-    setCurrentScript({ ...openScripts[index] });
+    currentScript = { ...openScripts[index] };
 
     if (editorRef.current !== null && openScripts[index] !== null) {
       if (openScripts[index].model === undefined || openScripts[index].model.isDisposed()) {
@@ -609,25 +603,21 @@ export function Root(props: IProps): React.ReactElement {
     }
   }
 
-  async function onTabClose(index: number): Promise<void> {
+  function onTabClose(index: number): void {
     // See if the script on the server is up to date
     const closingScript = openScripts[index];
-    const savedOpenScripts: Array<OpenScript> = JSON.parse(window.localStorage.getItem("scriptEditorOpenScripts")!);
-    const savedScriptIndex = savedOpenScripts.findIndex(
+    const savedScriptIndex = openScripts.findIndex(
       (script) => script.fileName === closingScript.fileName && script.hostname === closingScript.hostname,
     );
     let savedScriptCode = "";
     if (savedScriptIndex !== -1) {
-      savedScriptCode = savedOpenScripts[savedScriptIndex].code;
+      savedScriptCode = openScripts[savedScriptIndex].code;
     }
+    const server = GetServer(closingScript.hostname);
+    if (server === null) throw new Error(`Server '${closingScript.hostname}' should not be null, but it is.`);
 
-    const serverScriptIndex = GetServer(closingScript.hostname)?.scripts.findIndex(
-      (script) => script.filename === closingScript.fileName,
-    );
-    if (
-      serverScriptIndex === -1 ||
-      savedScriptCode !== GetServer(closingScript.hostname)?.scripts[serverScriptIndex as number].code
-    ) {
+    const serverScriptIndex = server.scripts.findIndex((script) => script.filename === closingScript.fileName);
+    if (serverScriptIndex === -1 || savedScriptCode !== server.scripts[serverScriptIndex as number].code) {
       PromptEvent.emit({
         txt: "Do you want to save changes to " + closingScript.fileName + "?",
         resolve: (result: boolean) => {
@@ -641,15 +631,18 @@ export function Root(props: IProps): React.ReactElement {
     }
 
     if (openScripts.length > 1) {
-      setOpenScripts((oldScripts) => oldScripts.filter((value, i) => i !== index));
+      openScripts = openScripts.filter((value, i) => i !== index);
 
       let indexOffset = -1;
       if (openScripts[index + indexOffset] === undefined) {
         indexOffset = 1;
+        if (openScripts[index + indexOffset] === undefined) {
+          indexOffset = 0;
+        }
       }
 
       // Change current script if we closed it
-      setCurrentScript(openScripts[index + indexOffset]);
+      currentScript = openScripts[index + indexOffset];
       if (editorRef.current !== null) {
         if (
           openScripts[index + indexOffset].model === undefined ||
@@ -664,12 +657,24 @@ export function Root(props: IProps): React.ReactElement {
         editorRef.current.revealLineInCenter(openScripts[index + indexOffset].lastPosition.lineNumber);
         editorRef.current.focus();
       }
+      rerender();
     } else {
       // No more scripts are open
-      setOpenScripts([]);
-      setCurrentScript(null);
+      openScripts = [];
+      currentScript = null;
       props.router.toTerminal();
     }
+  }
+
+  function dirty(index: number): string {
+    const openScript = openScripts[index];
+    const server = GetServer(openScript.hostname);
+    if (server === null) throw new Error(`Server '${openScript.hostname}' should not be null, but it is.`);
+
+    const serverScript = server.scripts.find((s) => s.filename === openScript.fileName);
+    if (serverScript === undefined) return " *";
+
+    return serverScript.code !== openScript.code ? " *" : "";
   }
 
   // Toolbars are roughly 112px:
@@ -718,7 +723,6 @@ export function Root(props: IProps): React.ReactElement {
                         }}
                       >
                         <Button
-                          id={"tabButton" + fileName + hostname}
                           onClick={() => onTabClick(index)}
                           style={{
                             background:
@@ -727,10 +731,9 @@ export function Root(props: IProps): React.ReactElement {
                                 : "",
                           }}
                         >
-                          {hostname}:~/{fileName}
+                          {hostname}:~/{fileName} {dirty(index)}
                         </Button>
                         <Button
-                          id={"tabCloseButton" + fileName + hostname}
                           onClick={() => onTabClose(index)}
                           style={{
                             maxWidth: "20px",
@@ -779,7 +782,8 @@ export function Root(props: IProps): React.ReactElement {
           <Typography color={updatingRam ? "secondary" : "primary"} sx={{ mx: 1 }}>
             {ram}
           </Typography>
-          <Button onClick={save}>Save & Close (Ctrl/Cmd + s)</Button>
+          <Button onClick={save}>Save (Ctrl/Cmd + s)</Button>
+          <Button onClick={props.router.toTerminal}>Close (Ctrl/Cmd + b)</Button>
           <Typography sx={{ mx: 1 }}>
             {" "}
             Documentation:{" "}
@@ -805,6 +809,7 @@ export function Root(props: IProps): React.ReactElement {
             theme: Settings.MonacoTheme,
             insertSpaces: Settings.MonacoInsertSpaces,
             fontSize: Settings.MonacoFontSize,
+            wordWrap: Settings.MonacoWordWrap,
             vim: Settings.MonacoVim,
           }}
           save={(options: Options) => {
@@ -812,6 +817,7 @@ export function Root(props: IProps): React.ReactElement {
             Settings.MonacoTheme = options.theme;
             Settings.MonacoInsertSpaces = options.insertSpaces;
             Settings.MonacoFontSize = options.fontSize;
+            Settings.MonacoWordWrap = options.wordWrap;
             Settings.MonacoVim = options.vim;
           }}
         />
@@ -825,10 +831,14 @@ export function Root(props: IProps): React.ReactElement {
           alignItems: "center",
         }}
       >
-        <p style={{ color: Settings.theme.primary, fontSize: "20px", textAlign: "center" }}>
-          <h1>No open files</h1>
-          <h5>Use "nano [File Name]" in the terminal to open files</h5>
-        </p>
+        <span style={{ color: Settings.theme.primary, fontSize: "20px", textAlign: "center" }}>
+          <Typography variant="h4">No open files</Typography>
+          <Typography variant="h5">
+            Use `nano FILENAME` in
+            <br />
+            the terminal to open files
+          </Typography>
+        </span>
       </div>
     </>
   );

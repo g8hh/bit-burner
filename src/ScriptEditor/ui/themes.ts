@@ -218,4 +218,190 @@ export async function loadThemes(monaco: { editor: any }): Promise<void> {
       "editor.selectionHighlightBorder": "#073642",
     },
   });
+
+  monaco.editor.defineTheme("dracula", {
+    base: "vs-dark",
+    inherit: true,
+    rules: [
+      {
+        background: "282A36",
+        foreground: "F8F8F2",
+        token: "",
+      },
+      {
+        foreground: "6272A4",
+        token: "comment",
+      },
+      {
+        foreground: "F1FA8C",
+        token: "string",
+      },
+      {
+        token: "number",
+        foreground: "BD93F9",
+      },
+      {
+        token: "otherkeyvars",
+        foreground: "BD93F9",
+      },
+      {
+        foreground: "FF79C6",
+        token: "function",
+      },
+      {
+        foreground: "FF79C6",
+        token: "keyword",
+      },
+      {
+        token: "storage.type.function.js",
+        foreground: "FF79C6",
+      },
+      {
+        token: "ns",
+        foreground: "FFB86C",
+        fontStyle: "italic",
+        
+      },
+      {
+        token: "netscriptfunction",
+        foreground: "FF79C6",
+      },
+      {
+        token: "otherkeywords",
+        foreground: "FF68A7",
+      },
+      {
+        token: "type.identifier.js",
+        foreground: "7EE9FD",
+        fontStyle: "italic"
+      },
+      {
+        token: "delimiter.square.js",
+        foreground: "FFD709",
+      },
+      {
+        token: "delimiter.parenthesis.js",
+        foreground: "FFD709"
+      },
+      {
+        token: "delimiter.bracket.js",
+        foreground: "FFD709",
+      },
+      {
+        token: "this",
+        foreground: "BD93F9",
+        fontStyle: "italic",
+      },
+    ],
+    "colors": {
+      "editor.foreground": "#F8F8F2",
+      "editor.background": "#282A36",
+      "editorLineNumber.foreground": "#6272A4",
+      "editor.selectionBackground": "#44475A",
+      "editor.selectionHighlightBackground": "#424450",
+      "editor.foldBackground": "#21222C",
+      "editor.wordHighlightBackground": "#8BE9FD50",
+      "editor.wordHighlightStrongBackground": "#50FA7B50",
+      "editor.findMatchBackground": "#FFB86C80",
+      "editor.findMatchHighlightBackground": "#FFFFFF40",
+      "editor.findRangeHighlightBackground": "#44475A75",
+      "editor.hoverHighlightBackground": "#8BE9FD50",
+      "editor.lineHighlightBorder": "#44475A",
+      "editor.rangeHighlightBackground": "#BD93F915",
+      "editor.snippetTabstopHighlightBackground": "#282A36",
+      "editor.snippetTabstopHighlightBorder": "#6272A4",
+      "editor.snippetFinalTabstopHighlightBackground": "#282A36",
+      "editor.snippetFinalTabstopHighlightBorder": "#50FA7B",
+    },
+  });
+
+  monaco.editor.defineTheme("one-dark", {
+    base: "vs-dark",
+    inherit: true,
+    rules: [
+      {
+        token: "",
+        background: "333842",
+        foreground: "ABB2BF",
+      },
+      {
+        token: "comment",
+        foreground: "5C6370",
+      },
+      {
+        token: "string",
+        foreground: "98C379",
+      },
+      {
+        token: "number",
+        foreground: "D19A66",
+      },
+      {
+        token: "function",
+        foreground: "C678DD",
+      },
+      {
+        token: "keyword",
+        foreground: "C678DD",
+      },
+      {
+        token: "otherkeyvars",
+        foreground: "D19A66",
+      },
+      {
+        token: "otherkeywords",
+        foreground: "C678DD",
+      },
+      {
+        token: "ns",
+        foreground: "E06C75",
+      },
+      {
+        token: "netscriptfunction",
+        foreground: "61AFEF",
+      },
+      {
+        token: "type.identifier",
+        foreground: "E5C07B",
+      },
+      {
+        token: "delimiter",
+        foreground: "ABB2BF",
+      },
+      {
+        token: "this",
+        foreground: "E06C75",
+      },
+    ],
+    colors: {
+      "editor.background": "#282C34",
+      "editor.foreground": "#ABB2BF",
+      "editor.lineHighlightBackground": "#99BBFF0A",
+      "editor.selectionBackground": "#3E4451",
+      "editor.findMatchHighlightBackground": "#528BFF3D",
+      "editorCursor.foreground": "#528BFF",
+      "editorHoverWidget.background": "#21252B",
+      "editorHoverWidget.border": "#181A1F",
+      "editorIndentGuide.background": "#ABB2BF26",
+      "editorIndentGuide.activeBackground": "#626772",
+      "editorLineNumber.foreground": "#636D83",
+      "editorLineNumber.activeForeground": "#ABB2BF",
+      "editorSuggestWidget.background": "#21252B",
+      "editorSuggestWidget.border": "#181A1F",
+      "editorSuggestWidget.selectedBackground": "#2C313A",
+      "editorWhitespace.foreground": "#ABB2BF26",
+      "editorWidget.background": "#21252B",
+      "editorWidget.border": "#3A3F4B",
+      "input.background": "#1B1D23",
+      "input.border": "#181A1F",
+      "peekView.border": "#528BFF",
+      "peekViewResult.background": "#21252B",
+      "peekViewResult.selectionBackground": "#2C313A",
+      "peekViewTitle.background": "#1B1D23",
+      "peekViewEditor.background": "#1B1D23",
+      "scrollbarSlider.background": "#4E566680",
+      "scrollbarSlider.activeBackground": "#747D9180",
+      "scrollbarSlider.hoverBackground": "#5A637580",
+    }
+  });
 }
