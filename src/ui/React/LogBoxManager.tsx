@@ -16,6 +16,7 @@ import { startWorkerScript } from "../../NetscriptWorker";
 import { GetServer } from "../../Server/AllServers";
 import { Theme } from "@mui/material";
 import { findRunningScript } from "../../Script/ScriptHelpers";
+import { Player } from "../../Player";
 
 let layerCounter = 0;
 
@@ -77,6 +78,16 @@ interface IProps {
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
+    title: {
+      "&.is-minimized + *": {
+        border: "none",
+        margin: 0,
+        "max-height": 0,
+        padding: 0,
+        "pointer-events": "none",
+        visibility: "hidden",
+      },
+    },
     logs: {
       overflowY: "scroll",
       overflowX: "hidden",
@@ -107,6 +118,7 @@ function LogWindow(props: IProps): React.ReactElement {
   const classes = useStyles();
   const container = useRef<HTMLDivElement>(null);
   const setRerender = useState(false)[1];
+  const [minimized, setMinimized] = useState(false);
   function rerender(): void {
     setRerender((old) => !old);
   }
@@ -126,7 +138,7 @@ function LogWindow(props: IProps): React.ReactElement {
     if (server === null) return;
     const s = findRunningScript(script.filename, script.args, server);
     if (s === null) {
-      startWorkerScript(script, server);
+      startWorkerScript(Player, script, server);
     } else {
       setScript(s);
     }
@@ -140,13 +152,17 @@ function LogWindow(props: IProps): React.ReactElement {
     rerender();
   }
 
-  function title(): string {
+  function title(full = false): string {
     const maxLength = 30;
     const t = `${script.filename} ${script.args.map((x: any): string => `${x}`).join(" ")}`;
-    if (t.length <= maxLength) {
+    if (full || t.length <= maxLength) {
       return t;
     }
     return t.slice(0, maxLength - 3) + "...";
+  }
+
+  function minimize(): void {
+    setMinimized(!minimized);
   }
 
   function lineClass(s: string): string {
@@ -180,18 +196,20 @@ function LogWindow(props: IProps): React.ReactElement {
       >
         <div onMouseDown={updateLayer}>
           <Paper
+            className={classes.title + " " + (minimized ? "is-minimized" : "")}
             style={{
               cursor: "grab",
             }}
           >
             <Box className="drag" display="flex" alignItems="center">
-              <Typography color="primary" variant="h6">
+              <Typography color="primary" variant="h6" title={title(true)}>
                 {title()}
               </Typography>
 
               <Box position="absolute" right={0}>
                 {!workerScripts.has(script.pid) && <Button onClick={run}>Run</Button>}
                 {workerScripts.has(script.pid) && <Button onClick={kill}>Kill</Button>}
+                <Button onClick={minimize}>{minimized ? "\u{1F5D6}" : "\u{1F5D5}"}</Button>
                 <Button onClick={props.onClose}>Close</Button>
               </Box>
             </Box>
