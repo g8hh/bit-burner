@@ -942,7 +942,7 @@ var cnItems = {
     "The CRTX42-AA gene is injected into the genome. The CRTX42-AA is an artificially-synthesized gene that targets the visual and prefrontal cortex and improves cognitive abilities.": "CRTX42-AA 基因被注入基因组。 CRTX42-AA 是一种人工合成的基因，针对视觉和前额叶皮层并提高认知能力。",
     "Those who run the bits, run the world.": "那些运行比特的人，运行着世界。",
     "Timestamp format: ": "时间戳格式：",
-    "": "",
+    "New update!": "新版本更新！",
     "": "",
     "": "",
     "": "",
