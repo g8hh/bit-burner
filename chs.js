@@ -943,7 +943,7 @@ var cnItems = {
     "Those who run the bits, run the world.": "那些运行比特的人，运行着世界。",
     "Timestamp format: ": "时间戳格式：",
     "New update!": "新版本更新！",
-    "": "",
+    "Please report any bugs/issues through the github repository or the Bitburner subreddit (reddit.com/r/bitburner).": "请通过 github 存储库或 Bitburner subreddit (reddit.com/r/bitburner) 报告任何错误/问题。",
     "": "",
     "": "",
     "": "",
