@@ -8,8 +8,6 @@ import createStyles from "@mui/styles/createStyles";
 import Typography from "@mui/material/Typography";
 import Slider from "@mui/material/Slider";
 import Grid from "@mui/material/Grid";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Switch from "@mui/material/Switch";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import Button from "@mui/material/Button";
@@ -23,6 +21,7 @@ import TextField from "@mui/material/TextField";
 
 import DownloadIcon from "@mui/icons-material/Download";
 import UploadIcon from "@mui/icons-material/Upload";
+import SaveIcon from "@mui/icons-material/Save";
 
 import { FileDiagnosticModal } from "../../Diagnostic/FileDiagnosticModal";
 import { dialogBoxCreate } from "./DialogBox";
@@ -33,8 +32,11 @@ import { StyleEditorModal } from "./StyleEditorModal";
 import { SnackbarEvents } from "./Snackbar";
 
 import { Settings } from "../../Settings/Settings";
-import { save, deleteGame } from "../../db";
+import { save } from "../../db";
 import { formatTime } from "../../utils/helpers/formatTime";
+import { OptionSwitch } from "./OptionSwitch";
+import { DeleteGameButton } from "./DeleteGameButton";
+import { SoftResetButton } from "./SoftResetButton";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -68,33 +70,12 @@ export function GameOptionsRoot(props: IProps): React.ReactElement {
   const [logSize, setLogSize] = useState(Settings.MaxLogCapacity);
   const [portSize, setPortSize] = useState(Settings.MaxPortCapacity);
   const [terminalSize, setTerminalSize] = useState(Settings.MaxTerminalCapacity);
-
   const [autosaveInterval, setAutosaveInterval] = useState(Settings.AutosaveInterval);
-
-  const [suppressMessages, setSuppressMessages] = useState(Settings.SuppressMessages);
-  const [suppressFactionInvites, setSuppressFactionInvites] = useState(Settings.SuppressFactionInvites);
-  const [suppressTravelConfirmations, setSuppressTravelConfirmations] = useState(Settings.SuppressTravelConfirmation);
-  const [suppressBuyAugmentationConfirmation, setSuppressBuyAugmentationConfirmation] = useState(
-    Settings.SuppressBuyAugmentationConfirmation,
-  );
-  const [suppressTIXPopup, setSuppressTIXPopup] = useState(Settings.SuppressTIXPopup);
-  const [suppressBladeburnerPopup, setSuppressBladeburnerPopup] = useState(Settings.SuppressBladeburnerPopup);
-  const [suppressSavedGameToast, setSuppresSavedGameToast] = useState(Settings.SuppressSavedGameToast);
-
-  const [disableHotkeys, setDisableHotkeys] = useState(Settings.DisableHotkeys);
-  const [disableASCIIArt, setDisableASCIIArt] = useState(Settings.DisableASCIIArt);
-  const [disableTextEffects, setDisableTextEffects] = useState(Settings.DisableTextEffects);
-  const [enableBashHotkeys, setEnableBashHotkeys] = useState(Settings.EnableBashHotkeys);
   const [timestampFormat, setTimestampFormat] = useState(Settings.TimestampsFormat);
-  const [saveGameOnFileSave, setSaveGameOnFileSave] = useState(Settings.SaveGameOnFileSave);
-  const [useIEC60027_2, setUseIEC60027_2] = useState(Settings.UseIEC60027_2);
-
   const [locale, setLocale] = useState(Settings.Locale);
   const [diagnosticOpen, setDiagnosticOpen] = useState(false);
-  const [deleteGameOpen, setDeleteOpen] = useState(false);
   const [themeEditorOpen, setThemeEditorOpen] = useState(false);
   const [styleEditorOpen, setStyleEditorOpen] = useState(false);
-  const [softResetOpen, setSoftResetOpen] = useState(false);
   const [importSaveOpen, setImportSaveOpen] = useState(false);
   const [importData, setImportData] = useState<ImportData | null>(null);
 
@@ -123,75 +104,14 @@ export function GameOptionsRoot(props: IProps): React.ReactElement {
     Settings.AutosaveInterval = newValue as number;
   }
 
-  function handleSuppressMessagesChange(event: React.ChangeEvent<HTMLInputElement>): void {
-    setSuppressMessages(event.target.checked);
-    Settings.SuppressMessages = event.target.checked;
-  }
-
-  function handleSuppressFactionInvitesChange(event: React.ChangeEvent<HTMLInputElement>): void {
-    setSuppressFactionInvites(event.target.checked);
-    Settings.SuppressFactionInvites = event.target.checked;
-  }
-
-  function handleSuppressTravelConfirmationsChange(event: React.ChangeEvent<HTMLInputElement>): void {
-    setSuppressTravelConfirmations(event.target.checked);
-    Settings.SuppressTravelConfirmation = event.target.checked;
-  }
-
-  function handleSuppressBuyAugmentationConfirmationChange(event: React.ChangeEvent<HTMLInputElement>): void {
-    setSuppressBuyAugmentationConfirmation(event.target.checked);
-    Settings.SuppressBuyAugmentationConfirmation = event.target.checked;
-  }
-
-  function handleSuppressTIXPopupChange(event: React.ChangeEvent<HTMLInputElement>): void {
-    setSuppressTIXPopup(event.target.checked);
-    Settings.SuppressTIXPopup = event.target.checked;
-  }
-
-  function handleSuppressBladeburnerPopupChange(event: React.ChangeEvent<HTMLInputElement>): void {
-    setSuppressBladeburnerPopup(event.target.checked);
-    Settings.SuppressBladeburnerPopup = event.target.checked;
-  }
-
-  function handleSuppressSavedGameToastChange(event: React.ChangeEvent<HTMLInputElement>): void {
-    setSuppresSavedGameToast(event.target.checked);
-    Settings.SuppressSavedGameToast = event.target.checked;
-  }
-
-  function handleDisableHotkeysChange(event: React.ChangeEvent<HTMLInputElement>): void {
-    setDisableHotkeys(event.target.checked);
-    Settings.DisableHotkeys = event.target.checked;
-  }
-
-  function handleDisableASCIIArtChange(event: React.ChangeEvent<HTMLInputElement>): void {
-    setDisableASCIIArt(event.target.checked);
-    Settings.DisableASCIIArt = event.target.checked;
-  }
-  function handleUseIEC60027_2Change(event: React.ChangeEvent<HTMLInputElement>): void {
-    setUseIEC60027_2(event.target.checked);
-    Settings.UseIEC60027_2 = event.target.checked;
-  }
-
-  function handleDisableTextEffectsChange(event: React.ChangeEvent<HTMLInputElement>): void {
-    setDisableTextEffects(event.target.checked);
-    Settings.DisableTextEffects = event.target.checked;
-  }
   function handleLocaleChange(event: SelectChangeEvent<string>): void {
     setLocale(event.target.value as string);
     Settings.Locale = event.target.value as string;
   }
 
-  function handleEnableBashHotkeysChange(event: React.ChangeEvent<HTMLInputElement>): void {
-    setEnableBashHotkeys(event.target.checked);
-    Settings.EnableBashHotkeys = event.target.checked;
-  }
   function handleTimestampFormatChange(event: React.ChangeEvent<HTMLInputElement>): void {
     setTimestampFormat(event.target.value);
     Settings.TimestampsFormat = event.target.value;
-  }
-  function handleSaveGameOnFile(event: React.ChangeEvent<HTMLInputElement>): void {
-    setSaveGameOnFileSave(event.target.checked);
-    Settings.SaveGameOnFileSave = event.target.checked;
   }
 
   function startImport(): void {
@@ -232,7 +152,7 @@ export function GameOptionsRoot(props: IProps): React.ReactElement {
         console.log(error); // We'll handle below
       }
 
-      if (!newSave || newSave === '') {
+      if (!newSave || newSave === "") {
         SnackbarEvents.emit("Save game had not content or was not base64 encoded", "error", 5000);
         return;
       }
@@ -244,7 +164,7 @@ export function GameOptionsRoot(props: IProps): React.ReactElement {
         console.log(error); // We'll handle below
       }
 
-      if (!parsedSave || parsedSave.ctor !== 'BitburnerSaveObject' || !parsedSave.data) {
+      if (!parsedSave || parsedSave.ctor !== "BitburnerSaveObject" || !parsedSave.data) {
         SnackbarEvents.emit("Save game did not seem valid", "error", 5000);
         return;
       }
@@ -252,14 +172,14 @@ export function GameOptionsRoot(props: IProps): React.ReactElement {
       const data: ImportData = {
         base64: contents,
         parsed: parsedSave,
-      }
+      };
 
       const timestamp = parsedSave.data.SaveTimestamp;
-      if (timestamp && timestamp !== '0') {
-        data.exportDate = new Date(parseInt(timestamp, 10))
+      if (timestamp && timestamp !== "0") {
+        data.exportDate = new Date(parseInt(timestamp, 10));
       }
 
-      setImportData(data)
+      setImportData(data);
       setImportSaveOpen(true);
     };
     reader.readAsText(file);
@@ -271,16 +191,8 @@ export function GameOptionsRoot(props: IProps): React.ReactElement {
     setImportSaveOpen(false);
     save(importData.base64).then(() => {
       setImportData(null);
-      setTimeout(() => location.reload(), 1000)
+      setTimeout(() => location.reload(), 1000);
     });
-  }
-
-  function doSoftReset(): void {
-    if (!Settings.SuppressBuyAugmentationConfirmation) {
-      setSoftResetOpen(true);
-    } else {
-      props.softReset();
-    }
   }
 
   return (
@@ -301,7 +213,7 @@ export function GameOptionsRoot(props: IProps): React.ReactElement {
                   </Typography>
                 }
               >
-                <Typography>Netscript exec time (ms)</Typography>
+                <Typography>.script exec time (ms)</Typography>
               </Tooltip>
               <Slider
                 value={execTime}
@@ -392,198 +304,163 @@ export function GameOptionsRoot(props: IProps): React.ReactElement {
               />
             </ListItem>
             <ListItem>
-              <FormControlLabel
-                control={<Switch checked={suppressMessages} onChange={handleSuppressMessagesChange} />}
-                label={
-                  <Tooltip
-                    title={
-                      <Typography>
-                        If this is set, then any messages you receive will not appear as popups on the screen. They will
-                        still get sent to your home computer as '.msg' files and can be viewed with the 'cat' Terminal
-                        command.
-                      </Typography>
-                    }
-                  >
-                    <Typography>Suppress story messages</Typography>
-                  </Tooltip>
+              <OptionSwitch
+                checked={Settings.SuppressMessages}
+                onChange={(newValue) => (Settings.SuppressMessages = newValue)}
+                text="Suppress story messages"
+                tooltip={
+                  <>
+                    If this is set, then any messages you receive will not appear as popups on the screen. They will
+                    still get sent to your home computer as '.msg' files and can be viewed with the 'cat' Terminal
+                    command.
+                  </>
                 }
               />
             </ListItem>
             <ListItem>
-              <FormControlLabel
-                control={<Switch checked={suppressFactionInvites} onChange={handleSuppressFactionInvitesChange} />}
-                label={
-                  <Tooltip
-                    title={
-                      <Typography>
-                        If this is set, then any faction invites you receive will not appear as popups on the screen.
-                        Your outstanding faction invites can be viewed in the 'Factions' page.
-                      </Typography>
-                    }
-                  >
-                    <Typography>Suppress faction invites</Typography>
-                  </Tooltip>
+              <OptionSwitch
+                checked={Settings.SuppressFactionInvites}
+                onChange={(newValue) => (Settings.SuppressFactionInvites = newValue)}
+                text="Suppress faction invites"
+                tooltip={
+                  <>
+                    If this is set, then any faction invites you receive will not appear as popups on the screen. Your
+                    outstanding faction invites can be viewed in the 'Factions' page.
+                  </>
                 }
               />
             </ListItem>
             <ListItem>
-              <FormControlLabel
-                control={
-                  <Switch checked={suppressTravelConfirmations} onChange={handleSuppressTravelConfirmationsChange} />
-                }
-                label={
-                  <Tooltip
-                    title={
-                      <Typography>
-                        If this is set, the confirmation message before traveling will not show up. You will
-                        automatically be deducted the travel cost as soon as you click.
-                      </Typography>
-                    }
-                  >
-                    <Typography>Suppress travel confirmations</Typography>
-                  </Tooltip>
+              <OptionSwitch
+                checked={Settings.SuppressTravelConfirmation}
+                onChange={(newValue) => (Settings.SuppressTravelConfirmation = newValue)}
+                text="Suppress travel confirmations"
+                tooltip={
+                  <>
+                    If this is set, the confirmation message before traveling will not show up. You will automatically
+                    be deducted the travel cost as soon as you click.
+                  </>
                 }
               />
             </ListItem>
             <ListItem>
-              <FormControlLabel
-                control={
-                  <Switch
-                    checked={suppressBuyAugmentationConfirmation}
-                    onChange={handleSuppressBuyAugmentationConfirmationChange}
-                  />
-                }
-                label={
-                  <Tooltip
-                    title={
-                      <Typography>
-                        If this is set, the confirmation message before buying augmentation will not show up.
-                      </Typography>
-                    }
-                  >
-                    <Typography>Suppress augmentations confirmation</Typography>
-                  </Tooltip>
-                }
+              <OptionSwitch
+                checked={Settings.SuppressBuyAugmentationConfirmation}
+                onChange={(newValue) => (Settings.SuppressBuyAugmentationConfirmation = newValue)}
+                text="Suppress augmentations confirmation"
+                tooltip={<>If this is set, the confirmation message before buying augmentation will not show up.</>}
               />
             </ListItem>
             <ListItem>
-              <FormControlLabel
-                control={<Switch checked={suppressTIXPopup} onChange={handleSuppressTIXPopupChange} />}
-                label={
-                  <Tooltip
-                    title={<Typography>If this is set, the stock market will never create any popup.</Typography>}
-                  >
-                    <Typography>Suppress TIX messages</Typography>
-                  </Tooltip>
-                }
+              <OptionSwitch
+                checked={Settings.SuppressTIXPopup}
+                onChange={(newValue) => (Settings.SuppressTIXPopup = newValue)}
+                text="Suppress TIX messages"
+                tooltip={<>If this is set, the stock market will never create any popup.</>}
               />
             </ListItem>
             {!!props.player.bladeburner && (
               <ListItem>
-                <FormControlLabel
-                  control={
-                    <Switch checked={suppressBladeburnerPopup} onChange={handleSuppressBladeburnerPopupChange} />
-                  }
-                  label={
-                    <Tooltip
-                      title={
-                        <Typography>
-                          If this is set, then having your Bladeburner actions interrupted by being busy with something
-                          else will not display a popup message.
-                        </Typography>
-                      }
-                    >
-                      <Typography>Suppress bladeburner popup</Typography>
-                    </Tooltip>
+                <OptionSwitch
+                  checked={Settings.SuppressBladeburnerPopup}
+                  onChange={(newValue) => (Settings.SuppressBladeburnerPopup = newValue)}
+                  text="Suppress bladeburner popup"
+                  tooltip={
+                    <>
+                      If this is set, then having your Bladeburner actions interrupted by being busy with something else
+                      will not display a popup message.
+                    </>
                   }
                 />
               </ListItem>
             )}
             <ListItem>
-              <FormControlLabel
-                control={<Switch checked={suppressSavedGameToast} onChange={handleSuppressSavedGameToastChange} />}
-                label={
-                  <Tooltip
-                    title={
-                      <Typography>If this is set, there will be no "Game Saved!" toast appearing after an auto-save.</Typography>
-                    }
-                  >
-                    <Typography>Suppress Auto-Save Game Toast</Typography>
-                  </Tooltip>
+              <OptionSwitch
+                checked={Settings.SuppressSavedGameToast}
+                onChange={(newValue) => (Settings.SuppressSavedGameToast = newValue)}
+                text="Suppress Auto-Save Game Toast"
+                tooltip={<>If this is set, there will be no "Game Saved!" toast appearing after an auto-save.</>}
+              />
+            </ListItem>
+            <ListItem>
+              <OptionSwitch
+                checked={Settings.DisableHotkeys}
+                onChange={(newValue) => (Settings.DisableHotkeys = newValue)}
+                text="Disable hotkeys"
+                tooltip={
+                  <>
+                    If this is set, then most hotkeys (keyboard shortcuts) in the game are disabled. This includes
+                    Terminal commands, hotkeys to navigate between different parts of the game, and the "Save and Close
+                    (Ctrl + b)" hotkey in the Text Editor.
+                  </>
                 }
               />
             </ListItem>
             <ListItem>
-              <FormControlLabel
-                control={<Switch checked={disableHotkeys} onChange={handleDisableHotkeysChange} />}
-                label={
-                  <Tooltip
-                    title={
-                      <Typography>
-                        If this is set, then most hotkeys (keyboard shortcuts) in the game are disabled. This includes
-                        Terminal commands, hotkeys to navigate between different parts of the game, and the "Save and
-                        Close (Ctrl + b)" hotkey in the Text Editor.
-                      </Typography>
-                    }
-                  >
-                    <Typography>Disable hotkeys</Typography>
-                  </Tooltip>
+              <OptionSwitch
+                checked={Settings.DisableASCIIArt}
+                onChange={(newValue) => (Settings.DisableASCIIArt = newValue)}
+                text="Disable ascii art"
+                tooltip={<>If this is set all ASCII art will be disabled.</>}
+              />
+            </ListItem>
+            <ListItem>
+              <OptionSwitch
+                checked={Settings.DisableTextEffects}
+                onChange={(newValue) => (Settings.DisableTextEffects = newValue)}
+                text="Disable text effects"
+                tooltip={
+                  <>
+                    If this is set, text effects will not be displayed. This can help if text is difficult to read in
+                    certain areas.
+                  </>
                 }
               />
             </ListItem>
             <ListItem>
-              <FormControlLabel
-                control={<Switch checked={disableASCIIArt} onChange={handleDisableASCIIArtChange} />}
-                label={
-                  <Tooltip title={<Typography>If this is set all ASCII art will be disabled.</Typography>}>
-                    <Typography>Disable ascii art</Typography>
-                  </Tooltip>
+              <OptionSwitch
+                checked={Settings.DisableOverviewProgressBars}
+                onChange={(newValue) => (Settings.DisableOverviewProgressBars = newValue)}
+                text="Disable Overview Progress Bars"
+                tooltip={<>If this is set, the progress bars in the character overview will be hidden.</>}
+              />
+            </ListItem>
+            <ListItem>
+              <OptionSwitch
+                checked={Settings.EnableBashHotkeys}
+                onChange={(newValue) => (Settings.EnableBashHotkeys = newValue)}
+                text="Enable bash hotkeys"
+                tooltip={
+                  <>
+                    Improved Bash emulation mode. Setting this to 1 enables several new Terminal shortcuts and features
+                    that more closely resemble a real Bash-style shell. Note that when this mode is enabled, the default
+                    browser shortcuts are overriden by the new Bash shortcuts.
+                  </>
                 }
               />
             </ListItem>
             <ListItem>
-              <FormControlLabel
-                control={<Switch checked={disableTextEffects} onChange={handleDisableTextEffectsChange} />}
-                label={
-                  <Tooltip
-                    title={
-                      <Typography>
-                        If this is set, text effects will not be displayed. This can help if text is difficult to read
-                        in certain areas.
-                      </Typography>
-                    }
-                  >
-                    <Typography>Disable text effects</Typography>
-                  </Tooltip>
-                }
-              />
-            </ListItem>
-
-            <ListItem>
-              <FormControlLabel
-                control={<Switch checked={enableBashHotkeys} onChange={handleEnableBashHotkeysChange} />}
-                label={
-                  <Tooltip
-                    title={
-                      <Typography>
-                        Improved Bash emulation mode. Setting this to 1 enables several new Terminal shortcuts and
-                        features that more closely resemble a real Bash-style shell. Note that when this mode is
-                        enabled, the default browser shortcuts are overriden by the new Bash shortcuts.
-                      </Typography>
-                    }
-                  >
-                    <Typography>Enable bash hotkeys</Typography>
-                  </Tooltip>
+              <OptionSwitch
+                checked={Settings.UseIEC60027_2}
+                onChange={(newValue) => (Settings.UseIEC60027_2 = newValue)}
+                text="Use GiB instead of GB"
+                tooltip={
+                  <>
+                    If this is set all references to memory will use GiB instead of GB, in accordance with IEC 60027-2.
+                  </>
                 }
               />
             </ListItem>
             <ListItem>
-              <FormControlLabel
-                control={<Switch checked={useIEC60027_2} onChange={handleUseIEC60027_2Change} />}
-                label={
-                  <Tooltip title={<Typography>If this is set all references to memory will use GiB instead of GB, in accordance with IEC 60027-2.</Typography>}>
-                    <Typography>Use GiB instead of GB</Typography>
-                  </Tooltip>
+              <OptionSwitch
+                checked={Settings.ExcludeRunningScriptsFromSave}
+                onChange={(newValue) => (Settings.ExcludeRunningScriptsFromSave = newValue)}
+                text="Exclude Running Scripts from Save"
+                tooltip={
+                  <>
+                    If this is set, the save file will exclude all running scripts. This is only useful if your save is
+                    lagging a lot. You'll have to restart your script every time you launch the game.
+                  </>
                 }
               />
             </ListItem>
@@ -620,15 +497,11 @@ export function GameOptionsRoot(props: IProps): React.ReactElement {
             </ListItem>
 
             <ListItem>
-              <FormControlLabel
-                control={<Switch checked={saveGameOnFileSave} onChange={handleSaveGameOnFile} />}
-                label={
-                  <Tooltip
-                    title={<Typography>Save your game any time a file is saved in the script editor.</Typography>}
-                  >
-                    <Typography>Save game on file save</Typography>
-                  </Tooltip>
-                }
+              <OptionSwitch
+                checked={Settings.SaveGameOnFileSave}
+                onChange={(newValue) => (Settings.SaveGameOnFileSave = newValue)}
+                text="Save game on file save"
+                tooltip={<>Save your game any time a file is saved in the script editor.</>}
               />
             </ListItem>
 
@@ -686,21 +559,29 @@ export function GameOptionsRoot(props: IProps): React.ReactElement {
             </>
           )}
         </Grid>
-        <Grid item xs={12} sm={6}>
-          <Box>
-            <Button onClick={() => props.save()}>Save Game</Button>
-            <Button onClick={() => setDeleteOpen(true)}>Delete Game</Button>
+        <Box sx={{ display: "grid", width: "fit-content", height: "fit-content" }}>
+          <Box sx={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
+            <Button onClick={() => props.save()} startIcon={<SaveIcon />}>
+              Save Game
+            </Button>
+            <DeleteGameButton />
           </Box>
-          <Box>
+          <Box sx={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
             <Tooltip title={<Typography>Export your game to a text file.</Typography>}>
-              <Button onClick={() => props.export()}>
-                <DownloadIcon color="primary" />
+              <Button onClick={() => props.export()} startIcon={<DownloadIcon />}>
                 Export Game
               </Button>
             </Tooltip>
-            <Tooltip title={<Typography>Import your game from a text file.<br/>This will <strong>overwrite</strong> your current game. Back it up first!</Typography>}>
-              <Button onClick={startImport}>
-                <UploadIcon color="primary" />
+            <Tooltip
+              title={
+                <Typography>
+                  Import your game from a text file.
+                  <br />
+                  This will <strong>overwrite</strong> your current game. Back it up first!
+                </Typography>
+              }
+            >
+              <Button onClick={startImport} startIcon={<UploadIcon />}>
                 Import Game
                 <input ref={importInput} id="import-game-file-selector" type="file" hidden onChange={onImport} />
               </Button>
@@ -719,16 +600,18 @@ export function GameOptionsRoot(props: IProps): React.ReactElement {
                   The file you are attempting to import seems valid.
                   <br />
                   <br />
-                  {importData?.exportDate && (<>
-                    The export date of the save file is <strong>{importData?.exportDate.toString()}</strong>
-                    <br />
-                    <br />
-                  </>)}
+                  {importData?.exportDate && (
+                    <>
+                      The export date of the save file is <strong>{importData?.exportDate.toString()}</strong>
+                      <br />
+                      <br />
+                    </>
+                  )}
                 </>
               }
             />
           </Box>
-          <Box>
+          <Box sx={{ display: "grid" }}>
             <Tooltip
               title={
                 <Typography>
@@ -743,21 +626,10 @@ export function GameOptionsRoot(props: IProps): React.ReactElement {
               <Button onClick={() => props.forceKill()}>Force kill all active scripts</Button>
             </Tooltip>
           </Box>
-          <Box>
-            <Tooltip
-              title={
-                <Typography>
-                  Perform a soft reset. Resets everything as if you had just purchased an Augmentation.
-                </Typography>
-              }
-            >
-              <Button onClick={doSoftReset}>Soft Reset</Button>
-            </Tooltip>
-            <ConfirmationModal
-              open={softResetOpen}
-              onClose={() => setSoftResetOpen(false)}
-              onConfirm={props.softReset}
-              confirmationText={"This will perform the same action as installing Augmentations, are you sure?"}
+          <Box sx={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
+            <SoftResetButton
+              noConfirmation={Settings.SuppressBuyAugmentationConfirmation}
+              onTriggered={props.softReset}
             />
             <Tooltip
               title={
@@ -770,7 +642,7 @@ export function GameOptionsRoot(props: IProps): React.ReactElement {
               <Button onClick={() => setDiagnosticOpen(true)}>Diagnose files</Button>
             </Tooltip>
           </Box>
-          <Box>
+          <Box sx={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
             <Button onClick={() => setThemeEditorOpen(true)}>Theme editor</Button>
             <Button onClick={() => setStyleEditorOpen(true)}>Style editor</Button>
           </Box>
@@ -794,20 +666,9 @@ export function GameOptionsRoot(props: IProps): React.ReactElement {
               <Typography>Incremental game plaza</Typography>
             </Link>
           </Box>
-        </Grid>
+        </Box>
       </Grid>
       <FileDiagnosticModal open={diagnosticOpen} onClose={() => setDiagnosticOpen(false)} />
-      <ConfirmationModal
-        onConfirm={() => {
-          setDeleteOpen(false);
-          deleteGame()
-            .then(() => setTimeout(() => location.reload(), 1000))
-            .catch((r) => console.error(`Could not delete game: ${r}`));
-        }}
-        open={deleteGameOpen}
-        onClose={() => setDeleteOpen(false)}
-        confirmationText={"Really delete your game? (It's permanent!)"}
-      />
       <ThemeEditorModal open={themeEditorOpen} onClose={() => setThemeEditorOpen(false)} />
       <StyleEditorModal open={styleEditorOpen} onClose={() => setStyleEditorOpen(false)} />
     </div>

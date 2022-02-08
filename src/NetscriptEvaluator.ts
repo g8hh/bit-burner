@@ -3,19 +3,20 @@ import { GetServer } from "./Server/AllServers";
 import { WorkerScript } from "./Netscript/WorkerScript";
 
 export function netscriptDelay(time: number, workerScript: WorkerScript): Promise<void> {
-  return new Promise(function (resolve) {
+  if (workerScript.delayReject) workerScript.delayReject();
+  return new Promise(function (resolve, reject) {
     workerScript.delay = window.setTimeout(() => {
       workerScript.delay = null;
-      resolve();
+      workerScript.delayReject = undefined;
+
+      if (workerScript.env.stopFlag) reject(workerScript);
+      else resolve();
     }, time);
-    workerScript.delayResolve = resolve;
+    workerScript.delayReject = reject;
   });
 }
 
 export function makeRuntimeRejectMsg(workerScript: WorkerScript, msg: string): string {
-  if ((msg as any) instanceof WorkerScript) {
-    console.error("HERE");
-  }
   const server = GetServer(workerScript.hostname);
   if (server == null) {
     throw new Error(`WorkerScript constructed with invalid server ip: ${workerScript.hostname}`);

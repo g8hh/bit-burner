@@ -15,6 +15,7 @@ import { hasAugmentationPrereqs } from "../FactionHelpers";
 import { use } from "../../ui/Context";
 import { Reputation } from "../../ui/React/Reputation";
 import { Favor } from "../../ui/React/Favor";
+import { numeralWrapper } from "../../ui/numeralFormat";
 
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -43,7 +44,7 @@ export function AugmentationsPage(props: IProps): React.ReactElement {
   function getAugs(): string[] {
     if (isPlayersGang) {
       const augs: string[] = [];
-      for (const augName in Augmentations) {
+      for (const augName of Object.keys(Augmentations)) {
         if (augName === AugmentationNames.NeuroFluxGovernor) continue;
         if (augName === AugmentationNames.TheRedPill && player.bitNodeN !== 2) continue;
         const aug = Augmentations[augName];
@@ -203,7 +204,7 @@ export function AugmentationsPage(props: IProps): React.ReactElement {
             </Typography>
           }
         >
-          <Typography>Price multiplier: x {mult.toFixed(3)}</Typography>
+          <Typography>Price multiplier: x {numeralWrapper.formatMultiplier(mult)}</Typography>
         </Tooltip>
       </Box>
       <Button onClick={() => switchSortOrder(PurchaseAugmentationsOrderSetting.Cost)}>Sort by Cost</Button>
