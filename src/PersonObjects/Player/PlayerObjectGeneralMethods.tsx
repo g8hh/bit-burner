@@ -729,6 +729,7 @@ export function finishWork(this: IPlayer, cancelled: boolean, sing = false): str
   }
 
   this.isWorking = false;
+  this.focus = false;
 
   this.resetWorkStatus();
   if (sing) {
@@ -946,11 +947,6 @@ export function workForFaction(this: IPlayer, numCycles: number): boolean {
     default:
       break;
   }
-  let favorMult = 1 + faction.favor / 100;
-  if (isNaN(favorMult)) {
-    favorMult = 1;
-  }
-  this.workRepGainRate *= favorMult;
   this.workRepGainRate *= BitNodeMultipliers.FactionWorkRepGain;
 
   //Cap the number of cycles being processed to whatever would put you at limit (20 hours)
@@ -1257,14 +1253,12 @@ export function getWorkRepGain(this: IPlayer): number {
 /* Creating a Program */
 export function startCreateProgramWork(
   this: IPlayer,
-  router: IRouter,
   programName: string,
   time: number,
   reqLevel: number,
 ): void {
   this.resetWorkStatus();
   this.isWorking = true;
-  this.focus = true;
   this.workType = CONSTANTS.WorkTypeCreateProgram;
 
   //Time needed to complete work affected by hacking skill (linearly based on
@@ -1293,7 +1287,6 @@ export function startCreateProgramWork(
   }
 
   this.createProgramName = programName;
-  router.toWork();
 }
 
 export function createProgramWork(this: IPlayer, numCycles: number): boolean {
@@ -1341,10 +1334,9 @@ export function finishCreateProgramWork(this: IPlayer, cancelled: boolean): stri
   return "You've finished creating " + programName + "! The new program can be found on your home computer.";
 }
 /* Studying/Taking Classes */
-export function startClass(this: IPlayer, router: IRouter, costMult: number, expMult: number, className: string): void {
+export function startClass(this: IPlayer, costMult: number, expMult: number, className: string): void {
   this.resetWorkStatus();
   this.isWorking = true;
-  this.focus = true;
   this.workType = CONSTANTS.WorkTypeStudyClass;
   this.workCostMult = costMult;
   this.workExpMult = expMult;
@@ -1357,7 +1349,6 @@ export function startClass(this: IPlayer, router: IRouter, costMult: number, exp
   this.workDexExpGainRate = earnings.workDexExpGainRate;
   this.workAgiExpGainRate = earnings.workAgiExpGainRate;
   this.workChaExpGainRate = earnings.workChaExpGainRate;
-  router.toWork();
 }
 
 export function takeClass(this: IPlayer, numCycles: number): boolean {
@@ -1489,7 +1480,7 @@ export function finishCrime(this: IPlayer, cancelled: boolean): string {
     if (determineCrimeSuccess(this, this.crimeType)) {
       //Handle Karma and crime statistics
       let crime = null;
-      for (const i in Crimes) {
+      for (const i of Object.keys(Crimes)) {
         if (Crimes[i].type == this.crimeType) {
           crime = Crimes[i];
           break;
@@ -1821,7 +1812,7 @@ export function getNextCompanyPosition(
 }
 
 export function quitJob(this: IPlayer, company: string): void {
-  if (this.isWorking == true && this.workType == "Working for Company" && this.companyName == company) {
+  if (this.isWorking == true && this.workType.includes("Working for Company") && this.companyName == company) {
     this.isWorking = false;
     this.companyName = "";
   }
@@ -2561,15 +2552,15 @@ export function setBitNodeNumber(this: IPlayer, n: number): void {
 }
 
 export function queueAugmentation(this: IPlayer, name: string): void {
-  for (const i in this.queuedAugmentations) {
-    if (this.queuedAugmentations[i].name == name) {
+  for (const aug of this.queuedAugmentations) {
+    if (aug.name == name) {
       console.warn(`tried to queue ${name} twice, this may be a bug`);
       return;
     }
   }
 
-  for (const i in this.augmentations) {
-    if (this.augmentations[i].name == name) {
+  for (const aug of this.augmentations) {
+    if (aug.name == name) {
       console.warn(`tried to queue ${name} twice, this may be a bug`);
       return;
     }

@@ -107,6 +107,7 @@ export async function main(ns) {
 |  [getServerRequiredHackingLevel(host)](./bitburner.ns.getserverrequiredhackinglevel.md) | Returns the required hacking level of the target server. |
 |  [getServerSecurityLevel(host)](./bitburner.ns.getserversecuritylevel.md) | Get server security level. |
 |  [getServerUsedRam(host)](./bitburner.ns.getserverusedram.md) | Get the used RAM on a server. |
+|  [getSharePower()](./bitburner.ns.getsharepower.md) | Calculate your share power. Based on all the active share calls. |
 |  [getTimeSinceLastAug()](./bitburner.ns.gettimesincelastaug.md) | Returns the amount of time in milliseconds that have passed since you last installed Augmentations. |
 |  [getWeakenTime(host)](./bitburner.ns.getweakentime.md) | Get the execution time of a weaken() call. |
 |  [grow(host, opts)](./bitburner.ns.grow.md) | Spoof money in a servers bank account, increasing the amount available. |
@@ -125,6 +126,7 @@ export async function main(ns) {
 |  [kill(script, host, args)](./bitburner.ns.kill_1.md) |  |
 |  [killall(host)](./bitburner.ns.killall.md) | Terminate all scripts on a server. |
 |  [ls(host, grep)](./bitburner.ns.ls.md) | List files on a server. |
+|  [mv(host, source, destination)](./bitburner.ns.mv.md) | Move a file on the target server. |
 |  [nFormat(n, format)](./bitburner.ns.nformat.md) | Format a number |
 |  [nuke(host)](./bitburner.ns.nuke.md) | Runs NUKE.exe on a server. |
 |  [peek(port)](./bitburner.ns.peek.md) | Get a copy of the data from a port without popping it. |
@@ -138,10 +140,12 @@ export async function main(ns) {
 |  [rm(name, host)](./bitburner.ns.rm.md) | Delete a file. |
 |  [run(script, numThreads, args)](./bitburner.ns.run.md) | Start another script on the current server. |
 |  [scan(host)](./bitburner.ns.scan.md) | Get the list of servers connected to a server. |
-|  [scp(files, source, destination)](./bitburner.ns.scp.md) | Copy file between servers. |
+|  [scp(files, destination)](./bitburner.ns.scp.md) | Copy file between servers. |
+|  [scp(files, source, destination)](./bitburner.ns.scp_1.md) |  |
 |  [scriptKill(script, host)](./bitburner.ns.scriptkill.md) | Kill all scripts with a filename. |
 |  [scriptRunning(script, host)](./bitburner.ns.scriptrunning.md) | Check if any script with a filename is running. |
 |  [serverExists(host)](./bitburner.ns.serverexists.md) | Returns a boolean denoting whether or not the specified server exists. |
+|  [share()](./bitburner.ns.share.md) | Share your computer with your factions. |
 |  [sleep(millis)](./bitburner.ns.sleep.md) | Suspends the script for n milliseconds. |
 |  [spawn(script, numThreads, args)](./bitburner.ns.spawn.md) | Terminate current script and start another in 10s. |
 |  [sprintf(format, args)](./bitburner.ns.sprintf.md) | Format a string. |

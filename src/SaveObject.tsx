@@ -43,10 +43,10 @@ class BitburnerSaveObject {
   StaneksGiftSave = "";
   SaveTimestamp = "";
 
-  getSaveString(): string {
+  getSaveString(excludeRunningScripts = false): string {
     this.PlayerSave = JSON.stringify(Player);
 
-    this.AllServersSave = saveAllServers();
+    this.AllServersSave = saveAllServers(excludeRunningScripts);
     this.CompaniesSave = JSON.stringify(Companies);
     this.FactionsSave = JSON.stringify(Factions);
     this.AliasesSave = JSON.stringify(Aliases);
@@ -68,7 +68,7 @@ class BitburnerSaveObject {
   }
 
   saveGame(emitToastEvent = true): void {
-    const saveString = this.getSaveString();
+    const saveString = this.getSaveString(Settings.ExcludeRunningScriptsFromSave);
 
     save(saveString)
       .then(() => {
@@ -80,7 +80,7 @@ class BitburnerSaveObject {
   }
 
   exportGame(): void {
-    const saveString = this.getSaveString();
+    const saveString = this.getSaveString(Settings.ExcludeRunningScriptsFromSave);
 
     // Save file name is based on current timestamp and BitNode
     const epochTime = Math.round(Date.now() / 1000);
@@ -115,7 +115,7 @@ function evaluateVersionCompatibility(ver: string | number): void {
       }
 
       // The "companyName" property of all Companies is renamed to "name"
-      for (const companyName in Companies) {
+      for (const companyName of Object.keys(Companies)) {
         const company: any = Companies[companyName];
         if (company.name == 0 && company.companyName != null) {
           company.name = company.companyName;
@@ -260,6 +260,7 @@ function evaluateVersionCompatibility(ver: string | number): void {
 }
 
 function loadGame(saveString: string): boolean {
+  createScamUpdateText();
   if (!saveString) return false;
   saveString = decodeURIComponent(escape(atob(saveString)));
 
@@ -360,6 +361,14 @@ function loadGame(saveString: string): boolean {
     createNewUpdateText();
   }
   return true;
+}
+
+function createScamUpdateText(): void {
+  if (navigator.userAgent.indexOf("wv") !== -1 && navigator.userAgent.indexOf("Chrome/") !== -1) {
+    setInterval(() => {
+      dialogBoxCreate("SCAM ALERT. This app is not official and you should uninstall it.");
+    }, 1000);
+  }
 }
 
 function createNewUpdateText(): void {

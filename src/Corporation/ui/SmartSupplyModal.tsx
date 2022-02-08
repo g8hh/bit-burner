@@ -16,11 +16,12 @@ interface ILeftoverProps {
 }
 
 function Leftover(props: ILeftoverProps): React.ReactElement {
-  const [checked, setChecked] = useState(!!props.warehouse.smartSupplyUseLeftovers[props.matName]);
+  const [checked, setChecked] = useState(!!props.warehouse.smartSupplyUseLeftovers[props.matName.replace(/ /g, "")]);
 
   function onChange(event: React.ChangeEvent<HTMLInputElement>): void {
     try {
-      const material = props.warehouse.materials[props.matName];
+      const matName = props.matName.replace(/ /g, "");
+      const material = props.warehouse.materials[matName];
       SetSmartSupplyUseLeftovers(props.warehouse, material, event.target.checked);
     } catch (err) {
       dialogBoxCreate(err + "");
@@ -32,7 +33,7 @@ function Leftover(props: ILeftoverProps): React.ReactElement {
     <>
       <FormControlLabel
         control={<Switch checked={checked} onChange={onChange} />}
-        label={<Typography>{props.warehouse.materials[props.matName].name}</Typography>}
+        label={<Typography>{props.warehouse.materials[props.matName.replace(/ /g, "")].name}</Typography>}
       />
       <br />
     </>
@@ -60,7 +61,7 @@ export function SmartSupplyModal(props: IProps): React.ReactElement {
 
   // Create React components for materials
   const mats = [];
-  for (const matName in props.warehouse.materials) {
+  for (const matName of Object.keys(props.warehouse.materials)) {
     if (!(props.warehouse.materials[matName] instanceof Material)) continue;
     if (!Object.keys(division.reqMats).includes(matName)) continue;
     mats.push(<Leftover key={matName} warehouse={props.warehouse} matName={matName} />);

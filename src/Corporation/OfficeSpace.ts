@@ -103,7 +103,7 @@ export class OfficeSpace {
 
   calculateEmployeeProductivity(corporation: ICorporation, industry: IIndustry): void {
     //Reset
-    for (const name in this.employeeProd) {
+    for (const name of Object.keys(this.employeeProd)) {
       this.employeeProd[name] = 0;
     }
 
@@ -171,6 +171,40 @@ export class OfficeSpace {
       }
     }
     return false;
+  }
+
+  setEmployeeToJob(job: string, amount: number): boolean {
+    let unassignedCount = 0;
+    let jobCount = 0;
+    for (let i = 0; i < this.employees.length; ++i) {
+      if (this.employees[i].pos === EmployeePositions.Unassigned) {
+        unassignedCount++;
+      } else if (this.employees[i].pos === job) {
+        jobCount++;
+      }
+    }
+
+    if ((jobCount + unassignedCount) < amount) return false;
+
+    for (let i = 0; i < this.employees.length; ++i) {
+      if (this.employees[i].pos === EmployeePositions.Unassigned) {
+        if (jobCount <= amount) {
+          this.employees[i].pos = job;
+          jobCount++;
+          unassignedCount--;
+        }
+        if (jobCount === amount) break;
+      } else if (this.employees[i].pos === job) {
+        if (jobCount >= amount) {
+          this.employees[i].pos = EmployeePositions.Unassigned;
+          jobCount--;
+          unassignedCount++;
+        }
+        if (jobCount === amount) break;
+      }
+    }
+    if (jobCount !== amount) return false;
+    return true;
   }
 
   toJSON(): any {

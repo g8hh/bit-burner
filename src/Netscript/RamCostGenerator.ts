@@ -106,6 +106,8 @@ export const RamCosts: IMap<any> = {
   hackAnalyzeSecurity: RamCostConstants.ScriptHackAnalyzeRamCost,
   hackAnalyzeChance: RamCostConstants.ScriptHackAnalyzeRamCost,
   sleep: 0,
+  share: 2.4,
+  getSharePower: 0.2,
   grow: RamCostConstants.ScriptGrowRamCost,
   growthAnalyze: RamCostConstants.ScriptGrowthAnalyzeRamCost,
   growthAnalyzeSecurity: RamCostConstants.ScriptGrowthAnalyzeRamCost,
@@ -207,6 +209,7 @@ export const RamCosts: IMap<any> = {
   wget: 0,
   getFavorToDonate: RamCostConstants.ScriptGetFavorToDonate,
   getPlayer: RamCostConstants.ScriptSingularityFn1RamCost / 4,
+  mv: 0,
   getOwnedSourceFiles: RamCostConstants.ScriptGetOwnedSourceFiles,
 
   // Singularity Functions
@@ -364,6 +367,10 @@ export const RamCosts: IMap<any> = {
     getTheme: 0,
     setTheme: 0,
     resetTheme: 0,
+    getStyles: 0,
+    setStyles: 0,
+    resetStyles: 0,
+    getGameInfo: 0,
   },
 
   heart: {
