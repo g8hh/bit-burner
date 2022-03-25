@@ -42,6 +42,8 @@ import { Terminal } from "../Terminal";
 import { calculateHackingTime } from "../Hacking";
 import { Server } from "../Server/Server";
 import { netscriptCanHack } from "../Hacking/netscriptCanHack";
+import { FactionNames } from "../Faction/data/FactionNames";
+import { FactionInfos } from "../Faction/FactionInfo";
 
 export function NetscriptSingularity(
   player: IPlayer,
@@ -282,7 +284,7 @@ export function NetscriptSingularity(
           if (player.city != CityName.Aevum) {
             workerScript.log(
               "universityCourse",
-              () => "You cannot study at 'Summit University' because you are not in 'Aevum'.",
+              () => `You cannot study at 'Summit University' because you are not in '${CityName.Aevum}'.`,
             );
             return false;
           }
@@ -294,7 +296,7 @@ export function NetscriptSingularity(
           if (player.city != CityName.Sector12) {
             workerScript.log(
               "universityCourse",
-              () => "You cannot study at 'Rothman University' because you are not in 'Sector-12'.",
+              () => `You cannot study at 'Rothman University' because you are not in '${CityName.Sector12}'.`,
             );
             return false;
           }
@@ -306,7 +308,7 @@ export function NetscriptSingularity(
           if (player.city != CityName.Volhaven) {
             workerScript.log(
               "universityCourse",
-              () => "You cannot study at 'ZB Institute of Technology' because you are not in 'Volhaven'.",
+              () => `You cannot study at 'ZB Institute of Technology' because you are not in '${CityName.Volhaven}'.`,
             );
             return false;
           }
@@ -369,7 +371,8 @@ export function NetscriptSingularity(
           if (player.city != CityName.Aevum) {
             workerScript.log(
               "gymWorkout",
-              () => "You cannot workout at 'Crush Fitness' because you are not in 'Aevum'.",
+              () =>
+                `You cannot workout at '${LocationName.AevumCrushFitnessGym}' because you are not in '${CityName.Aevum}'.`,
             );
             return false;
           }
@@ -381,7 +384,8 @@ export function NetscriptSingularity(
           if (player.city != CityName.Aevum) {
             workerScript.log(
               "gymWorkout",
-              () => "You cannot workout at 'Snap Fitness' because you are not in 'Aevum'.",
+              () =>
+                `You cannot workout at '${LocationName.AevumSnapFitnessGym}' because you are not in '${CityName.Aevum}'.`,
             );
             return false;
           }
@@ -393,7 +397,8 @@ export function NetscriptSingularity(
           if (player.city != CityName.Sector12) {
             workerScript.log(
               "gymWorkout",
-              () => "You cannot workout at 'Iron Gym' because you are not in 'Sector-12'.",
+              () =>
+                `You cannot workout at '${LocationName.Sector12IronGym}' because you are not in '${CityName.Sector12}'.`,
             );
             return false;
           }
@@ -405,7 +410,8 @@ export function NetscriptSingularity(
           if (player.city != CityName.Sector12) {
             workerScript.log(
               "gymWorkout",
-              () => "You cannot workout at 'Powerhouse Gym' because you are not in 'Sector-12'.",
+              () =>
+                `You cannot workout at '${LocationName.Sector12PowerhouseGym}' because you are not in '${CityName.Sector12}'.`,
             );
             return false;
           }
@@ -417,7 +423,8 @@ export function NetscriptSingularity(
           if (player.city != CityName.Volhaven) {
             workerScript.log(
               "gymWorkout",
-              () => "You cannot workout at 'Millenium Fitness Gym' because you are not in 'Volhaven'.",
+              () =>
+                `You cannot workout at '${LocationName.VolhavenMilleniumFitnessGym}' because you are not in '${CityName.Volhaven}'.`,
             );
             return false;
           }
@@ -475,7 +482,7 @@ export function NetscriptSingularity(
         case CityName.Volhaven:
           if (player.money < CONSTANTS.TravelCost) {
             workerScript.log("travelToCity", () => "Not enough money to travel.");
-            return false
+            return false;
           }
           player.loseMoney(CONSTANTS.TravelCost, "other");
           player.city = cityname;
@@ -1032,93 +1039,12 @@ export function NetscriptSingularity(
 
       const fac = Factions[name];
       // Arrays listing factions that allow each time of work
-      const hackAvailable = [
-        "Illuminati",
-        "Daedalus",
-        "The Covenant",
-        "ECorp",
-        "MegaCorp",
-        "Bachman & Associates",
-        "Blade Industries",
-        "NWO",
-        "Clarke Incorporated",
-        "OmniTek Incorporated",
-        "Four Sigma",
-        "KuaiGong International",
-        "Fulcrum Secret Technologies",
-        "BitRunners",
-        "The Black Hand",
-        "NiteSec",
-        "Chongqing",
-        "Sector-12",
-        "New Tokyo",
-        "Aevum",
-        "Ishima",
-        "Volhaven",
-        "Speakers for the Dead",
-        "The Dark Army",
-        "The Syndicate",
-        "Silhouette",
-        "Netburners",
-        "Tian Di Hui",
-        "CyberSec",
-      ];
-      const fdWkAvailable = [
-        "Illuminati",
-        "Daedalus",
-        "The Covenant",
-        "ECorp",
-        "MegaCorp",
-        "Bachman & Associates",
-        "Blade Industries",
-        "NWO",
-        "Clarke Incorporated",
-        "OmniTek Incorporated",
-        "Four Sigma",
-        "KuaiGong International",
-        "The Black Hand",
-        "Chongqing",
-        "Sector-12",
-        "New Tokyo",
-        "Aevum",
-        "Ishima",
-        "Volhaven",
-        "Speakers for the Dead",
-        "The Dark Army",
-        "The Syndicate",
-        "Silhouette",
-        "Tetrads",
-        "Slum Snakes",
-      ];
-      const scWkAvailable = [
-        "ECorp",
-        "MegaCorp",
-        "Bachman & Associates",
-        "Blade Industries",
-        "NWO",
-        "Clarke Incorporated",
-        "OmniTek Incorporated",
-        "Four Sigma",
-        "KuaiGong International",
-        "Fulcrum Secret Technologies",
-        "Chongqing",
-        "Sector-12",
-        "New Tokyo",
-        "Aevum",
-        "Ishima",
-        "Volhaven",
-        "Speakers for the Dead",
-        "The Syndicate",
-        "Tetrads",
-        "Slum Snakes",
-        "Tian Di Hui",
-      ];
 
       switch (type.toLowerCase()) {
         case "hacking":
         case "hacking contracts":
         case "hackingcontracts":
-          if (!hackAvailable.includes(fac.name)) {
+          if (!FactionInfos[fac.name].offerHackingWork) {
             workerScript.log("workForFaction", () => `Faction '${fac.name}' do not need help with hacking contracts.`);
             return false;
           }
@@ -1135,7 +1061,7 @@ export function NetscriptSingularity(
         case "field":
         case "fieldwork":
         case "field work":
-          if (!fdWkAvailable.includes(fac.name)) {
+          if (!FactionInfos[fac.name].offerFieldWork) {
             workerScript.log("workForFaction", () => `Faction '${fac.name}' do not need help with field missions.`);
             return false;
           }
@@ -1152,7 +1078,7 @@ export function NetscriptSingularity(
         case "security":
         case "securitywork":
         case "security work":
-          if (!scWkAvailable.includes(fac.name)) {
+          if (!FactionInfos[fac.name].offerSecurityWork) {
             workerScript.log("workForFaction", () => `Faction '${fac.name}' do not need help with security work.`);
             return false;
           }
@@ -1323,6 +1249,50 @@ export function NetscriptSingularity(
       }
 
       return Object.assign({}, crime);
+    },
+    getDarkwebPrograms: function (): string[] {
+      helper.updateDynamicRam("getDarkwebPrograms", getRamCost(player, "getDarkwebPrograms"));
+      helper.checkSingularityAccess("getDarkwebPrograms");
+
+      // If we don't have Tor, log it and return [] (empty list)
+      if (!player.hasTorRouter()) {
+        workerScript.log("getDarkwebPrograms", () => "You do not have the TOR router.");
+        return [];
+      }
+      return Object.values(DarkWebItems).map((p) => p.program);
+    },
+    getDarkwebProgramCost: function (programName: any): any {
+      helper.updateDynamicRam("getDarkwebProgramCost", getRamCost(player, "getDarkwebProgramCost"));
+      helper.checkSingularityAccess("getDarkwebProgramCost");
+
+      // If we don't have Tor, log it and return -1
+      if (!player.hasTorRouter()) {
+        workerScript.log("getDarkwebProgramCost", () => "You do not have the TOR router.");
+        // returning -1 rather than throwing an error to be consistent with purchaseProgram
+        // which returns false if tor has
+        return -1;
+      }
+
+      programName = programName.toLowerCase();
+      const item = Object.values(DarkWebItems).find((i) => i.program.toLowerCase() === programName);
+
+      // If the program doesn't exist, throw an error. The reasoning here is that the 99% case is that
+      // the player will be using this in automation scripts, and if they're asking for a program that
+      // doesn't exist, it's the first time they've run the script. So throw an error to let them know
+      // that they need to fix it.
+      if (item == null) {
+        throw helper.makeRuntimeErrorMsg(
+          "getDarkwebProgramCost",
+          `No such exploit ('${programName}') found on the darkweb! ` +
+            `\nThis function is not case-sensitive. Did you perhaps forget .exe at the end?`,
+        );
+      }
+
+      if (player.hasProgram(item.program)) {
+        workerScript.log("getDarkwebProgramCost", () => `You already have the '${item.program}' program`);
+        return 0;
+      }
+      return item.price;
     },
   };
 }
