@@ -291,7 +291,7 @@ export function NetscriptCorporation(
       lastCycleExpenses: division.lastCycleExpenses,
       thisCycleRevenue: division.thisCycleRevenue,
       thisCycleExpenses: division.thisCycleExpenses,
-      upgrades: division.upgrades,
+      upgrades: division.upgrades.slice(),
       cities: cities,
       products: division.products === undefined ? [] : Object.keys(division.products),
     };
@@ -414,8 +414,8 @@ export function NetscriptCorporation(
       const cityName = helper.string("sellProduct", "cityName", acityName);
       const enabled = helper.boolean(aenabled);
       const warehouse = getWarehouse(divisionName, cityName);
-      if (!hasUnlockUpgrade("SmartSupply"))
-        throw helper.makeRuntimeErrorMsg(`corporation.setSmartSupply`, `You have not purchased the SmartSupply upgrade!`);
+      if (!hasUnlockUpgrade("Smart Supply"))
+        throw helper.makeRuntimeErrorMsg(`corporation.setSmartSupply`, `You have not purchased the Smart Supply upgrade!`);
       SetSmartSupply(warehouse, enabled);
     },
     setSmartSupplyUseLeftovers: function (adivisionName: any, acityName: any, amaterialName: any, aenabled: any): void {
@@ -426,8 +426,8 @@ export function NetscriptCorporation(
       const enabled = helper.boolean(aenabled);
       const warehouse = getWarehouse(divisionName, cityName);
       const material = getMaterial(divisionName, cityName, materialName);
-      if (!hasUnlockUpgrade("SmartSupply"))
-        throw helper.makeRuntimeErrorMsg(`corporation.setSmartSupply`, `You have not purchased the SmartSupply upgrade!`);
+      if (!hasUnlockUpgrade("Smart Supply"))
+        throw helper.makeRuntimeErrorMsg(`corporation.setSmartSupply`, `You have not purchased the Smart Supply upgrade!`);
       SetSmartSupplyUseLeftovers(warehouse, material, enabled);
     },
     buyMaterial: function (adivisionName: any, acityName: any, amaterialName: any, aamt: any): void {
@@ -846,5 +846,9 @@ export function NetscriptCorporation(
       const amountShares = helper.number("bribe", "amountShares", aamountShares);
       return bribe(factionName, amountCash, amountShares);
     },
+    getBonusTime: function (): number {
+      checkAccess("getBonusTime");
+      return Math.round(getCorporation().storedCycles / 5) * 1000;
+    }
   };
 }

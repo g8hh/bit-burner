@@ -48,6 +48,7 @@ import { calculateAchievements } from "./Achievements/Achievements";
 
 import React from "react";
 import { setupUncaughtPromiseHandler } from "./UncaughtPromiseHandler";
+import { Typography } from "@mui/material";
 
 const Engine: {
   _lastUpdate: number;
@@ -401,9 +402,22 @@ const Engine: {
         () =>
           AlertEvents.emit(
             <>
-              Offline for {timeOfflineString}. While you were offline, your scripts generated{" "}
-              <Money money={offlineHackingIncome} />, your Hacknet Nodes generated {hacknetProdInfo} and you gained{" "}
-              <Reputation reputation={offlineReputation} /> reputation divided amongst your factions.
+              <Typography>Offline for {timeOfflineString}. While you were offline:</Typography>
+              <ul>
+                <li>
+                  <Typography>
+                    Your scripts generated <Money money={offlineHackingIncome} />
+                  </Typography>
+                </li>
+                <li>
+                  <Typography>Your Hacknet Nodes generated {hacknetProdInfo}</Typography>
+                </li>
+                <li>
+                  <Typography>
+                    You gained <Reputation reputation={offlineReputation} /> reputation divided amongst your factions
+                  </Typography>
+                </li>
+              </ul>
             </>,
           ),
         250,
