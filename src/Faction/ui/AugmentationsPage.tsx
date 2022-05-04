@@ -10,7 +10,7 @@ import { AugmentationNames } from "../../Augmentation/data/AugmentationNames";
 import { Faction } from "../Faction";
 import { PurchaseAugmentationsOrderSetting } from "../../Settings/SettingEnums";
 import { Settings } from "../../Settings/Settings";
-import { hasAugmentationPrereqs } from "../FactionHelpers";
+import { hasAugmentationPrereqs, getFactionAugmentationsFiltered } from "../FactionHelpers";
 
 import { use } from "../../ui/Context";
 import { Reputation } from "../../ui/React/Reputation";
@@ -23,7 +23,8 @@ import Typography from "@mui/material/Typography";
 import Tooltip from "@mui/material/Tooltip";
 import TableBody from "@mui/material/TableBody";
 import Table from "@mui/material/Table";
-import { CONSTANTS } from "../../Constants";
+import { getGenericAugmentationPriceMultiplier } from "../../Augmentation/AugmentationHelpers";
+import { FactionNames } from "../data/FactionNames";
 
 type IProps = {
   faction: Faction;
@@ -32,8 +33,6 @@ type IProps = {
 
 export function AugmentationsPage(props: IProps): React.ReactElement {
   const player = use.Player();
-  // Flag for whether the player has a gang with this faction
-  const isPlayersGang = player.inGang() && player.getGangName() === props.faction.name;
 
   const setRerender = useState(false)[1];
 
@@ -42,21 +41,7 @@ export function AugmentationsPage(props: IProps): React.ReactElement {
   }
 
   function getAugs(): string[] {
-    if (isPlayersGang) {
-      const augs: string[] = [];
-      for (const augName of Object.keys(Augmentations)) {
-        if (augName === AugmentationNames.NeuroFluxGovernor) continue;
-        if (augName === AugmentationNames.TheRedPill && player.bitNodeN !== 2) continue;
-        const aug = Augmentations[augName];
-        if (!aug.isSpecial) {
-          augs.push(augName);
-        }
-      }
-
-      return augs;
-    } else {
-      return props.faction.augmentations.slice();
-    }
+    return getFactionAugmentationsFiltered(player, props.faction);
   }
 
   function getAugsSorted(): string[] {
@@ -94,10 +79,10 @@ export function AugmentationsPage(props: IProps): React.ReactElement {
     const augs = getAugs();
     function canBuy(augName: string): boolean {
       const aug = Augmentations[augName];
-      const repCost = aug.baseRepRequirement * props.faction.getInfo().augmentationRepRequirementMult;
+      const repCost = aug.baseRepRequirement;
       const hasReq = props.faction.playerReputation >= repCost;
       const hasRep = hasAugmentationPrereqs(aug);
-      const hasCost = aug.baseCost !== 0 && player.money > aug.baseCost * props.faction.getInfo().augmentationPriceMult;
+      const hasCost = aug.baseCost !== 0 && player.money > aug.baseCost;
       return hasCost && hasReq && hasRep;
     }
     const buy = augs.filter(canBuy).sort((augName1, augName2) => {
@@ -180,10 +165,15 @@ export function AugmentationsPage(props: IProps): React.ReactElement {
       </>
     );
   }
-  const mult = Math.pow(
-    CONSTANTS.MultipleAugMultiplier * [1, 0.96, 0.94, 0.93][player.sourceFileLvl(11)],
-    player.queuedAugmentations.length,
-  );
+  const multiplierComponent =
+    props.faction.name !== FactionNames.ShadowsOfAnarchy ? (
+      <Typography>
+        Price multiplier: x {numeralWrapper.formatMultiplier(getGenericAugmentationPriceMultiplier())}
+      </Typography>
+    ) : (
+      <></>
+    );
+
   return (
     <>
       <Button onClick={props.routeToMainPage}>Back</Button>
@@ -204,7 +194,7 @@ export function AugmentationsPage(props: IProps): React.ReactElement {
             </Typography>
           }
         >
-          <Typography>Price multiplier: x {numeralWrapper.formatMultiplier(mult)}</Typography>
+          {multiplierComponent}
         </Tooltip>
       </Box>
       <Button onClick={() => switchSortOrder(PurchaseAugmentationsOrderSetting.Cost)}>Sort by Cost</Button>
