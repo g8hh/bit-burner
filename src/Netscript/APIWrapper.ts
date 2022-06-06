@@ -9,15 +9,16 @@ import { Settings } from "../Settings/Settings";
 import { CONSTANTS } from "../Constants";
 
 type ExternalFunction = (...args: any[]) => any;
-type ExternalAPI = {
+export type ExternalAPI = {
   [string: string]: ExternalAPI | ExternalFunction;
 };
 
 type InternalFunction<F extends (...args: unknown[]) => unknown> = (ctx: NetscriptContext) => F;
+
 export type InternalAPI<API> = {
   [Property in keyof API]: API[Property] extends ExternalFunction
     ? InternalFunction<API[Property]>
-    : API[Property] extends ExternalAPI
+    : API[Property] extends object
     ? InternalAPI<API[Property]>
     : never;
 };
@@ -42,9 +43,14 @@ type NetscriptHelpers = {
   number: (funcName: string, argName: string, v: unknown) => number;
   city: (funcName: string, argName: string, v: unknown) => CityName;
   boolean: (v: unknown) => boolean;
-  getServer: (hostname: string, callingFnName: string) => BaseServer;
+  getServer: (hostname: string, ctx: NetscriptContext) => BaseServer;
   checkSingularityAccess: (func: string) => void;
-  hack: (hostname: any, manual: any, { threads: requestedThreads, stock }?: any) => Promise<number>;
+  hack: (
+    ctx: NetscriptContext,
+    hostname: any,
+    manual: any,
+    { threads: requestedThreads, stock }?: any,
+  ) => Promise<number>;
   getValidPort: (funcName: string, port: any) => IPort;
 };
 
@@ -87,20 +93,14 @@ function wrapFunction(
       number: (argName: string, v: unknown) => helpers.number(functionPath, argName, v),
       city: (argName: string, v: unknown) => helpers.city(functionPath, argName, v),
       boolean: helpers.boolean,
-      getServer: (hostname: string) => helpers.getServer(hostname, functionPath),
+      getServer: (hostname: string) => helpers.getServer(hostname, ctx),
       checkSingularityAccess: () => helpers.checkSingularityAccess(functionName),
       hack: helpers.hack,
       getValidPort: (port: any) => helpers.getValidPort(functionPath, port),
     },
   };
-  const safetyEnabled = Settings.InfinityLoopSafety;
   function wrappedFunction(...args: unknown[]): unknown {
     helpers.updateDynamicRam(ctx.function, getRamCost(Player, ...tree, ctx.function));
-    if (safetyEnabled) workerScript.infiniteLoopSafetyCounter++;
-    if (workerScript.infiniteLoopSafetyCounter > CONSTANTS.InfiniteLoopLimit)
-      throw new Error(
-        `Infinite loop without sleep detected. ${CONSTANTS.InfiniteLoopLimit} ns functions were called without sleep. This will cause your UI to hang.`,
-      );
     return func(ctx)(...args);
   }
   const parent = getNestedProperty(wrappedAPI, ...tree);
